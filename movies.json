@@ -1,0 +1,868 @@
+{
+  "movies": [
+    {
+      "title": "Inception",
+      "release_date": "2010-07-16",
+      "director": {
+        "name": "Christopher Nolan",
+        "date_of_birth": "1970-07-30"
+      },
+      "actors": [
+        {"name": "Leonardo DiCaprio", "date_of_birth": "1974-11-11"},
+        {"name": "Joseph Gordon-Levitt", "date_of_birth": "1981-02-17"},
+        {"name": "Ellen Page", "date_of_birth": "1987-02-21"},
+        {"name": "Tom Hardy", "date_of_birth": "1977-09-15"}
+      ],
+      "genre": "Sci-Fi",
+      "description": "Inception is a mind-bending sci-fi thriller about a thief who enters the dreams of others to steal their secrets."
+    },
+    {
+      "title": "The Dark Knight",
+      "release_date": "2008-07-18",
+      "director": {
+        "name": "Christopher Nolan",
+        "date_of_birth": "1970-07-30"
+      },
+      "actors": [
+        {"name": "Christian Bale", "date_of_birth": "1974-01-30"},
+        {"name": "Heath Ledger", "date_of_birth": "1979-04-04"},
+        {"name": "Aaron Eckhart", "date_of_birth": "1968-03-12"},
+        {"name": "Michael Caine", "date_of_birth": "1933-03-14"}
+      ],
+      "genre": "Action",
+      "description": "The Dark Knight follows Batman as he faces off against the Joker, a criminal mastermind set on chaos and anarchy in Gotham City."
+    },
+    {
+      "title": "Interstellar",
+      "release_date": "2014-11-07",
+      "director": {
+        "name": "Christopher Nolan",
+        "date_of_birth": "1970-07-30"
+      },
+      "actors": [
+        {"name": "Matthew McConaughey", "date_of_birth": "1969-11-04"},
+        {"name": "Anne Hathaway", "date_of_birth": "1982-11-12"},
+        {"name": "Jessica Chastain", "date_of_birth": "1977-03-24"},
+        {"name": "Michael Caine", "date_of_birth": "1933-03-14"}
+      ],
+      "genre": "Sci-Fi",
+      "description": "Interstellar follows a group of astronauts who travel through a wormhole in search of a new habitable planet for humanity."
+    },
+    {
+      "title": "The Godfather",
+      "release_date": "1972-03-24",
+      "director": {
+        "name": "Francis Ford Coppola",
+        "date_of_birth": "1939-04-07"
+      },
+      "actors": [
+        {"name": "Marlon Brando", "date_of_birth": "1924-04-03"},
+        {"name": "Al Pacino", "date_of_birth": "1940-04-25"},
+        {"name": "James Caan", "date_of_birth": "1940-03-26"},
+        {"name": "Robert Duvall", "date_of_birth": "1931-01-05"}
+      ],
+      "genre": "Crime",
+      "description": "The Godfather is a crime epic that follows the Corleone family as they navigate the world of organized crime."
+    },
+    {
+      "title": "The Shawshank Redemption",
+      "release_date": "1994-10-14",
+      "director": {
+        "name": "Frank Darabont",
+        "date_of_birth": "1959-01-28"
+      },
+      "actors": [
+        {"name": "Tim Robbins", "date_of_birth": "1958-10-16"},
+        {"name": "Morgan Freeman", "date_of_birth": "1937-06-01"},
+        {"name": "Bob Gunton", "date_of_birth": "1945-11-15"},
+        {"name": "William Sadler", "date_of_birth": "1950-04-13"}
+      ],
+      "genre": "Drama",
+      "description": "The Shawshank Redemption tells the story of a banker who is wrongly convicted of murder and forms a bond with his fellow inmates during his time in prison."
+    },
+    {
+      "title": "Pulp Fiction",
+      "release_date": "1994-10-14",
+      "director": {
+        "name": "Quentin Tarantino",
+        "date_of_birth": "1963-03-27"
+      },
+      "actors": [
+        {"name": "John Travolta", "date_of_birth": "1954-02-18"},
+        {"name": "Uma Thurman", "date_of_birth": "1970-04-29"},
+        {"name": "Samuel L. Jackson", "date_of_birth": "1948-12-21"},
+        {"name": "Bruce Willis", "date_of_birth": "1955-03-19"}
+      ],
+      "genre": "Crime",
+      "description": "Pulp Fiction is a nonlinear crime film that weaves together multiple stories involving gangsters, boxers, and drug dealers."
+    },
+    {
+      "title": "Forrest Gump",
+      "release_date": "1994-07-06",
+      "director": {
+        "name": "Robert Zemeckis",
+        "date_of_birth": "1951-05-14"
+      },
+      "actors": [
+        {"name": "Tom Hanks", "date_of_birth": "1956-07-09"},
+        {"name": "Robin Wright", "date_of_birth": "1966-04-08"},
+        {"name": "Gary Sinise", "date_of_birth": "1955-03-17"},
+        {"name": "Sally Field", "date_of_birth": "1946-11-06"}
+      ],
+      "genre": "Drama",
+      "description": "Forrest Gump is a heartwarming tale that follows the life of a simple man who unwittingly becomes part of major historical events in the 20th century."
+    },
+    {
+      "title": "The Matrix",
+      "release_date": "1999-03-31",
+      "director": {
+        "name": "The Wachowskis",
+        "date_of_birth": ["1965-06-21", "1967-12-29"]
+      },
+      "actors": [
+        {"name": "Keanu Reeves", "date_of_birth": "1964-09-02"},
+        {"name": "Laurence Fishburne", "date_of_birth": "1961-07-30"},
+        {"name": "Carrie-Anne Moss", "date_of_birth": "1967-08-21"},
+        {"name": "Hugo Weaving", "date_of_birth": "1960-04-04"}
+      ],
+      "genre": "Sci-Fi",
+      "description": "The Matrix is a groundbreaking sci-fi film that explores the concept of reality and features mind-bending action sequences."
+    },
+    {
+      "title": "Fight Club",
+      "release_date": "1999-10-15",
+      "director": {
+        "name": "David Fincher",
+        "date_of_birth": "1962-08-28"
+      },
+      "actors": [
+        {"name": "Brad Pitt", "date_of_birth": "1963-12-18"},
+        {"name": "Edward Norton", "date_of_birth": "1969-08-18"},
+        {"name": "Helena Bonham Carter", "date_of_birth": "1966-05-26"},
+        {"name": "Meat Loaf", "date_of_birth": "1947-09-27"}
+      ],
+      "genre": "Drama",
+      "description": "Fight Club is a dark and gritty film that follows an insomniac office worker who forms an underground fight club as a form of therapy."
+    },
+    {
+      "title": "The Lord of the Rings: The Return of the King",
+      "release_date": "2003-12-17",
+      "director": {
+        "name": "Peter Jackson",
+        "date_of_birth": "1961-10-31"
+      },
+      "actors": [
+        {"name": "Elijah Wood", "date_of_birth": "1981-01-28"},
+        {"name": "Viggo Mortensen", "date_of_birth": "1958-10-20"},
+        {"name": "Ian McKellen", "date_of_birth": "1939-05-25"},
+        {"name": "Liv Tyler", "date_of_birth": "1977-07-01"}
+      ],
+      "genre": "Fantasy",
+      "description": "The Return of the King is the epic conclusion to The Lord of the Rings trilogy, as Frodo and Sam continue their journey to destroy the One Ring while Aragorn leads the forces of good against Sauron's army."
+    },
+    {
+      "title": "The Lord of the Rings: The Fellowship of the Ring",
+      "release_date": "2001-12-19",
+      "director": {
+        "name": "Peter Jackson",
+        "date_of_birth": "1961-10-31"
+      },
+      "actors": [
+        {"name": "Elijah Wood", "date_of_birth": "1981-01-28"},
+        {"name": "Ian McKellen", "date_of_birth": "1939-05-25"},
+        {"name": "Orlando Bloom", "date_of_birth": "1977-01-13"},
+        {"name": "Sean Bean", "date_of_birth": "1959-04-17"}
+      ],
+      "genre": "Fantasy",
+      "description": "The Fellowship of the Ring follows Frodo Baggins as he sets out on a perilous journey to destroy the One Ring and save Middle-earth from the dark lord Sauron."
+    },
+    {
+      "title": "The Lord of the Rings: The Two Towers",
+      "release_date": "2002-12-18",
+      "director": {
+        "name": "Peter Jackson",
+        "date_of_birth": "1961-10-31"
+      },
+      "actors": [
+        {"name": "Elijah Wood", "date_of_birth": "1981-01-28"},
+        {"name": "Ian McKellen", "date_of_birth": "1939-05-25"},
+        {"name": "Viggo Mortensen", "date_of_birth": "1958-10-20"},
+        {"name": "Sean Astin", "date_of_birth": "1971-02-25"}
+      ],
+      "genre": "Fantasy",
+      "description": "The Two Towers continues the journey of Frodo and the Fellowship as they face new challenges and alliances in their quest to defeat Sauron."
+    },
+    {
+      "title": "The Silence of the Lambs",
+      "release_date": "1991-02-14",
+      "director": {
+        "name": "Jonathan Demme",
+        "date_of_birth": "1944-02-22"
+      },
+      "actors": [
+        {"name": "Jodie Foster", "date_of_birth": "1962-11-19"},
+        {"name": "Anthony Hopkins", "date_of_birth": "1937-12-31"},
+        {"name": "Scott Glenn", "date_of_birth": "1941-01-26"},
+        {"name": "Ted Levine", "date_of_birth": "1957-05-29"}
+      ],
+      "genre": "Thriller",
+      "description": "The Silence of the Lambs follows FBI trainee Clarice Starling as she seeks the help of imprisoned serial killer Hannibal Lecter to catch another serial killer known as Buffalo Bill."
+    },
+    {
+      "title": "Schindler's List",
+      "release_date": "1993-12-15",
+      "director": {
+        "name": "Steven Spielberg",
+        "date_of_birth": "1946-12-18"
+      },
+      "actors": [
+        {"name": "Liam Neeson", "date_of_birth": "1952-06-07"},
+        {"name": "Ben Kingsley", "date_of_birth": "1943-12-31"},
+        {"name": "Ralph Fiennes", "date_of_birth": "1962-12-22"},
+        {"name": "Caroline Goodall", "date_of_birth": "1959-11-13"}
+      ],
+      "genre": "Drama",
+      "description": "Schindler's List tells the true story of Oskar Schindler, a German businessman who saved the lives of more than a thousand Polish Jews during the Holocaust."
+    },
+    {
+      "title": "Titanic",
+      "release_date": "1997-12-19",
+      "director": {
+        "name": "James Cameron",
+        "date_of_birth": "1954-08-16"
+      },
+      "actors": [
+        {"name": "Leonardo DiCaprio", "date_of_birth": "1974-11-11"},
+        {"name": "Kate Winslet", "date_of_birth": "1975-10-05"},
+        {"name": "Billy Zane", "date_of_birth": "1966-02-24"},
+        {"name": "Kathy Bates", "date_of_birth": "1948-06-28"}
+      ],
+      "genre": "Romance",
+      "description": "Titanic is a romantic disaster film that tells the tragic story of the sinking of the RMS Titanic, as seen through the eyes of two young lovers from different social classes."
+    },
+    {
+      "title": "Avatar",
+      "release_date": "2009-12-18",
+      "director": {
+        "name": "James Cameron",
+        "date_of_birth": "1954-08-16"
+      },
+      "actors": [
+        {"name": "Sam Worthington", "date_of_birth": "1976-08-02"},
+        {"name": "Zoe Saldana", "date_of_birth": "1978-06-19"},
+        {"name": "Sigourney Weaver", "date_of_birth": "1949-10-08"},
+        {"name": "Stephen Lang", "date_of_birth": "1952-07-11"}
+      ],
+      "genre": "Sci-Fi",
+      "description": "Avatar is a visually stunning sci-fi epic set on the distant moon of Pandora, where a paraplegic marine is tasked with infiltrating the indigenous Na'vi people."
+    },
+    {
+      "title": "Goodfellas",
+      "release_date": "1990-09-19",
+      "director": {
+        "name": "Martin Scorsese",
+        "date_of_birth": "1942-11-17"
+      },
+      "actors": [
+        {"name": "Robert De Niro", "date_of_birth": "1943-08-17"},
+        {"name": "Ray Liotta", "date_of_birth": "1954-12-18"},
+        {"name": "Joe Pesci", "date_of_birth": "1943-02-09"},
+        {"name": "Lorraine Bracco", "date_of_birth": "1954-10-02"}
+      ],
+      "genre": "Crime",
+      "description": "Goodfellas is a gritty crime drama that follows the rise and fall of mobster Henry Hill as he becomes involved in the Italian-American mafia."
+    },
+    {
+      "title": "The Departed",
+      "release_date": "2006-10-06",
+      "director": {
+        "name": "Martin Scorsese",
+        "date_of_birth": "1942-11-17"
+      },
+      "actors": [
+        {"name": "Leonardo DiCaprio", "date_of_birth": "1974-11-11"},
+        {"name": "Matt Damon", "date_of_birth": "1970-10-08"},
+        {"name": "Jack Nicholson", "date_of_birth": "1937-04-22"},
+        {"name": "Mark Wahlberg", "date_of_birth": "1971-06-05"}
+      ],
+      "genre": "Crime",
+      "description": "The Departed is a tense crime thriller that follows an undercover cop and a mole in the Boston police force as they try to identify each other while infiltrating the Irish mob."
+    },
+    {
+      "title": "Saving Private Ryan",
+      "release_date": "1998-07-24",
+      "director": {
+        "name": "Steven Spielberg",
+        "date_of_birth": "1946-12-18"
+      },
+      "actors": [
+        {"name": "Tom Hanks", "date_of_birth": "1956-07-09"},
+        {"name": "Matt Damon", "date_of_birth": "1970-10-08"},
+        {"name": "Tom Sizemore", "date_of_birth": "1961-11-29"},
+        {"name": "Edward Burns", "date_of_birth": "1968-01-29"}
+      ],
+      "genre": "War",
+      "description": "Saving Private Ryan is a harrowing war drama that follows a group of soldiers as they embark on a dangerous mission to rescue a paratrooper behind enemy lines during World War II."
+    },
+    {
+      "title": "Inglourious Basterds",
+      "release_date": "2009-08-21",
+      "director": {
+        "name": "Quentin Tarantino",
+        "date_of_birth": "1963-03-27"
+      },
+      "actors": [
+        {"name": "Brad Pitt", "date_of_birth": "1963-12-18"},
+        {"name": "Mélanie Laurent", "date_of_birth": "1983-02-21"},
+        {"name": "Christoph Waltz", "date_of_birth": "1956-10-04"},
+        {"name": "Eli Roth", "date_of_birth": "1972-04-18"}
+      ],
+      "genre": "War",
+      "description": "Inglourious Basterds is a revisionist war film that follows a group of Jewish-American soldiers as they plot to assassinate Nazi leaders during World War II."
+    },
+    {
+      "title": "The Prestige",
+      "release_date": "2006-10-20",
+      "director": {
+        "name": "Christopher Nolan",
+        "date_of_birth": "1970-07-30"
+      },
+      "actors": [
+        {"name": "Christian Bale", "date_of_birth": "1974-01-30"},
+        {"name": "Hugh Jackman", "date_of_birth": "1968-10-12"},
+        {"name": "Scarlett Johansson", "date_of_birth": "1984-11-22"},
+        {"name": "Michael Caine", "date_of_birth": "1933-03-14"}
+      ],
+      "genre": "Mystery",
+      "description": "The Prestige is a twisty mystery thriller about two rival magicians who engage in a deadly game of one-upmanship."
+    },
+    {
+      "title": "Gladiator",
+      "release_date": "2000-05-05",
+      "director": {
+        "name": "Ridley Scott",
+        "date_of_birth": "1937-11-30"
+      },
+      "actors": [
+        {"name": "Russell Crowe", "date_of_birth": "1964-04-07"},
+        {"name": "Joaquin Phoenix", "date_of_birth": "1974-10-28"},
+        {"name": "Connie Nielsen", "date_of_birth": "1965-07-03"},
+        {"name": "Oliver Reed", "date_of_birth": "1938-02-13"}
+      ],
+      "genre": "Action",
+      "description": "Gladiator is an epic historical drama that follows a betrayed Roman general who seeks revenge against the corrupt emperor who murdered his family."
+    },
+    {
+      "title": "The Green Mile",
+      "release_date": "1999-12-10",
+      "director": {
+        "name": "Frank Darabont",
+        "date_of_birth": "1959-01-28"
+      },
+      "actors": [
+        {"name": "Tom Hanks", "date_of_birth": "1956-07-09"},
+        {"name": "Michael Clarke Duncan", "date_of_birth": "1957-12-10"},
+        {"name": "David Morse", "date_of_birth": "1953-10-11"},
+        {"name": "Bonnie Hunt", "date_of_birth": "1961-09-22"}
+      ],
+      "genre": "Drama",
+      "description": "The Green Mile is a supernatural drama set on death row, where a gentle giant with miraculous healing powers forms a bond with the prison guards."
+    },
+    {
+      "title": "The Usual Suspects",
+      "release_date": "1995-08-16",
+      "director": {
+        "name": "Bryan Singer",
+        "date_of_birth": "1965-09-17"
+      },
+      "actors": [
+        {"name": "Stephen Baldwin", "date_of_birth": "1966-05-12"},
+        {"name": "Gabriel Byrne", "date_of_birth": "1950-05-12"},
+        {"name": "Benicio del Toro", "date_of_birth": "1967-02-19"},
+        {"name": "Kevin Spacey", "date_of_birth": "1959-07-26"}
+      ],
+      "genre": "Crime",
+      "description": "The Usual Suspects is a twisty crime thriller about a group of criminals who meet during a police lineup and become involved in a mysterious heist."
+    },
+    {
+      "title": "The Matrix Reloaded",
+      "release_date": "2003-05-15",
+      "director": {
+        "name": "The Wachowskis",
+        "date_of_birth": ["1965-06-21", "1967-12-29"]
+      },
+      "actors": [
+        {"name": "Keanu Reeves", "date_of_birth": "1964-09-02"},
+        {"name": "Laurence Fishburne", "date_of_birth": "1961-07-30"},
+        {"name": "Carrie-Anne Moss", "date_of_birth": "1967-08-21"},
+        {"name": "Hugo Weaving", "date_of_birth": "1960-04-04"}
+      ],
+      "genre": "Sci-Fi",
+      "description": "The Matrix Reloaded is the second installment in the Matrix trilogy, expanding the story of Neo and the resistance against the machines."
+    },
+    {
+      "title": "The Matrix Revolutions",
+      "release_date": "2003-11-05",
+      "director": {
+        "name": "The Wachowskis",
+        "date_of_birth": ["1965-06-21", "1967-12-29"]
+      },
+      "actors": [
+        {"name": "Keanu Reeves", "date_of_birth": "1964-09-02"},
+        {"name": "Laurence Fishburne", "date_of_birth": "1961-07-30"},
+        {"name": "Carrie-Anne Moss", "date_of_birth": "1967-08-21"},
+        {"name": "Hugo Weaving", "date_of_birth": "1960-04-04"}
+      ],
+      "genre": "Sci-Fi",
+      "description": "The Matrix Revolutions concludes the epic trilogy, as Neo makes a final stand against the machines in the war for humanity's survival."
+    },
+    {
+      "title": "Memento",
+      "release_date": "2000-10-11",
+      "director": {
+        "name": "Christopher Nolan",
+        "date_of_birth": "1970-07-30"
+      },
+      "actors": [
+        {"name": "Guy Pearce", "date_of_birth": "1967-10-05"},
+        {"name": "Carrie-Anne Moss", "date_of_birth": "1967-08-21"},
+        {"name": "Joe Pantoliano", "date_of_birth": "1951-09-12"},
+        {"name": "Mark Boone Junior", "date_of_birth": "1955-03-17"}
+      ],
+      "genre": "Mystery",
+      "description": "Memento is a psychological thriller told in reverse chronological order, following a man with short-term memory loss as he tries to solve his wife's murder."
+    },
+    {
+      "title": "The Grand Budapest Hotel",
+      "release_date": "2014-03-28",
+      "director": {
+        "name": "Wes Anderson",
+        "date_of_birth": "1969-05-01"
+      },
+      "actors": [
+        {"name": "Ralph Fiennes", "date_of_birth": "1962-12-22"},
+        {"name": "Tony Revolori", "date_of_birth": "1996-04-28"},
+        {"name": "F. Murray Abraham", "date_of_birth": "1939-10-24"},
+        {"name": "Mathieu Amalric", "date_of_birth": "1965-10-25"}
+      ],
+      "genre": "Comedy",
+      "description": "The Grand Budapest Hotel is a quirky comedy set in a fictional European hotel between the two World Wars, following the misadventures of its eccentric staff and guests."
+    },
+    {
+      "title": "La La Land",
+      "release_date": "2016-12-09",
+      "director": {
+        "name": "Damien Chazelle",
+        "date_of_birth": "1985-01-19"
+      },
+      "actors": [
+        {"name": "Ryan Gosling", "date_of_birth": "1980-11-12"},
+        {"name": "Emma Stone", "date_of_birth": "1988-11-06"},
+        {"name": "John Legend", "date_of_birth": "1978-12-28"},
+        {"name": "Rosemarie DeWitt", "date_of_birth": "1971-10-26"}
+      ],
+      "genre": "Musical",
+      "description": "La La Land is a romantic musical that follows the love story between a jazz musician and an aspiring actress as they pursue their dreams in Los Angeles."
+    },
+    {
+      "title": "Blade Runner 2049",
+      "release_date": "2017-10-06",
+      "director": {
+        "name": "Denis Villeneuve",
+        "date_of_birth": "1967-10-03"
+      },
+      "actors": [
+        {"name": "Ryan Gosling", "date_of_birth": "1980-11-12"},
+        {"name": "Harrison Ford", "date_of_birth": "1942-07-13"},
+        {"name": "Ana de Armas", "date_of_birth": "1988-04-30"},
+        {"name": "Robin Wright", "date_of_birth": "1966-04-08"}
+      ],
+      "genre": "Sci-Fi",
+      "description": "Blade Runner 2049 is a visually stunning sci-fi sequel that follows a new blade runner's discovery of a long-buried secret, leading him to track down former blade runner Rick Deckard."
+    },
+    {
+      "title": "The Shape of Water",
+      "release_date": "2017-12-22",
+      "director": {
+        "name": "Guillermo del Toro",
+        "date_of_birth": "1964-10-09"
+      },
+      "actors": [
+        {"name": "Sally Hawkins", "date_of_birth": "1976-04-27"},
+        {"name": "Michael Shannon", "date_of_birth": "1974-08-07"},
+        {"name": "Richard Jenkins", "date_of_birth": "1947-05-04"},
+        {"name": "Octavia Spencer", "date_of_birth": "1972-05-25"}
+      ],
+      "genre": "Fantasy",
+      "description": "The Shape of Water is a romantic fantasy set during the Cold War era, following the unlikely romance between a mute janitor and a mysterious amphibious creature."
+    },
+    {
+      "title": "Get Out",
+      "release_date": "2017-02-24",
+      "director": {
+        "name": "Jordan Peele",
+        "date_of_birth": "1979-02-21"
+      },
+      "actors": [
+        {"name": "Daniel Kaluuya", "date_of_birth": "1989-05-24"},
+        {"name": "Allison Williams", "date_of_birth": "1988-04-13"},
+        {"name": "Bradley Whitford", "date_of_birth": "1959-10-10"},
+        {"name": "Catherine Keener", "date_of_birth": "1959-03-23"}
+      ],
+      "genre": "Horror",
+      "description": "Get Out is a psychological horror film that explores themes of racism and social commentary, as a young African-American man uncovers disturbing secrets while visiting his white girlfriend's family estate."
+    },
+    {
+      "title": "Birdman",
+      "release_date": "2014-10-17",
+      "director": {
+        "name": "Alejandro González Iñárritu",
+        "date_of_birth": "1963-08-15"
+      },
+      "actors": [
+        {"name": "Michael Keaton", "date_of_birth": "1951-09-05"},
+        {"name": "Zach Galifianakis", "date_of_birth": "1969-10-01"},
+        {"name": "Edward Norton", "date_of_birth": "1969-08-18"},
+        {"name": "Emma Stone", "date_of_birth": "1988-11-06"}
+      ],
+      "genre": "Drama",
+      "description": "Birdman is a dark comedy-drama that follows a washed-up actor trying to revive his career by staging a Broadway play, all while battling his ego and personal demons."
+    },
+    {
+      "title": "Dunkirk",
+      "release_date": "2017-07-21",
+      "director": {
+        "name": "Christopher Nolan",
+        "date_of_birth": "1970-07-30"
+      },
+      "actors": [
+        {"name": "Fionn Whitehead", "date_of_birth": "1997-07-18"},
+        {"name": "Tom Glynn-Carney", "date_of_birth": "1995-02-07"},
+        {"name": "Jack Lowden", "date_of_birth": "1990-06-02"},
+        {"name": "Harry Styles", "date_of_birth": "1994-02-01"}
+      ],
+      "genre": "War",
+      "description": "Dunkirk is a war film that depicts the Dunkirk evacuation of World War II, focusing on the intense efforts to rescue Allied soldiers from the beaches of Dunkirk, France."
+    },
+    {
+      "title": "Moonlight",
+      "release_date": "2016-10-21",
+      "director": {
+        "name": "Barry Jenkins",
+        "date_of_birth": "1979-11-19"
+      },
+      "actors": [
+        {"name": "Trevante Rhodes", "date_of_birth": "1990-02-10"},
+        {"name": "Ashton Sanders", "date_of_birth": "1996-10-24"},
+        {"name": "Alex R. Hibbert", "date_of_birth": "2004-07-04"},
+        {"name": "Mahershala Ali", "date_of_birth": "1974-02-16"}
+      ],
+      "genre": "Drama",
+      "description": "Moonlight is a coming-of-age drama that follows the life of a young black man from childhood to adulthood as he navigates his identity and sexuality in a rough Miami neighborhood."
+    },
+    {
+      "title": "Whiplash",
+      "release_date": "2014-10-10",
+      "director": {
+        "name": "Damien Chazelle",
+        "date_of_birth": "1985-01-19"
+      },
+      "actors": [
+        {"name": "Miles Teller", "date_of_birth": "1987-02-20"},
+        {"name": "J.K. Simmons", "date_of_birth": "1955-01-09"},
+        {"name": "Paul Reiser", "date_of_birth": "1957-03-30"},
+        {"name": "Melissa Benoist", "date_of_birth": "1988-10-04"}
+      ],
+      "genre": "Drama",
+      "description": "Whiplash is an intense drama about a young drummer's relentless pursuit of perfection under the tutelage of a demanding and abusive music conductor."
+    },
+    {
+      "title": "Her",
+      "release_date": "2013-12-18",
+      "director": {
+        "name": "Spike Jonze",
+        "date_of_birth": "1969-10-22"
+      },
+      "actors": [
+        {"name": "Joaquin Phoenix", "date_of_birth": "1974-10-28"},
+        {"name": "Scarlett Johansson", "date_of_birth": "1984-11-22"},
+        {"name": "Rooney Mara", "date_of_birth": "1985-04-17"},
+        {"name": "Amy Adams", "date_of_birth": "1974-08-20"}
+      ],
+      "genre": "Romance",
+      "description": "Her is a futuristic romance about a lonely writer who develops an unlikely relationship with an advanced artificial intelligence operating system."
+    },
+    {
+      "title": "No Country for Old Men",
+      "release_date": "2007-11-21",
+      "director": {
+        "name": "Joel Coen",
+        "date_of_birth": "1954-11-29"
+      },
+      "actors": [
+        {"name": "Tommy Lee Jones", "date_of_birth": "1946-09-15"},
+        {"name": "Javier Bardem", "date_of_birth": "1969-03-01"},
+        {"name": "Josh Brolin", "date_of_birth": "1968-02-12"},
+        {"name": "Kelly Macdonald", "date_of_birth": "1976-02-23"}
+      ],
+      "genre": "Crime",
+      "description": "No Country for Old Men is a gripping crime thriller about a hunter who stumbles upon a drug deal gone wrong and a suitcase full of money, leading to a deadly game of cat and mouse."
+    },
+    {
+      "title": "The Dark Knight",
+      "release_date": "2008-07-18",
+      "director": {
+        "name": "Christopher Nolan",
+        "date_of_birth": "1970-07-30"
+      },
+      "actors": [
+        {"name": "Christian Bale", "date_of_birth": "1974-01-30"},
+        {"name": "Heath Ledger", "date_of_birth": "1979-04-04"},
+        {"name": "Aaron Eckhart", "date_of_birth": "1968-03-12"},
+        {"name": "Michael Caine", "date_of_birth": "1933-03-14"}
+      ],
+      "genre": "Action",
+      "description": "The Dark Knight is a superhero film that pits Batman against the Joker in a battle for Gotham City's soul, testing the limits of justice and morality."
+    },
+    {
+      "title": "Mad Max: Fury Road",
+      "release_date": "2015-05-15",
+      "director": {
+        "name": "George Miller",
+        "date_of_birth": "1945-03-03"
+      },
+      "actors": [
+        {"name": "Tom Hardy", "date_of_birth": "1977-09-15"},
+        {"name": "Charlize Theron", "date_of_birth": "1975-08-07"},
+        {"name": "Nicholas Hoult", "date_of_birth": "1989-12-07"},
+        {"name": "Hugh Keays-Byrne", "date_of_birth": "1947-05-18"}
+      ],
+      "genre": "Action",
+      "description": "Mad Max: Fury Road is a high-octane action film set in a post-apocalyptic wasteland, where a lone drifter and a fierce warrior rebel against a tyrannical ruler in a thrilling chase."
+    },
+    {
+      "title": "Black Swan",
+      "release_date": "2010-12-17",
+      "director": {
+        "name": "Darren Aronofsky",
+        "date_of_birth": "1969-02-12"
+      },
+      "actors": [
+        {"name": "Natalie Portman", "date_of_birth": "1981-06-09"},
+        {"name": "Mila Kunis", "date_of_birth": "1983-08-14"},
+        {"name": "Vincent Cassel", "date_of_birth": "1966-11-23"},
+        {"name": "Barbara Hershey", "date_of_birth": "1948-02-05"}
+      ],
+      "genre": "Psychological Thriller",
+      "description": "Black Swan is a psychological thriller that explores the rivalry and obsession between two ballet dancers, leading to a dark and twisted transformation."
+    },
+    {
+      "title": "The Shawshank Redemption",
+      "release_date": "1994-10-14",
+      "director": {
+        "name": "Frank Darabont",
+        "date_of_birth": "1959-01-28"
+      },
+      "actors": [
+        {"name": "Tim Robbins", "date_of_birth": "1958-10-16"},
+        {"name": "Morgan Freeman", "date_of_birth": "1937-06-01"},
+        {"name": "Bob Gunton", "date_of_birth": "1945-11-15"},
+        {"name": "William Sadler", "date_of_birth": "1950-04-13"}
+      ],
+      "genre": "Drama",
+      "description": "The Shawshank Redemption follows the story of Andy Dufresne, a banker who is sentenced to life in Shawshank State Penitentiary for the murder of his wife and her lover, as he forms a bond with fellow inmate Red and works to clear his name."
+    },
+    {
+      "title": "Interstellar",
+      "release_date": "2014-11-07",
+      "director": {
+        "name": "Christopher Nolan",
+        "date_of_birth": "1970-07-30"
+      },
+      "actors": [
+        {"name": "Matthew McConaughey", "date_of_birth": "1969-11-04"},
+        {"name": "Anne Hathaway", "date_of_birth": "1982-11-12"},
+        {"name": "Jessica Chastain", "date_of_birth": "1977-03-24"},
+        {"name": "Michael Caine", "date_of_birth": "1933-03-14"}
+      ],
+      "genre": "Sci-Fi",
+      "description": "Interstellar is a visually stunning sci-fi epic that follows a group of astronauts who travel through a wormhole near Saturn in search of a new habitable planet for humanity."
+    },
+    {
+      "title": "Pulp Fiction",
+      "release_date": "1994-10-14",
+      "director": {
+        "name": "Quentin Tarantino",
+        "date_of_birth": "1963-03-27"
+      },
+      "actors": [
+        {"name": "John Travolta", "date_of_birth": "1954-02-18"},
+        {"name": "Uma Thurman", "date_of_birth": "1970-04-29"},
+        {"name": "Samuel L. Jackson", "date_of_birth": "1948-12-21"},
+        {"name": "Bruce Willis", "date_of_birth": "1955-03-19"}
+      ],
+      "genre": "Crime",
+      "description": "Pulp Fiction is a nonlinear crime film that weaves together interconnected stories of mobsters, hitmen, and boxers in a stylized and violent narrative."
+    },
+    {
+      "title": "Forrest Gump",
+      "release_date": "1994-07-06",
+      "director": {
+        "name": "Robert Zemeckis",
+        "date_of_birth": "1951-05-14"
+      },
+      "actors": [
+        {"name": "Tom Hanks", "date_of_birth": "1956-07-09"},
+        {"name": "Robin Wright", "date_of_birth": "1966-04-08"},
+        {"name": "Gary Sinise", "date_of_birth": "1955-03-17"},
+        {"name": "Sally Field", "date_of_birth": "1946-11-06"}
+      ],
+      "genre": "Drama",
+      "description": "Forrest Gump is a heartwarming drama that follows the life of a simple man with a low IQ, as he inadvertently influences several significant historical events."
+    },
+    {
+      "title": "Fight Club",
+      "release_date": "1999-10-15",
+      "director": {
+        "name": "David Fincher",
+        "date_of_birth": "1962-08-28"
+      },
+      "actors": [
+        {"name": "Brad Pitt", "date_of_birth": "1963-12-18"},
+        {"name": "Edward Norton", "date_of_birth": "1969-08-18"},
+        {"name": "Helena Bonham Carter", "date_of_birth": "1966-05-26"},
+        {"name": "Meat Loaf", "date_of_birth": "1947-09-27"}
+      ],
+      "genre": "Drama",
+      "description": "Fight Club is a subversive drama that explores themes of masculinity, consumerism, and existentialism through the story of an insomniac office worker who forms an underground fight club with a charismatic soap salesman."
+    },
+    {
+      "title": "The Lord of the Rings: The Return of the King",
+      "release_date": "2003-12-17",
+      "director": {
+        "name": "Peter Jackson",
+        "date_of_birth": "1961-10-31"
+      },
+      "actors": [
+        {"name": "Elijah Wood", "date_of_birth": "1981-01-28"},
+        {"name": "Viggo Mortensen", "date_of_birth": "1958-10-20"},
+        {"name": "Ian McKellen", "date_of_birth": "1939-05-25"},
+        {"name": "Sean Astin", "date_of_birth": "1971-02-25"}
+      ],
+      "genre": "Fantasy",
+      "description": "The Lord of the Rings: The Return of the King is the epic conclusion to the fantasy trilogy, as the forces of good and evil clash in the climactic battle for Middle-earth."
+    },
+    {
+      "title": "The Truman Show",
+      "release_date": "1998-06-05",
+      "director": {
+        "name": "Peter Weir",
+        "date_of_birth": "1944-08-21"
+      },
+      "actors": [
+        {"name": "Jim Carrey", "date_of_birth": "1962-01-17"},
+        {"name": "Laura Linney", "date_of_birth": "1964-02-05"},
+        {"name": "Ed Harris", "date_of_birth": "1950-11-28"},
+        {"name": "Noah Emmerich", "date_of_birth": "1965-02-27"}
+      ],
+      "genre": "Drama",
+      "description": "The Truman Show is a satirical drama about a man who discovers that his entire life is a reality TV show, leading him to question the nature of reality and his own existence."
+    },
+    {
+      "title": "Saving Private Ryan",
+      "release_date": "1998-07-24",
+      "director": {
+        "name": "Steven Spielberg",
+        "date_of_birth": "1946-12-18"
+      },
+      "actors": [
+        {"name": "Tom Hanks", "date_of_birth": "1956-07-09"},
+        {"name": "Matt Damon", "date_of_birth": "1970-10-08"},
+        {"name": "Tom Sizemore", "date_of_birth": "1961-11-29"},
+        {"name": "Edward Burns", "date_of_birth": "1968-01-29"}
+      ],
+      "genre": "War",
+      "description": "Saving Private Ryan is a gripping war drama that follows a group of soldiers as they embark on a dangerous mission to find and bring home a paratrooper whose brothers have been killed in action during World War II."
+    },
+    {
+      "title": "Good Will Hunting",
+      "release_date": "1997-12-05",
+      "director": {
+        "name": "Gus Van Sant",
+        "date_of_birth": "1952-07-24"
+      },
+      "actors": [
+        {"name": "Matt Damon", "date_of_birth": "1970-10-08"},
+        {"name": "Robin Williams", "date_of_birth": "1951-07-21"},
+        {"name": "Ben Affleck", "date_of_birth": "1972-08-15"},
+        {"name": "Stellan Skarsgård", "date_of_birth": "1951-06-13"}
+      ],
+      "genre": "Drama",
+      "description": "Good Will Hunting is a heartfelt drama about a troubled young janitor with a genius-level intellect who must confront his past and embrace his potential with the help of a compassionate therapist."
+    },
+    {
+      "title": "The Silence of the Lambs",
+      "release_date": "1991-02-14",
+      "director": {
+        "name": "Jonathan Demme",
+        "date_of_birth": "1944-02-22"
+      },
+      "actors": [
+        {"name": "Jodie Foster", "date_of_birth": "1962-11-19"},
+        {"name": "Anthony Hopkins", "date_of_birth": "1937-12-31"},
+        {"name": "Scott Glenn", "date_of_birth": "1941-01-26"},
+        {"name": "Ted Levine", "date_of_birth": "1957-05-29"}
+      ],
+      "genre": "Thriller",
+      "description": "The Silence of the Lambs is a chilling psychological thriller that follows FBI trainee Clarice Starling as she seeks the help of incarcerated cannibalistic serial killer Dr. Hannibal Lecter to catch another serial killer on the loose."
+    },
+    {
+      "title": "The Sixth Sense",
+      "release_date": "1999-08-06",
+      "director": {
+        "name": "M. Night Shyamalan",
+        "date_of_birth": "1970-08-06"
+      },
+      "actors": [
+        {"name": "Bruce Willis", "date_of_birth": "1955-03-19"},
+        {"name": "Haley Joel Osment", "date_of_birth": "1988-04-10"},
+        {"name": "Toni Collette", "date_of_birth": "1972-11-01"},
+        {"name": "Olivia Williams", "date_of_birth": "1968-07-26"}
+      ],
+      "genre": "Thriller",
+      "description": "The Sixth Sense is a supernatural thriller about a young boy who claims to see ghosts and his child psychologist who tries to help him, leading to a shocking revelation."
+    },
+    {
+      "title": "Jurassic Park",
+      "release_date": "1993-06-11",
+      "director": {
+        "name": "Steven Spielberg",
+        "date_of_birth": "1946-12-18"
+      },
+      "actors": [
+        {"name": "Sam Neill", "date_of_birth": "1947-09-14"},
+        {"name": "Laura Dern", "date_of_birth": "1967-02-10"},
+        {"name": "Jeff Goldblum", "date_of_birth": "1952-10-22"},
+        {"name": "Richard Attenborough", "date_of_birth": "1923-08-29"}
+      ],
+      "genre": "Sci-Fi",
+      "description": "Jurassic Park is a thrilling sci-fi adventure that follows a group of scientists and tourists as they visit a remote island theme park populated by genetically engineered dinosaurs, only for things to go terribly wrong."
+    },
+    {
+      "title": "The Green Mile",
+      "release_date": "1999-12-10",
+      "director": {
+        "name": "Frank Darabont",
+        "date_of_birth": "1959-01-28"
+      },
+      "actors": [
+        {"name": "Tom Hanks", "date_of_birth": "1956-07-09"},
+        {"name": "Michael Clarke Duncan", "date_of_birth": "1957-12-10"},
+        {"name": "David Morse", "date_of_birth": "1953-10-11"},
+        {"name": "Bonnie Hunt", "date_of_birth": "1961-09-22"}
+      ],
+      "genre": "Drama",
+      "description": "The Green Mile is a poignant drama set on death row in a Southern prison, exploring themes of redemption and miracles through the relationship between a death row inmate with supernatural abilities and a compassionate prison guard."
+    }
+  ]
+}
