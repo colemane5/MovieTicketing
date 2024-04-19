@@ -15,7 +15,7 @@ BEGIN
 	WHERE
 		(@MovieTitle IS NULL OR M.MovieTitle LIKE '%' + @MovieTitle + '%') AND
 		(@Director IS NULL OR D.DirectorName = @Director) AND
-		(@GenreName IS NULL OR g.GenreName = @GenreName)AND
+		(@GenreName IS NULL OR G.GenreName = @GenreName)AND
 		(@ActorNames IS NULL OR EXISTS (
 			SELECT MA.MovieID
 			FROM MovieDatabase.MovieDB.ActorMovie MA

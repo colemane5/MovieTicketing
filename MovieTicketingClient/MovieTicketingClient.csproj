@@ -12,4 +12,8 @@
     <ProjectReference Include="..\SharedResources\SharedResources.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="SqlInterfaces\" />
+  </ItemGroup>
+
 </Project>
