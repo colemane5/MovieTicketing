@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SharedResources.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -24,5 +25,11 @@ namespace MovieTicketingClient.Delegates
         /// <param name="salePrice">the price of the ticket</param>
         /// <returns>returns a string stating whether the operation succeeded</returns>
         string GetTicket(int userID, int MovieShowtimeID, decimal salePrice);
+
+        /// <summary>
+        /// A function to return all theaters on the db to use in the filter function
+        /// </summary>
+        /// <returns>A list of theaters in the db</returns>
+        List<Theater> RetrieveTheaters();
     }
 }

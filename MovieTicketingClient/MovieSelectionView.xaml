@@ -5,19 +5,22 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MovieTicketingClient"
         mc:Ignorable="d"
-        Title="MovieSelectionView" Height="450" Width="800">
+        Title="Movie Selection" Height="450" Width="800">
     <Grid>
-        <Grid x:Name="uxMovieGridDisplay" Margin="300,0,10,0">
-
-        </Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid x:Name="uxMovieGridDisplay" Margin="298,40,-113,0"/>
         <Label x:Name="uxFindMovieLabel" Content="Find a Movie" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="186" Height="34" FontSize="24" FontFamily="Arial" FontWeight="Bold"/>
         <ComboBox x:Name="uxGenreComboBox" HorizontalAlignment="Left" Margin="10,89,0,0" VerticalAlignment="Top" Width="186" Height="30" FontSize="14"/>
-        <Label x:Name="uxGenreLabel" Content="Genre" HorizontalAlignment="Left" Margin="10,60,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold"/>
-        <Label x:Name="uxActorLabel" Content="Actors" HorizontalAlignment="Left" Margin="10,134,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold"/>
+        <Label x:Name="uxGenreLabel" Content="Genre" HorizontalAlignment="Left" Margin="10,60,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold" Height="29" Width="49"/>
+        <Label x:Name="uxActorLabel" Content="Actors" HorizontalAlignment="Left" Margin="10,134,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold" Height="29" Width="52"/>
         <ComboBox x:Name="uxActorComboBox" HorizontalAlignment="Left" Margin="10,168,0,0" VerticalAlignment="Top" Width="186" Height="30" FontSize="14" IsEditable="True"/>
-        <Label x:Name="uxDirectorLabel" Content="Director" HorizontalAlignment="Left" Margin="10,334,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold"/>
-        <ComboBox x:Name="uxDirectorComboBox" HorizontalAlignment="Left" Margin="10,368,0,0" VerticalAlignment="Top" Width="186" Height="30" FontSize="14" IsEditable="True"/>
-        <Grid x:Name="uxActorTilesGrid" Margin="10,203,515,105"/>
-        <Button x:Name="uxActorAddButton" Content="+" HorizontalAlignment="Left" Margin="201,168,0,0" VerticalAlignment="Top" Height="30" Width="30" FontFamily="Arial Narrow" FontSize="24" Background="White" RenderTransformOrigin="0.473,0.123"/>
+        <Label x:Name="uxDirectorLabel" Content="Director" HorizontalAlignment="Left" Margin="10,0,0,89" FontSize="14" FontWeight="Bold" RenderTransformOrigin="0.575,1.039" Height="29" VerticalAlignment="Bottom" Width="64"/>
+        <ComboBox x:Name="uxDirectorComboBox" HorizontalAlignment="Left" Margin="10,0,0,54" Width="186" FontSize="14" IsEditable="True" RenderTransformOrigin="0.459,0.416" Height="30" VerticalAlignment="Bottom"/>
+        <Grid x:Name="uxActorTilesGrid" Margin="10,203,520,123"/>
+        <Button x:Name="uxActorAddButton" Content="+" HorizontalAlignment="Left" Margin="199,168,0,0" VerticalAlignment="Top" Height="30" Width="30" FontFamily="Arial Narrow" FontSize="20" Background="White" RenderTransformOrigin="0.473,0.123"/>
+        <Label x:Name="uxSearchResultsLabel" Content="Select a Movie or Enter Search Parameters" HorizontalAlignment="Left" Margin="328,14,0,0" VerticalAlignment="Top" Width="244" Height="26"/>
+        <Button x:Name="uxSearchButton" Content="Search" HorizontalAlignment="Left" Margin="8,0,0,10" Width="86" FontSize="14" FontWeight="Bold" RenderTransformOrigin="0.544,0.868" Height="27" VerticalAlignment="Bottom"/>
     </Grid>
 </Window>
