@@ -7,6 +7,10 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
+        <Label x:Name="uxSignInLabel" Content="Sign In" HorizontalAlignment="Center" Margin="0,75,0,0" VerticalAlignment="Top" FontSize="24" FontFamily="Arial"/>
+        <TextBox x:Name="uxEmailTextBox" HorizontalAlignment="Left" TextWrapping="Wrap" Text="i.e. johndoe@example.com" VerticalAlignment="Center" Width="224" Height="26" FontSize="14" Margin="313,0,0,0"/>
+        <Label x:Name="uxEmailLabel" Content="Email" HorizontalAlignment="Left" Margin="263,0,0,0" VerticalAlignment="Center" Width="45" FontSize="14" FontFamily="Arial"/>
+        <Button x:Name="uxLoginButton" Content="Login" HorizontalAlignment="Center" Margin="0,253,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.984,0.604" Height="26" Width="92" FontSize="14"/>
 
     </Grid>
 </Window>
