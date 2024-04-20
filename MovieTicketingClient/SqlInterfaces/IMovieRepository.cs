@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MovieTicketingClient.Delegates
+namespace MovieTicketingClient.SqlInterfaces
 {
     public interface IMovieRepository
     {
@@ -18,7 +18,7 @@ namespace MovieTicketingClient.Delegates
         /// <param name="director">the desired director filter</param>
         /// <param name="genre">the desired genre for the search</param>
         /// <returns>A read-only list with the desired movies from the database</returns>
-        IReadOnlyList<Movie> FilterMovies(string movieTitle, string actorNames, string director, string genre);
+        List<Movie> FilterMovies(string movieTitle, string actorNames, string director, string genre);
 
         /// <summary>
         /// A function to return all actors on the db to use in the filter function

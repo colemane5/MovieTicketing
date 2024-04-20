@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MovieTicketingClient.Delegates
+namespace MovieTicketingClient.SqlInterfaces
 {
     public interface ITheaterRepository
     {
