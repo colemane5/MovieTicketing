@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using MovieTicketingAdmin.ViewModels;
+using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -16,8 +17,12 @@ namespace MovieTicketingAdmin
     /// </summary>
     public partial class MainWindow : Window
     {
+        public AdminStatsViewModel AdminStatsViewModel { get; private set; }
         public MainWindow()
         {
+            TopTheatersPanelViewModel topTheaters = new();
+            TopGenresPanelViewModel topGenres = new();
+            AdminStatsViewModel = new AdminStatsViewModel(topTheaters, topGenres);
             InitializeComponent();
         }
     }

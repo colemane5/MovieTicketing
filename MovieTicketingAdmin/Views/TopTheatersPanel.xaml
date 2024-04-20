@@ -1,0 +1,51 @@
+﻿<UserControl x:Class="MovieTicketingAdmin.Views.TopTheatersPanel"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:MovieTicketingAdmin.Views" xmlns:viewmodels="clr-namespace:MovieTicketingAdmin.ViewModels" d:DataContext="{d:DesignInstance Type=viewmodels:TopTheatersPanelViewModel}"
+             mc:Ignorable="d" 
+             d:DesignHeight="720" d:DesignWidth="640" Background="White"
+             >
+    <Grid Margin="20">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="4*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="5*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="2*" />
+            </Grid.RowDefinitions>
+            <TextBlock Text="Top Theaters" Grid.Column="0" Grid.Row="0" FontSize="30" VerticalAlignment="Bottom"/>
+            <TextBlock Text="{Binding MonthName}" Grid.Column="1" Grid.Row="0" FontSize="18" VerticalAlignment="Bottom"/>
+            <DataGrid ItemsSource="{Binding TheaterSales}" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"
+                      AutoGenerateColumns="False" IsReadOnly="True" SelectedItem="{Binding SelectedTheater}">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Rank" Binding="{Binding Rank}" Width="*" />
+                    <DataGridTextColumn Header="Name" Binding="{Binding Name}" Width="5*" />
+                    <DataGridTextColumn Header="Sales" Binding="{Binding ShortSales}" Width="2*" />
+                </DataGrid.Columns>
+            </DataGrid>
+            <StackPanel Orientation="Horizontal" Grid.Row="2" Grid.Column="1">
+                <Button Content="Previous" IsEnabled="{Binding PreviousActive}" Command="{Binding PreviousCommand}" />
+                <Button Content="Next" IsEnabled="{Binding NextActive}" Command="{Binding NextCommand}" />
+            </StackPanel>
+            <Grid Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="2*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="2*" />
+                </Grid.RowDefinitions>
+                <TextBlock Text="{Binding TheaterName}" Grid.Row="0" Grid.Column="0"/>
+                <TextBlock Text="{Binding IndvTheaterSales}" Grid.Row="0" Grid.Column="1" />
+                <TextBlock Text="{Binding TheaterAddress}" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" />
+            </Grid>
+        </Grid>
+    </Grid>
+</UserControl>
