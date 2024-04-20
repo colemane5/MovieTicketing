@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace SharedResources
 {
-    public struct TopMoviesResult(string MovieTitle, int TicketsSold, int TotalShowings, float AvgTicketsPerShowing)
+    public struct TopMoviesResult(string movieTitle, int ticketsSold, int totalShowings, float avgTicketsPerShowing)
     {
-        public string MovieTitle { get; } = MovieTitle;
-        public int TicketsSold { get; } = TicketsSold;
-        public int TotalShowings { get; } = TotalShowings;
-        public float AvgTicketsPerShowing { get; } = AvgTicketsPerShowing;
+        public string MovieTitle { get; } = movieTitle;
+        public int TicketsSold { get; } = ticketsSold;
+        public int TotalShowings { get; } = totalShowings;
+        public float AvgTicketsPerShowing { get; } = avgTicketsPerShowing;
     }
 }
