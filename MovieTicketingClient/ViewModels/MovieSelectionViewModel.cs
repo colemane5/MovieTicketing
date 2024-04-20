@@ -11,7 +11,7 @@ namespace MovieTicketingClient.ViewModels
 {
     internal class MovieSelectionViewModel
     {
-        public List<Movie> movies { get; }
+        private List<Movie> movies { get; }
 
 
         public MovieSelectionViewModel() { }
