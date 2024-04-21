@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MovieTicketingClient.ViewModels
+namespace MovieTicketingAdmin.ViewModels
 {
-    internal class LoginViewModel
+    public class AdminAddEditRowViewModel
     {
     }
 }

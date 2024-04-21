@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MovieTicketingApp
+namespace MovieTicketingApp.ViewModels
 {
     public class MainViewModel : ViewModelBase
     {

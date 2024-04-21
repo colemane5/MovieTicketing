@@ -1,4 +1,5 @@
 ﻿using SharedResources.Models;
+using SharedResources.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -9,13 +10,13 @@ using System.Windows.Media.Imaging;
 
 namespace MovieTicketingClient.ViewModels
 {
-    internal class MovieSelectionViewModel
+    public class MovieSelectionViewModel : ViewModelBase
     {
         private List<Movie> movies { get; set; }
         private List<string> genres { get; set; }
         private List<Actor> actors { get; set; }
         private List<Director> directors { get; set; }
 
-        public MovieSelectionViewModel() { }
+        public MovieSelectionViewModel() : base() { }
     }
 }

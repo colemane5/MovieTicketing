@@ -1,4 +1,6 @@
 ﻿using MovieTicketingAdmin.ViewModels;
+using MovieTicketingApp.ViewModels;
+using MovieTicketingApp.Views;
 using SharedResources;
 using SharedResources.Models;
 using System.Configuration;
