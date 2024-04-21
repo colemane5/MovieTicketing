@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SharedResources
+namespace SharedResources.Results
 {
-    public readonly struct HourlySalesResult(int hourOfDay, int uniqueMovies, int uniqueTheaters, int ticketSales)
+    public readonly struct HourlySalesResult(int hourOfDay, int uniqueMovies, int uniqueTheaters, decimal ticketSales)
     {
         public int HourOfDay { get; } = hourOfDay;
         public int MovieCount { get; } = uniqueMovies;

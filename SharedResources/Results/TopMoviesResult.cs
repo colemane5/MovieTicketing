@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SharedResources
+namespace SharedResources.Results
 {
     public struct TopMoviesResult(string movieTitle, int ticketsSold, int totalShowings, float avgTicketsPerShowing)
     {
