@@ -1,4 +1,5 @@
 ﻿using SharedResources.Commands;
+using SharedResources.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -17,6 +18,8 @@ namespace SharedResources.ViewModels
 
         protected NavigationService? _navigationService;
 
+        protected User? _user;
+
         /// <summary>
         /// Raises the PropertyChanged event for the property with the given name.
         /// </summary>
@@ -31,14 +34,19 @@ namespace SharedResources.ViewModels
             _navigationService = navigationService;
         }
 
-        protected NavigateCommand<T> Navigation<T>() where T : ViewModelBase
+        public void RegisterUser(User? user)
+        {
+            _user = user;
+        }
+
+        protected NavigateCommand<T> Navigation<T>() where T : ViewModelBase, new()
         {
             return new NavigateCommand<T>(() => _navigationService);
         }
 
         protected LogoutCommand Logout()
         {
-            return new LogoutCommand(() => _navigationService?.StartViewModel, () => _navigationService);
+            return new LogoutCommand(() => _navigationService);
         }
     }
 }

@@ -8,7 +8,7 @@ using System.Windows.Input;
 
 namespace SharedResources.Commands
 {
-    public class NavigateCommand<T>(Func<NavigationService?> getNavigationService) : ICommand where T : ViewModelBase
+    public class NavigateCommand<TViewModel>(Func<NavigationService?> getNavigationService) : ICommand where TViewModel : ViewModelBase, new()
     {
         private readonly Func<NavigationService?> _getNavigationService = getNavigationService;
 
@@ -18,7 +18,7 @@ namespace SharedResources.Commands
 
         public void Execute(object? parameter)
         {
-            _getNavigationService()?.ChangeViewModel<T>();
+            _getNavigationService()?.ChangeViewModel<TViewModel>();
         }
     }
 }

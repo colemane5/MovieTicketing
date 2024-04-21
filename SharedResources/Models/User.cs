@@ -6,17 +6,11 @@ using System.Threading.Tasks;
 
 namespace SharedResources.Models
 {
-    public class User
+    public class User(int id, string name, string email, bool isAdmin)
     {
-        public int Id { get; set; }
-        public string Name { get; set; }
-        public string Email { get; set; }
-
-        public User(int id, string name, string email)
-        {
-            Id = id;
-            Name = name;
-            Email = email;
-        }
+        public int Id { get; set; } = id;
+        public string Name { get; set; } = name;
+        public string Email { get; set; } = email;
+        public bool IsAdmin { get; set; } = isAdmin;
     }
 }

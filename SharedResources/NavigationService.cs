@@ -1,4 +1,5 @@
 ﻿using SharedResources.Commands;
+using SharedResources.Models;
 using SharedResources.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -23,50 +24,26 @@ namespace SharedResources
             }
         }
 
-        private ViewModelBase? _startViewModel;
-        public ViewModelBase? StartViewModel
-        {
-            get => _startViewModel;
-            set
-            {
-                if (value is not null)
-                {
-                    _startViewModel = value;
-                    _storedViewModels.Add(_startViewModel); 
-                }
-            }
-        }
+        public Func<ViewModelBase> StartViewModel { get; set; } = () => new();
 
-        private List<ViewModelBase> _storedViewModels = [];
+        public User? CurrentUser { get; set; }
 
-        public void ChangeViewModel<T>()
-        {
-            CurrentViewModel = _storedViewModels.Where(s => s.GetType() == typeof(T)).SingleOrDefault() ?? new ViewModelBase();
-        }
+        public void ChangeViewModel<TViewModel>() where TViewModel : ViewModelBase, new() => ChangeViewModel(new TViewModel());
 
         public void ChangeViewModel(ViewModelBase viewModel)
         {
-            CurrentViewModel = _storedViewModels.Where(vm => vm == viewModel).SingleOrDefault() ?? new ViewModelBase();
+            CurrentViewModel = viewModel;
+            CurrentViewModel.RegisterNavigationService(this);
+            CurrentViewModel.RegisterUser(CurrentUser);
         }
 
         public void ReturnToStart()
         {
             if (StartViewModel is not null)
             {
-                CurrentViewModel = StartViewModel; 
+                CurrentViewModel = StartViewModel();
+                CurrentUser = null;
             }
-        }
-
-        public void AddViewModel(ViewModelBase viewModel)
-        {
-            _storedViewModels.Add(viewModel);
-        }
-
-        public void ClearViewModels()
-        {
-            _storedViewModels.Clear();
-            if (StartViewModel is not null) 
-                _storedViewModels.Add(StartViewModel);
         }
     }
 }

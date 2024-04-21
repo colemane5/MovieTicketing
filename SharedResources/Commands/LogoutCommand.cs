@@ -8,9 +8,8 @@ using System.Windows.Input;
 
 namespace SharedResources.Commands
 {
-    public class LogoutCommand(Func<ViewModelBase?> getStartViewModel, Func<NavigationService?> getNavigationService) : ICommand
+    public class LogoutCommand(Func<NavigationService?> getNavigationService) : ICommand
     {
-        private readonly Func<ViewModelBase?> _getStartViewModel = getStartViewModel;
         private readonly Func<NavigationService?> _getNavigationService = getNavigationService;
 
         public event EventHandler? CanExecuteChanged;
@@ -19,12 +18,7 @@ namespace SharedResources.Commands
 
         public void Execute(object? parameter)
         {
-            if (_getNavigationService() is NavigationService navigationService
-             && _getStartViewModel() is ViewModelBase startViewModel)
-            {
-                navigationService.ClearViewModels();
-                navigationService.ReturnToStart();
-            }
+            _getNavigationService()?.ReturnToStart();
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using SharedResources.ViewModels;
+﻿using SharedResources.Models;
+using SharedResources.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,11 +9,11 @@ using System.Windows.Input;
 
 namespace SharedResources.Commands
 {
-    public class LoginCommand(IEnumerable<ViewModelBase> adminViewModels, IEnumerable<ViewModelBase> clientViewModels,
+    public class LoginCommand(Func<ViewModelBase> getAdminViewModelStart, Func<ViewModelBase> getClientViewModelStart,
                               NavigationService navigationService) : ICommand
     {
-        private readonly IEnumerable<ViewModelBase> _clientViewModels = clientViewModels;
-        private readonly IEnumerable<ViewModelBase> _adminViewModels = adminViewModels;
+        private readonly Func<ViewModelBase> _getClientViewModelStart = getClientViewModelStart;
+        private readonly Func<ViewModelBase> _getAdminViewModelStart = getAdminViewModelStart;
         private readonly NavigationService _navigationService = navigationService;
 
         public event EventHandler? CanExecuteChanged;
@@ -21,14 +22,13 @@ namespace SharedResources.Commands
 
         public void Execute(object? parameter)
         {
-            IEnumerable<ViewModelBase> viewModels = true /* Replace with userType == admin */ ? _adminViewModels : _clientViewModels;
-            ViewModelBase startViewModel = viewModels.First();
-            foreach (ViewModelBase viewModel in viewModels)
+            if (parameter is string email)
             {
-                _navigationService.AddViewModel(viewModel);
-                viewModel.RegisterNavigationService(_navigationService);
+                User user = new User(101, email.Split('@')[0], email, email.Split('@')[1] == "admin.com"); // replace with database call
+                Func<ViewModelBase> getViewModelStart = user.IsAdmin ? _getAdminViewModelStart : _getClientViewModelStart;
+                _navigationService.CurrentUser = user;
+                _navigationService.ChangeViewModel(getViewModelStart()); 
             }
-            _navigationService.ChangeViewModel(startViewModel);
         }
     }
 }

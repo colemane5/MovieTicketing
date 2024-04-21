@@ -29,23 +29,9 @@ namespace MovieTicketingApp
             _mainViewModel = new(_navigationService);
             MainWindow.DataContext = _mainViewModel;
 
-            List<ViewModelBase> adminViewModels = 
-            [
-                new AdminHomeViewModel(new User(101, "AdminUser", "person@admin.com")),
-                new AdminStatsViewModel(),
-                new AdminModifyTablesViewModel(),
-                new AdminAddEditRowViewModel()
-            ];
-            List<ViewModelBase> clientViewModels =
-            [
-                new MovieSelectionViewModel(),
-                new ShowtimeSelectionViewModel()
-            ];
-
-            ICommand loginCommand = new LoginCommand(adminViewModels, clientViewModels, _navigationService);
-            LoginViewModel loginViewModel = new(loginCommand);
-            _navigationService.AddViewModel(loginViewModel);
-            _navigationService.ChangeViewModel<LoginViewModel>();
+            ICommand loginCommand = new LoginCommand(() => new AdminHomeViewModel(), () => new MovieSelectionViewModel(), _navigationService);
+            Func<LoginViewModel> loginViewModel = () => new(loginCommand);
+            _navigationService.ChangeViewModel(loginViewModel());
             _navigationService.StartViewModel = loginViewModel;
 
             MainWindow.Show();
