@@ -30,6 +30,11 @@ namespace SharedResources
             CurrentViewModel = _storedViewModels.Where(s => s.GetType() == typeof(T)).SingleOrDefault() ?? new ViewModelBase();
         }
 
+        public void ChangeViewModel(ViewModelBase viewModel)
+        {
+            CurrentViewModel = _storedViewModels.Where(vm => vm == viewModel).SingleOrDefault() ?? new ViewModelBase();
+        }
+
         public void AddViewModel(ViewModelBase viewModel)
         {
             _storedViewModels.Add(viewModel);

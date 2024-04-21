@@ -3,13 +3,15 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:MovieTicketingApp.Views"
+             xmlns:local="clr-namespace:MovieTicketingApp.Views" xmlns:viewmodels="clr-namespace:MovieTicketingApp.ViewModels" d:DataContext="{d:DesignInstance Type=viewmodels:LoginViewModel}"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
         <Label x:Name="uxSignInLabel" Content="Sign In" HorizontalAlignment="Center" Margin="0,75,0,0" VerticalAlignment="Top" FontSize="24" FontFamily="Arial"/>
         <TextBox x:Name="uxEmailTextBox" HorizontalAlignment="Left" TextWrapping="Wrap" Text="i.e. johndoe@example.com" VerticalAlignment="Top" Width="224" Height="26" FontSize="16" Margin="264,192,0,0"/>
         <Label x:Name="uxEmailLabel" Content="Email" HorizontalAlignment="Left" Margin="214,192,0,0" VerticalAlignment="Top" Width="45" FontSize="14" FontFamily="Arial"/>
-        <Button x:Name="uxLoginButton" Content="Login" HorizontalAlignment="Center" Margin="0,253,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.984,0.604" Height="26" Width="92" FontSize="14"/>
+        <Button x:Name="uxLoginButton" Content="Login" Command="{Binding LoginCommand}"
+                HorizontalAlignment="Center" Margin="0,253,0,0" VerticalAlignment="Top" 
+                RenderTransformOrigin="0.984,0.604" Height="26" Width="92" FontSize="14"/>
     </Grid>
 </UserControl>

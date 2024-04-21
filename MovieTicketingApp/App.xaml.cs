@@ -1,11 +1,15 @@
 ﻿using MovieTicketingAdmin.ViewModels;
 using MovieTicketingApp.ViewModels;
 using MovieTicketingApp.Views;
+using MovieTicketingClient.ViewModels;
 using SharedResources;
+using SharedResources.Commands;
 using SharedResources.Models;
+using SharedResources.ViewModels;
 using System.Configuration;
 using System.Data;
 using System.Windows;
+using System.Windows.Input;
 
 namespace MovieTicketingApp
 {
@@ -25,11 +29,21 @@ namespace MovieTicketingApp
             _mainViewModel = new(_navigationService);
             MainWindow.DataContext = _mainViewModel;
 
-            AdminHomeViewModel adminHome = new(new User(101, "AdminUser", "person@admin.com"));
-            adminHome.RegisterNavigationService(_navigationService);
-            _navigationService.AddViewModel(adminHome);
-            _navigationService.AddViewModel(new AdminStatsViewModel());
-            _navigationService.ChangeViewModel<AdminHomeViewModel>();
+            List<ViewModelBase> adminViewModels = 
+            [
+                new AdminHomeViewModel(new User(101, "AdminUser", "person@admin.com")),
+                new AdminStatsViewModel(),
+                new AdminModifyTablesViewModel(),
+                new AdminAddEditRowViewModel()
+            ];
+            List<ViewModelBase> clientViewModels =
+            [
+                new MovieSelectionViewModel(),
+                new ShowtimeSelectionViewModel()
+            ];
+            ICommand loginCommand = new LoginCommand(adminViewModels, clientViewModels, _navigationService);
+            _navigationService.AddViewModel(new LoginViewModel(loginCommand));
+            _navigationService.ChangeViewModel<LoginViewModel>();
 
             MainWindow.Show();
 
