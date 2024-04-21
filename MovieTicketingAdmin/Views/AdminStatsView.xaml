@@ -21,6 +21,7 @@
             <RowDefinition Height="2*" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
+        <local:TopMoviesPanel DataContext="{Binding TopMoviesPanelViewModel}" Grid.Row="0" Grid.Column="0" />
         <local:TopTheatersPanel DataContext="{Binding TopTheatersPanelViewModel}" Grid.Row="0" Grid.Column="1" />
         <local:TopGenresPanel DataContext="{Binding TopGenresPanelViewModel}" Grid.Row="1" Grid.Column="1" />
     </Grid>

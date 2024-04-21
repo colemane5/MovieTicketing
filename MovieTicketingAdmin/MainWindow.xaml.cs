@@ -22,7 +22,8 @@ namespace MovieTicketingAdmin
         {
             TopTheatersPanelViewModel topTheaters = new();
             TopGenresPanelViewModel topGenres = new();
-            AdminStatsViewModel = new AdminStatsViewModel(topTheaters, topGenres);
+            TopMoviesPanelViewModel topMovies = new();
+            AdminStatsViewModel = new AdminStatsViewModel(topTheaters, topGenres, topMovies);
             InitializeComponent();
         }
     }

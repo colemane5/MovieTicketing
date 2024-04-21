@@ -10,11 +10,14 @@ namespace MovieTicketingAdmin.ViewModels
     {
         public TopTheatersPanelViewModel TopTheatersPanelViewModel { get; }
         public TopGenresPanelViewModel TopGenresPanelViewModel { get; }
+        public TopMoviesPanelViewModel TopMoviesPanelViewModel { get; }
 
-        public AdminStatsViewModel(TopTheatersPanelViewModel topTheatersPanelViewModel, TopGenresPanelViewModel topGenresPanelViewModel)
+        public AdminStatsViewModel(TopTheatersPanelViewModel topTheatersPanelViewModel, TopGenresPanelViewModel topGenresPanelViewModel, 
+                                   TopMoviesPanelViewModel topMoviesPanelViewModel)
         {
             TopTheatersPanelViewModel = topTheatersPanelViewModel;
             TopGenresPanelViewModel = topGenresPanelViewModel;
+            TopMoviesPanelViewModel = topMoviesPanelViewModel;
         }
     }
 }

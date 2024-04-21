@@ -1,0 +1,71 @@
+﻿<UserControl x:Class="MovieTicketingAdmin.Views.TopMoviesPanel"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:MovieTicketingAdmin.Views" xmlns:viewmodels="clr-namespace:MovieTicketingAdmin.ViewModels" d:DataContext="{d:DesignInstance Type=viewmodels:TopMoviesPanelViewModel}"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Resources>
+        <Style TargetType="ListView">
+            <Setter Property="BorderThickness" Value="0" />
+            <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Hidden" />
+        </Style>
+    </UserControl.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="4*" />
+            <ColumnDefinition Width="2*" />
+            <ColumnDefinition Width="2*" />
+            <ColumnDefinition Width="2*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="6*" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        
+        <TextBlock Grid.Column="1" Text="Title" />
+        <TextBlock Grid.Column="2" Text="Tickets Sold" />
+        <TextBlock Grid.Column="3" Text="Showings" />
+        <TextBlock Grid.Column="4" Text="Average Viewership" />
+
+        <ListView ItemsSource="{Binding TopMoviesPage}" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="5">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="4*" />
+                            <ColumnDefinition Width="2*" />
+                            <ColumnDefinition Width="2*" />
+                            <ColumnDefinition Width="2*" />
+                        </Grid.ColumnDefinitions>
+                        
+                        <Rectangle Height="120" Width="80" Fill="Gray" Grid.Column="0"/>
+                        <TextBlock Text="{Binding MovieTitle}" Grid.Column="1"/>
+                        <TextBlock Text="{Binding TicketsSold}" Grid.Column="2"/>
+                        <TextBlock Text="{Binding TotalShowings}" Grid.Column="3"/>
+                        <TextBlock Text="{Binding AvgTicketsPerShowing}" Grid.Column="4"/>
+                        
+                    </Grid>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+            <ListView.ItemContainerStyle>
+                <Style TargetType="ListViewItem">
+                    <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                    <Setter Property="Margin" Value="0" />
+                    <Setter Property="Padding" Value="0" />
+                </Style>
+            </ListView.ItemContainerStyle>
+        </ListView>
+    
+        <!-- FromTo Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="4"-->
+        <StackPanel Orientation="Horizontal" Grid.Row="2" Grid.Column="4">
+            <TextBlock Text="Page" />
+            <TextBox Text="{Binding PageValue, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Height="40" Width="100" VerticalAlignment="Top" FontSize="18" />
+            <Button Content="Go" Command="{Binding GoCommand}" FontSize="18" Height="40" Width="50" VerticalAlignment="Top"/>
+        </StackPanel>
+    </Grid>
+</UserControl>
