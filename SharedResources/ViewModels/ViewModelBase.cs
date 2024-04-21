@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SharedResources.Commands;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -14,6 +15,8 @@ namespace SharedResources.ViewModels
         /// </summary>
         public event PropertyChangedEventHandler? PropertyChanged;
 
+        protected NavigationService? _navigationService;
+
         /// <summary>
         /// Raises the PropertyChanged event for the property with the given name.
         /// </summary>
@@ -21,6 +24,16 @@ namespace SharedResources.ViewModels
         protected void OnPropertyChanged(string propertyName)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+
+        public void RegisterNavigationService(NavigationService navigationService)
+        {
+            _navigationService = navigationService;
+        }
+
+        protected NavigateCommand<T> Navigation<T>() where T : ViewModelBase
+        {
+            return new NavigateCommand<T>(() => _navigationService);
         }
     }
 }

@@ -25,9 +25,10 @@ namespace MovieTicketingApp
             _mainViewModel = new(_navigationService);
             MainWindow.DataContext = _mainViewModel;
 
-            AdminHomeViewModel adminHome = new(_navigationService, new User(101, "AdminUser", "person@admin.com"));
+            AdminHomeViewModel adminHome = new(new User(101, "AdminUser", "person@admin.com"));
+            adminHome.RegisterNavigationService(_navigationService);
             _navigationService.AddViewModel(adminHome);
-            _navigationService.AddViewModel(new AdminStatsViewModel(_navigationService));
+            _navigationService.AddViewModel(new AdminStatsViewModel());
             _navigationService.ChangeViewModel<AdminHomeViewModel>();
 
             MainWindow.Show();
@@ -35,5 +36,4 @@ namespace MovieTicketingApp
             base.OnStartup(e);
         }
     }
-
 }

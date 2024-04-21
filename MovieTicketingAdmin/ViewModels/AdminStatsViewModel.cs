@@ -13,9 +13,9 @@ namespace MovieTicketingAdmin.ViewModels
     {
         public ICommand NavigateHomeCommand { get; }
 
-        public AdminStatsViewModel(NavigationService navigationService) : base()
+        public AdminStatsViewModel() : base()
         {
-            NavigateHomeCommand = navigationService.CreateNavigationCommand<AdminHomeViewModel>();
+            NavigateHomeCommand = Navigation<AdminHomeViewModel>();
         }
     }
 }

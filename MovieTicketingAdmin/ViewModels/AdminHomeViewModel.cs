@@ -18,10 +18,10 @@ namespace MovieTicketingAdmin.ViewModels
         public ICommand NavigateStatsCommand { get; }
         public ICommand NavigateModifyTablesCommand { get; }
 
-        public AdminHomeViewModel(NavigationService navigationService, User user)
+        public AdminHomeViewModel(User user)
         {
-            NavigateStatsCommand = navigationService.CreateNavigationCommand<AdminStatsViewModel>();
-            NavigateModifyTablesCommand = navigationService.CreateNavigationCommand<AdminModifyTablesViewModel>();
+            NavigateStatsCommand = Navigation<AdminStatsViewModel>();
+            NavigateModifyTablesCommand = Navigation<AdminModifyTablesViewModel>();
             CurrentUser = user;
         }
     }

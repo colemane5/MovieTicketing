@@ -25,11 +25,6 @@ namespace SharedResources
 
         private List<ViewModelBase> _storedViewModels = [];
 
-        public NavigateCommand<T> CreateNavigationCommand<T>() where T : ViewModelBase
-        {
-            return new NavigateCommand<T>(this);
-        }
-
         public void ChangeViewModel<T>()
         {
             CurrentViewModel = _storedViewModels.Where(s => s.GetType() == typeof(T)).SingleOrDefault() ?? new ViewModelBase();
