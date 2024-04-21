@@ -7,7 +7,7 @@ AS
 BEGIN
 	SET NOCOUNT ON;
 
-	SELECT M.MovieID, M.MovieTitle, M.ReleaseDate, M.MovieDescription, G.GenreName
+	SELECT M.MovieID, M.MovieTitle, M.ReleaseDate, M.MovieDescription
 	FROM MovieDatabase.MovieDB.Movie M
 	INNER JOIN MovieDatabase.MovieDB.Genre G ON M.GenreID = G.GenreID
 	LEFT JOIN MovieDatabase.MovieDB.DirectorMovie DM ON M.MovieID = DM.MovieID
@@ -15,7 +15,7 @@ BEGIN
 	WHERE
 		(@MovieTitle IS NULL OR M.MovieTitle LIKE '%' + @MovieTitle + '%') AND
 		(@Director IS NULL OR D.DirectorName = @Director) AND
-		(@GenreName IS NULL OR g.GenreName = @GenreName)AND
+		(@GenreName IS NULL OR G.GenreName = @GenreName)AND
 		(@ActorNames IS NULL OR EXISTS (
 			SELECT MA.MovieID
 			FROM MovieDatabase.MovieDB.ActorMovie MA

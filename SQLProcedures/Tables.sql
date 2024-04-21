@@ -68,13 +68,15 @@ CREATE TABLE MovieDB.DirectorMovie(
 );
 
 CREATE TABLE MovieDB.MovieShowtime(
+	MovieShowtimeID INT NOT NULL IDENTITY(1, 1) PRIMARY KEY,
 	MovieID INT NOT NULL UNIQUE FOREIGN KEY
 		REFERENCES MovieDB.Movie(MovieID),
 	TheaterID INT NOT NULL UNIQUE FOREIGN KEY
 		REFERENCES MovieDB.Theater(TheaterID),
-	StartOn DATETIMEOFFSET NOT NULL UNIQUE,
+	StartOn DATETIMEOFFSET NOT NULL,
+	SeatsAvailable INT NOT NULL DEFAULT(38),
 
-	CONSTRAINT PKMovieShowtime PRIMARY KEY(MovieID, TheaterID, StartOn)
+	UNIQUE(MovieID, TheaterID, StartOn)
 );
 
 CREATE TABLE MovieDB.[User](
@@ -87,6 +89,6 @@ CREATE TABLE MovieDB.TicketPurchase(
 	UserID INT NOT NULL FOREIGN KEY
 		REFERENCES MovieDB.[User](UserID),
 	MovieShowtimeID INT NOT NULL FOREIGN KEY
-		REFERENCES MovieDB.MovieShowtime(MovieID),
+		REFERENCES MovieDB.MovieShowtime(MovieShowtimeID),
 	SalePrice DECIMAL(10, 2) NOT NULL DEFAULT(10.97)
 );
