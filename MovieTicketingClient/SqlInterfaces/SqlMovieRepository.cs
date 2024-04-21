@@ -15,7 +15,7 @@ using System.IO;
 
 namespace MovieTicketingClient.SqlInterfaces
 {
-    class SqlMovieRepository : IMovieRepository
+    public class SqlMovieRepository : IMovieRepository
     {
         private readonly string connectionString;
 
@@ -24,13 +24,13 @@ namespace MovieTicketingClient.SqlInterfaces
             this.connectionString = connectionString;
         }
 
-        IReadOnlyList<Movie> IMovieRepository.FilterMovies(string movieTitle, string actorNames, string director, string genre)
+        public IReadOnlyList<Movie> FilterMovies(string movieTitle, string actorNames, string director, string genre)
         {
             var movies = new List<Movie>();
 
             //Check to see if all fields are null, if so run Retrieve Movies instead
             if (movieTitle == null && actorNames == null && director == null && genre == null)
-                return new List<Movie>();
+                return RetrieveMovies();
 
             else
             {
@@ -75,7 +75,7 @@ namespace MovieTicketingClient.SqlInterfaces
             }
         }
 
-        IReadOnlyList<Movie> IMovieRepository.RetrieveMovies()
+        public IReadOnlyList<Movie> RetrieveMovies()
         {
             var movies = new List<Movie>();
 
@@ -111,7 +111,7 @@ namespace MovieTicketingClient.SqlInterfaces
             }
         }
 
-        List<Actor> IMovieRepository.RetrieveActors()
+        public List<Actor> RetrieveActors()
         {
             var actors = new List<Actor>();
 
@@ -143,7 +143,7 @@ namespace MovieTicketingClient.SqlInterfaces
             }
         }
 
-        List<Director> IMovieRepository.RetrieveDirectors()
+        public List<Director> RetrieveDirectors()
         {
             var directors = new List<Director>();
 
@@ -175,7 +175,7 @@ namespace MovieTicketingClient.SqlInterfaces
             }
         }
 
-        List<string> IMovieRepository.RetrieveGenres()
+        public List<string> RetrieveGenres()
         {
             var genres = new List<string>();
 

@@ -10,7 +10,7 @@ using SharedResources.Models;
 
 namespace MovieTicketingClient.SqlInterfaces
 {
-    class SqlUserRepository : IUserRepository
+    public class SqlUserRepository : IUserRepository
     {
         private readonly string connectionString;
 
@@ -19,7 +19,7 @@ namespace MovieTicketingClient.SqlInterfaces
             this.connectionString = connectionString;
         }
 
-        bool IUserRepository.LoginUser(string email)
+        public bool LoginUser(string email)
         {
             string Bit = "0";
 

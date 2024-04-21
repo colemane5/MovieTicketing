@@ -10,7 +10,7 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <Grid x:Name="uxMovieGridDisplay" Margin="298,40,-113,0"/>
+        <Grid x:Name="uxMovieGridDisplay" Margin="298,40,10,0"/>
         <Label x:Name="uxFindMovieLabel" Content="Find a Movie" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="186" Height="34" FontSize="24" FontFamily="Arial" FontWeight="Bold"/>
         <ComboBox x:Name="uxGenreComboBox" HorizontalAlignment="Left" Margin="10,89,0,0" VerticalAlignment="Top" Width="186" Height="30" FontSize="14"/>
         <Label x:Name="uxGenreLabel" Content="Genre" HorizontalAlignment="Left" Margin="10,60,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold" Height="29" Width="49"/>

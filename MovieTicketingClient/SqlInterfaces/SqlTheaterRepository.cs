@@ -11,7 +11,7 @@ using System.Reflection.Emit;
 
 namespace MovieTicketingClient.SqlInterfaces
 {
-    class SqlTheaterRepository : ITheaterRepository
+    public class SqlTheaterRepository : ITheaterRepository
     {
         private readonly string connectionString;
 
@@ -20,7 +20,7 @@ namespace MovieTicketingClient.SqlInterfaces
             this.connectionString = connectionString;
         }
 
-        IReadOnlyList<Showtime> ITheaterRepository.FindShowtimes(int movieID, int theaterID)
+        public IReadOnlyList<Showtime> FindShowtimes(int movieID, int theaterID)
         {
             var showTimes = new List<Showtime>();
 
@@ -60,7 +60,7 @@ namespace MovieTicketingClient.SqlInterfaces
             }
         }
 
-        string ITheaterRepository.GetTicket(int userID, int MovieShowtimeID, decimal salePrice, int seatsLeft)
+        public string GetTicket(int userID, int MovieShowtimeID, decimal salePrice, int seatsLeft)
         {
             string result = string.Empty;
 
@@ -91,7 +91,7 @@ namespace MovieTicketingClient.SqlInterfaces
             }
         }
 
-        IReadOnlyList<Theater> ITheaterRepository.RetrieveTheaters(int movieID)
+        public IReadOnlyList<Theater> RetrieveTheaters(int movieID)
         {
             var theaters = new List<Theater>();
 
