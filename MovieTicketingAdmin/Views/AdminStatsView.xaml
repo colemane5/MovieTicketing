@@ -18,11 +18,17 @@
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
+            <RowDefinition Height="3*" />
             <RowDefinition Height="2*" />
-            <RowDefinition Height="*" />
         </Grid.RowDefinitions>
-        <local:TopMoviesPanel DataContext="{Binding TopMoviesPanelViewModel}" Grid.Row="0" Grid.Column="0" />
-        <local:TopTheatersPanel DataContext="{Binding TopTheatersPanelViewModel}" Grid.Row="0" Grid.Column="1" />
-        <local:TopGenresPanel DataContext="{Binding TopGenresPanelViewModel}" Grid.Row="1" Grid.Column="1" />
+        <Border BorderBrush="Black" BorderThickness="1" Grid.Row="0" Grid.Column="0">
+            <local:TopMoviesPanel DataContext="{Binding TopMoviesPanelViewModel}"  />
+        </Border>
+        <Border BorderBrush="Black" BorderThickness="1" Grid.Row="0" Grid.Column="1">
+            <local:TopTheatersPanel DataContext="{Binding TopTheatersPanelViewModel}" />
+        </Border>
+        <Border BorderBrush="Black" BorderThickness="1" Grid.Row="1" Grid.Column="1">
+            <local:TopGenresPanel DataContext="{Binding TopGenresPanelViewModel}"  />
+        </Border>
     </Grid>
 </UserControl>
