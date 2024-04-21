@@ -12,7 +12,13 @@ BEGIN
 			WHERE U.UserEmail = @UserEmail
 	)
 	BEGIN
+		
+		UPDATE MovieDatabase.MovieDB.[User]
+		SET IsLoggedIn = 1
+		WHERE UserEmail = @UserEmail
+		
 		SET @IsLoggedIn = 1;
+
 		SELECT @UserID = U.UserID
 		FROM MovieDatabase.MovieDB.[User] U 
 			WHERE U.UserEmail = @UserEmail;
