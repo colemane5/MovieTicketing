@@ -5,10 +5,16 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MovieTicketingAdmin"
         xmlns:views="clr-namespace:MovieTicketingAdmin.Views"
+        xmlns:viewmodels="clr-namespace:MovieTicketingAdmin.ViewModels" d:DataContext="{d:DesignInstance Type=viewmodels:MainViewModel}"
         mc:Ignorable="d"
         Title="MainWindow" Height="1080" Width="1920"
         x:Name="MainWindowView">
     <Grid>
-        <views:AdminHomeView DataContext="{Binding ElementName=MainWindowView, Path=User}" />
+        <Grid.Resources>
+            <DataTemplate DataType="{x:Type viewmodels:AdminHomeViewModel}">
+                <views:AdminHomeView DataContext="{Binding}"/>
+            </DataTemplate>
+        </Grid.Resources>
+        <ContentControl Content="{Binding CurrentViewModel}"/>
     </Grid>
 </Window>

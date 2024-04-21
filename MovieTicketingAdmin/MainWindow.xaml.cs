@@ -18,7 +18,6 @@ namespace MovieTicketingAdmin
     /// </summary>
     public partial class MainWindow : Window
     {
-        public User User { get; set; } = new(1, "AdminUser", "person@admin.com");
         public MainWindow()
         {
             InitializeComponent();
