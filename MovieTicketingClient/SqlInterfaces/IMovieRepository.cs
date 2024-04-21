@@ -18,7 +18,13 @@ namespace MovieTicketingClient.SqlInterfaces
         /// <param name="director">the desired director filter</param>
         /// <param name="genre">the desired genre for the search</param>
         /// <returns>A read-only list with the desired movies from the database</returns>
-        List<Movie> FilterMovies(string movieTitle, string actorNames, string director, string genre);
+        IReadOnlyList<Movie> FilterMovies(string movieTitle, string actorNames, string director, string genre);
+
+        /// <summary>
+        /// A function that returns all movies contained in the db for boot up and if no parameters are provided
+        /// </summary>
+        /// <returns>A read-only list containing all the movies in the db</returns>
+        IReadOnlyList<Movie> RetrieveMovies();
 
         /// <summary>
         /// A function to return all actors on the db to use in the filter function

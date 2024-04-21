@@ -2,6 +2,7 @@ CREATE PROCEDURE GetTicket
 	@UserID INT,
 	@MovieShowtimeID INT,
 	@SalePrice DECIMAL(10, 2),
+	@SeatsLeft INT,
 	@Result NVARCHAR(10) OUT
 AS
 BEGIN
@@ -16,6 +17,8 @@ BEGIN
 	BEGIN
 		INSERT INTO MovieDatabase.MovieDB.TicketPurchase(UserID, MovieShowtimeID, SalePrice)
 		VALUES(@UserID, @MovieShowtimeID, @SalePrice)
+		INSERT INTO MovieDatabase.MovieDB.Showtime(SeatsAvailable)
+		VALUES(@SeatsLeft)
 		SET @Result = N'Success'
 	END
 	ELSE
