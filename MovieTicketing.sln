@@ -3,11 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.9.34622.214
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MovieTicketingClient", "MovieTicketingClient\MovieTicketingClient.csproj", "{42E60F0D-7B57-4F33-AB31-F6E683D2E51E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MovieTicketingClient", "MovieTicketingClient\MovieTicketingClient.csproj", "{42E60F0D-7B57-4F33-AB31-F6E683D2E51E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MovieTicketingAdmin", "MovieTicketingAdmin\MovieTicketingAdmin.csproj", "{9097D2AF-3E28-42DC-864A-C24FE4D01194}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MovieTicketingAdmin", "MovieTicketingAdmin\MovieTicketingAdmin.csproj", "{9097D2AF-3E28-42DC-864A-C24FE4D01194}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharedResources", "SharedResources\SharedResources.csproj", "{894E576D-06DF-4843-BBE3-F0FA0A40E762}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SharedResources", "SharedResources\SharedResources.csproj", "{894E576D-06DF-4843-BBE3-F0FA0A40E762}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Images", "Images", "{1B4FC6DA-4FD1-4CB2-A02D-2A3B0D05EEEC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
