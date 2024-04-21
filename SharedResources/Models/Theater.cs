@@ -11,14 +11,12 @@ namespace SharedResources.Models
         public int Id { get; set; }
         public string Name { get; set; }
         public string Address { get; set; }
-        public List<Showtime> Showtimes { get; set; }
 
-        public Theater(int id, string name, string address, List<Showtime> showtimes)
+        public Theater(int id, string name, string address)
         {
             Id = id;
             Name = name;
             Address = address;
-            Showtimes = showtimes;
         }
     }
 }

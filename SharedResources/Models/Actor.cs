@@ -9,9 +9,9 @@ namespace SharedResources.Models
     public class Actor
     {
         public string Name { get; set; }
-        public DateOnly DoB { get; set; }
+        public DateTime DoB { get; set; }
 
-        public Actor(string name, DateOnly date) 
+        public Actor(string name, DateTime date) 
         { 
             Name = name;
             DoB = date;

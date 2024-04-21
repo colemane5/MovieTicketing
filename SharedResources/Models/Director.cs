@@ -9,9 +9,9 @@ namespace SharedResources.Models
     public class Director
     {
         public string Name { get; set; }
-        public DateOnly DoB { get; set; }
+        public DateTime DoB { get; set; }
 
-        public Director(string name, DateOnly date)
+        public Director(string name, DateTime date)
         {
             Name = name;
             DoB = date;

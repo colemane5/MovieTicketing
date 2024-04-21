@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using SharedResources.Models;
 
 namespace MovieTicketingClient.SqlInterfaces
 {
@@ -13,6 +14,6 @@ namespace MovieTicketingClient.SqlInterfaces
         /// </summary>
         /// <param name="email">the email to check if in database</param>
         /// <returns>returns a bool stating whether successful and an int containing user ID</returns>
-        (bool, int) LoginUser(string email);
+        bool LoginUser(string email);
     }
 }

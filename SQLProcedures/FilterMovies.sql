@@ -7,7 +7,7 @@ AS
 BEGIN
 	SET NOCOUNT ON;
 
-	SELECT M.MovieID, M.MovieTitle, M.ReleaseDate, M.MovieDescription, G.GenreName
+	SELECT M.MovieID, M.MovieTitle, M.ReleaseDate, M.MovieDescription
 	FROM MovieDatabase.MovieDB.Movie M
 	INNER JOIN MovieDatabase.MovieDB.Genre G ON M.GenreID = G.GenreID
 	LEFT JOIN MovieDatabase.MovieDB.DirectorMovie DM ON M.MovieID = DM.MovieID
