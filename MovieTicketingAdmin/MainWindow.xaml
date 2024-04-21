@@ -9,6 +9,6 @@
         Title="MainWindow" Height="1080" Width="1920"
         x:Name="MainWindowView">
     <Grid>
-        <views:AdminStatsView />
+        <views:AdminHomeView DataContext="{Binding ElementName=MainWindowView, Path=User}" />
     </Grid>
 </Window>

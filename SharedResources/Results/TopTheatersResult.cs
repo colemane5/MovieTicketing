@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SharedResources
+namespace SharedResources.Results
 {
     public readonly struct TopTheatersResult(int month, int rank, string name, string address, decimal sales)
     {
