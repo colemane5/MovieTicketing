@@ -17,11 +17,13 @@ namespace MovieTicketingAdmin.ViewModels
 
         public ICommand NavigateStatsCommand { get; }
         public ICommand NavigateModifyTablesCommand { get; }
+        public ICommand LogoutCommand { get; }
 
         public AdminHomeViewModel(User user)
         {
             NavigateStatsCommand = Navigation<AdminStatsViewModel>();
             NavigateModifyTablesCommand = Navigation<AdminModifyTablesViewModel>();
+            LogoutCommand = Logout();
             CurrentUser = user;
         }
     }

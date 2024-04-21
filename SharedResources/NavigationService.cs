@@ -23,6 +23,20 @@ namespace SharedResources
             }
         }
 
+        private ViewModelBase? _startViewModel;
+        public ViewModelBase? StartViewModel
+        {
+            get => _startViewModel;
+            set
+            {
+                if (value is not null)
+                {
+                    _startViewModel = value;
+                    _storedViewModels.Add(_startViewModel); 
+                }
+            }
+        }
+
         private List<ViewModelBase> _storedViewModels = [];
 
         public void ChangeViewModel<T>()
@@ -35,9 +49,24 @@ namespace SharedResources
             CurrentViewModel = _storedViewModels.Where(vm => vm == viewModel).SingleOrDefault() ?? new ViewModelBase();
         }
 
+        public void ReturnToStart()
+        {
+            if (StartViewModel is not null)
+            {
+                CurrentViewModel = StartViewModel; 
+            }
+        }
+
         public void AddViewModel(ViewModelBase viewModel)
         {
             _storedViewModels.Add(viewModel);
+        }
+
+        public void ClearViewModels()
+        {
+            _storedViewModels.Clear();
+            if (StartViewModel is not null) 
+                _storedViewModels.Add(StartViewModel);
         }
     }
 }

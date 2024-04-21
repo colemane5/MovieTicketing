@@ -23,6 +23,8 @@
         <Label x:Name="uxSearchResultsLabel" Content="Select a Movie or Enter Search Parameters" HorizontalAlignment="Left" Margin="298,14,0,0" VerticalAlignment="Top" Width="244" Height="26"/>
         <Button x:Name="uxSearchButton" Content="Search" HorizontalAlignment="Left" Margin="8,0,0,10" Width="86" FontSize="14" FontWeight="Bold" RenderTransformOrigin="0.544,0.868" Height="27" VerticalAlignment="Bottom"/>
         <GridSplitter x:Name="gridSplitter" HorizontalAlignment="Left" Margin="288,0,0,0" Width="3" Background="#FFBBBBBB"/>
-        <Button x:Name="uxLogoutButton" Content="Logout" HorizontalAlignment="Left" Margin="700,10,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.292,1.132" Height="30" Width="90" FontSize="14" FontFamily="Arial"/>
+        <Button x:Name="uxLogoutButton" Content="Logout" Command="{Binding LogoutCommand}"
+                HorizontalAlignment="Left" Margin="700,10,0,0" VerticalAlignment="Top" 
+                RenderTransformOrigin="0.292,1.132" Height="30" Width="90" FontSize="14" FontFamily="Arial"/>
     </Grid>
 </UserControl>

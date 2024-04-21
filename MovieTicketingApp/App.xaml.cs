@@ -41,9 +41,12 @@ namespace MovieTicketingApp
                 new MovieSelectionViewModel(),
                 new ShowtimeSelectionViewModel()
             ];
+
             ICommand loginCommand = new LoginCommand(adminViewModels, clientViewModels, _navigationService);
-            _navigationService.AddViewModel(new LoginViewModel(loginCommand));
+            LoginViewModel loginViewModel = new(loginCommand);
+            _navigationService.AddViewModel(loginViewModel);
             _navigationService.ChangeViewModel<LoginViewModel>();
+            _navigationService.StartViewModel = loginViewModel;
 
             MainWindow.Show();
 

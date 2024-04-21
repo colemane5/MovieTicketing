@@ -6,6 +6,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 using System.Windows.Media.Imaging;
 
 namespace MovieTicketingClient.ViewModels
@@ -17,6 +18,11 @@ namespace MovieTicketingClient.ViewModels
         private List<Actor> actors { get; set; }
         private List<Director> directors { get; set; }
 
-        public MovieSelectionViewModel() : base() { }
+        public ICommand LogoutCommand { get; }
+
+        public MovieSelectionViewModel() : base() 
+        {
+            LogoutCommand = Logout();
+        }
     }
 }

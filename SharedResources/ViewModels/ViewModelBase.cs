@@ -35,5 +35,10 @@ namespace SharedResources.ViewModels
         {
             return new NavigateCommand<T>(() => _navigationService);
         }
+
+        protected LogoutCommand Logout()
+        {
+            return new LogoutCommand(() => _navigationService?.StartViewModel, () => _navigationService);
+        }
     }
 }
