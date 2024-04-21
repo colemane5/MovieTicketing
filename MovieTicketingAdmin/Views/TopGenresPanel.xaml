@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:MovieTicketingAdmin.Views" xmlns:viewmodels="clr-namespace:MovieTicketingAdmin.ViewModels" d:DataContext="{d:DesignInstance Type=viewmodels:TopGenresPanelViewModel}"
              mc:Ignorable="d" 
              d:DesignHeight="432" d:DesignWidth="640">
-    <Grid>
+    <Grid Margin="20">
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />
             <RowDefinition Height="2*" />

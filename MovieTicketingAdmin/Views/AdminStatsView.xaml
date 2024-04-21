@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:MovieTicketingAdmin.Views" d:DataContext="{d:DesignInstance Type=viewmodels:AdminStatsViewModel}"
+             xmlns:local="clr-namespace:MovieTicketingAdmin.Views"
              xmlns:viewmodels="clr-namespace:MovieTicketingAdmin.ViewModels"
              mc:Ignorable="d" 
              d:DesignHeight="1080" d:DesignWidth="1920">
@@ -22,13 +22,16 @@
             <RowDefinition Height="2*" />
         </Grid.RowDefinitions>
         <Border BorderBrush="Black" BorderThickness="1" Grid.Row="0" Grid.Column="0">
-            <local:TopMoviesPanel DataContext="{Binding TopMoviesPanelViewModel}"  />
+            <local:TopMoviesPanel x:Name="TopMoviesPanelView"  />
         </Border>
         <Border BorderBrush="Black" BorderThickness="1" Grid.Row="0" Grid.Column="1">
-            <local:TopTheatersPanel DataContext="{Binding TopTheatersPanelViewModel}" />
+            <local:TopTheatersPanel x:Name="TopTheatersPanelView" />
+        </Border>
+        <Border BorderBrush="Black" BorderThickness="1" Grid.Row="1" Grid.Column="0">
+            <local:HourlySalesPanel x:Name="HourlySalesPanelView" />
         </Border>
         <Border BorderBrush="Black" BorderThickness="1" Grid.Row="1" Grid.Column="1">
-            <local:TopGenresPanel DataContext="{Binding TopGenresPanelViewModel}"  />
+            <local:TopGenresPanel x:Name="TopGenresPanelView"  />
         </Border>
     </Grid>
 </UserControl>

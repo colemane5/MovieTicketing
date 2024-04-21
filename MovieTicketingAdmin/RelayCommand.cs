@@ -21,4 +21,19 @@ namespace MovieTicketingAdmin
             methodToExecute?.Invoke();
         }
     }
+
+    public class RelayCommand<T>(Action<T> methodToExectue) : ICommand where T : struct
+    {
+        public event EventHandler? CanExecuteChanged;
+
+        public bool CanExecute(object? parameter) => true;
+
+        public void Execute(object? parameter)
+        {
+            if (parameter is not null)
+            {
+                methodToExectue?.Invoke((T)parameter); 
+            }
+        }
+    }
 }

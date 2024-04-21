@@ -17,13 +17,8 @@ namespace MovieTicketingAdmin
     /// </summary>
     public partial class MainWindow : Window
     {
-        public AdminStatsViewModel AdminStatsViewModel { get; private set; }
         public MainWindow()
         {
-            TopTheatersPanelViewModel topTheaters = new();
-            TopGenresPanelViewModel topGenres = new();
-            TopMoviesPanelViewModel topMovies = new();
-            AdminStatsViewModel = new AdminStatsViewModel(topTheaters, topGenres, topMovies);
             InitializeComponent();
         }
     }

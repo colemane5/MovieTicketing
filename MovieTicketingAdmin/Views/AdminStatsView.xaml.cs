@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MovieTicketingAdmin.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,11 @@ namespace MovieTicketingAdmin.Views
         public AdminStatsView()
         {
             InitializeComponent();
+            HourlySalesPanelView.DataContext = new HourlySalesPanelViewModel();
+            TopGenresPanelView.DataContext = new TopGenresPanelViewModel();
+            TopMoviesPanelView.DataContext = new TopMoviesPanelViewModel();
+            TopTheatersPanelView.DataContext = new TopTheatersPanelViewModel();
+            HourlySalesPanelView.BuildGraph();
         }
     }
 }
