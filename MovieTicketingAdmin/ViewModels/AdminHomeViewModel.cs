@@ -1,4 +1,6 @@
-﻿using SharedResources.Models;
+﻿using SharedResources;
+using SharedResources.Models;
+using SharedResources.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;

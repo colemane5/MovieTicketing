@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MovieTicketingAdmin.ViewModels
+namespace SharedResources.ViewModels
 {
     public class ViewModelBase : INotifyPropertyChanged
     {

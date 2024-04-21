@@ -1,11 +1,12 @@
-﻿using System;
+﻿using SharedResources.Commands;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
-namespace MovieTicketingAdmin.ViewModels
+namespace SharedResources.ViewModels
 {
     public abstract class DateRangeViewModel : ViewModelBase
     {

@@ -1,6 +1,4 @@
-﻿using MovieTicketingAdmin.ViewModels;
-using SharedResources.Models;
-using System.Text;
+﻿using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -11,7 +9,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace MovieTicketingAdmin
+namespace MovieTicketingApp
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml

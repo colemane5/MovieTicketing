@@ -1,18 +1,20 @@
-﻿using MovieTicketingAdmin.ViewModels;
+﻿using SharedResources.Commands;
+using SharedResources.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MovieTicketingAdmin
+namespace SharedResources
 {
     public class NavigationService
     {
         public event EventHandler? CurrentViewModelChanged;
 
         public ViewModelBase _currentViewModel = new();
-        public ViewModelBase CurrentViewModel {
+        public ViewModelBase CurrentViewModel
+        {
             get => _currentViewModel;
             set
             {

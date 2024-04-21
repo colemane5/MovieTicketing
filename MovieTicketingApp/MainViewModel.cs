@@ -1,10 +1,12 @@
-﻿using System;
+﻿using SharedResources;
+using SharedResources.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MovieTicketingAdmin.ViewModels
+namespace MovieTicketingApp
 {
     public class MainViewModel : ViewModelBase
     {

@@ -1,4 +1,4 @@
-﻿using MovieTicketingAdmin.ViewModels;
+﻿using SharedResources.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
-namespace MovieTicketingAdmin
+namespace SharedResources.Commands
 {
     public class NavigateCommand<T>(NavigationService navigationService) : ICommand where T : ViewModelBase
     {

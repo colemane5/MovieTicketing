@@ -1,4 +1,5 @@
 ﻿using SharedResources.Results;
+using SharedResources.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
