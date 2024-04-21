@@ -22,6 +22,8 @@ namespace MovieTicketingAdmin.Views
     /// </summary>
     public partial class HourlySalesPanel : UserControl
     {
+        private static readonly int _baseGraphHeight = 200;
+
         public HourlySalesPanel()
         {
             InitializeComponent();
@@ -53,7 +55,7 @@ namespace MovieTicketingAdmin.Views
                     FrameworkElementFactory frameworkElement = new(typeof(Rectangle));
                     frameworkElement.SetValue(Shape.StretchProperty, Stretch.UniformToFill);
                     frameworkElement.SetValue(Shape.FillProperty, new SolidColorBrush(Colors.Gray));
-                    frameworkElement.SetValue(HeightProperty, (double)(hour.TicketSales / vm.MaxSale) * 100);
+                    frameworkElement.SetValue(HeightProperty, (double)(hour.TicketSales / vm.MaxSale) * _baseGraphHeight);
                     frameworkElement.SetValue(HorizontalAlignmentProperty, HorizontalAlignment.Stretch);
                     frameworkElement.SetValue(VerticalAlignmentProperty, VerticalAlignment.Bottom);
                     buttonInternal.VisualTree = frameworkElement;

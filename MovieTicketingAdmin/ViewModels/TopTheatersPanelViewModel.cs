@@ -55,7 +55,7 @@ namespace MovieTicketingAdmin.ViewModels
         }
 
         public string TheaterName => SelectedTheater.Name;
-        public string IndvTheaterSales => SelectedTheater.Sales.ToString();
+        public decimal IndvTheaterSales => SelectedTheater.Sales;
         public string TheaterAddress => SelectedTheater.Address;
 
         public bool NextActive { get; private set; }
