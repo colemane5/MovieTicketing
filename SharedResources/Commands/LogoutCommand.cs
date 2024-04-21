@@ -1,4 +1,4 @@
-﻿using MovieTicketingAdmin.ViewModels;
+﻿using SharedResources.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,11 +6,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
-namespace MovieTicketingAdmin
+namespace SharedResources.Commands
 {
-    public class NavigateCommand<T>(NavigationService navigationService) : ICommand where T : ViewModelBase
+    public class LogoutCommand(Func<NavigationService?> getNavigationService) : ICommand
     {
-        private readonly NavigationService _navigationService = navigationService;
+        private readonly Func<NavigationService?> _getNavigationService = getNavigationService;
 
         public event EventHandler? CanExecuteChanged;
 
@@ -18,7 +18,7 @@ namespace MovieTicketingAdmin
 
         public void Execute(object? parameter)
         {
-            _navigationService.ChangeViewModel<T>();
+            _getNavigationService()?.ReturnToStart();
         }
     }
 }

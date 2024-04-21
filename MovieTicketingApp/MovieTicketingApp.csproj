@@ -1,0 +1,17 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\MovieTicketingAdmin\MovieTicketingAdmin.csproj" />
+    <ProjectReference Include="..\MovieTicketingClient\MovieTicketingClient.csproj" />
+    <ProjectReference Include="..\SharedResources\SharedResources.csproj" />
+  </ItemGroup>
+
+</Project>

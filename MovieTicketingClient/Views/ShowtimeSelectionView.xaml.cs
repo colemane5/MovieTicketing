@@ -10,14 +10,15 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace MovieTicketingClient
+namespace MovieTicketingClient.Views
 {
     /// <summary>
     /// Interaction logic for ShowtimeSelectionView.xaml
     /// </summary>
-    public partial class ShowtimeSelectionView : Window
+    public partial class ShowtimeSelectionView : UserControl
     {
         public ShowtimeSelectionView()
         {

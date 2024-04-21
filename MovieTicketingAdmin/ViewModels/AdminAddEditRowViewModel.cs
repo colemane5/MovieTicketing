@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace MovieTicketingAdmin.ViewModels
 {
-    public class AdminModifyTablesViewModel : ViewModelBase
+    public class AdminAddEditRowViewModel : ViewModelBase
     {
     }
 }

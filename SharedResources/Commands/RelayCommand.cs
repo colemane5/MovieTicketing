@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
-namespace MovieTicketingAdmin
+namespace SharedResources.Commands
 {
 #pragma warning disable CS0067 // The event 'RelayCommand.CanExecuteChanged' is never used
     public class RelayCommand(Action methodToExecute) : ICommand
@@ -31,7 +31,7 @@ namespace MovieTicketingAdmin
         {
             if (parameter is not null)
             {
-                methodToExectue?.Invoke((T)parameter); 
+                methodToExectue?.Invoke((T)parameter);
             }
         }
     }

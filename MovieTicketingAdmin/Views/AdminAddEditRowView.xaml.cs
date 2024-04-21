@@ -13,14 +13,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace MovieTicketingClient.Views
+namespace MovieTicketingAdmin.Views
 {
     /// <summary>
-    /// Interaction logic for MovieSelectionView.xaml
+    /// Interaction logic for AdminAddEditRowView.xaml
     /// </summary>
-    public partial class MovieSelectionView : UserControl
+    public partial class AdminAddEditRowView : UserControl
     {
-        public MovieSelectionView()
+        public AdminAddEditRowView()
         {
             InitializeComponent();
         }

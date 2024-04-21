@@ -1,0 +1,40 @@
+﻿<Window x:Class="MovieTicketingApp.Views.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MovieTicketingApp.Views"
+        xmlns:viewmodels="clr-namespace:MovieTicketingApp.ViewModels"
+        xmlns:adminvms="clr-namespace:MovieTicketingAdmin.ViewModels;assembly=MovieTicketingAdmin"
+        xmlns:adminviews="clr-namespace:MovieTicketingAdmin.Views;assembly=MovieTicketingAdmin" d:DataContext="{d:DesignInstance Type=viewmodels:MainViewModel}"
+        xmlns:clientvms="clr-namespace:MovieTicketingClient.ViewModels;assembly=MovieTicketingClient"
+        xmlns:clientviews="clr-namespace:MovieTicketingClient.Views;assembly=MovieTicketingClient"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="1080" Width="1920">
+    <Grid>
+        <Grid.Resources>
+            <DataTemplate DataType="{x:Type adminvms:AdminHomeViewModel}">
+                <adminviews:AdminHomeView />
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type adminvms:AdminStatsViewModel}">
+                <adminviews:AdminStatsView />
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type adminvms:AdminAddEditRowViewModel}">
+                <adminviews:AdminAddEditRowView />
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type adminvms:AdminModifyTablesViewModel}">
+                <adminviews:AdminModifyTablesView />
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type clientvms:MovieSelectionViewModel}">
+                <clientviews:MovieSelectionView />
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type clientvms:ShowtimeSelectionViewModel}">
+                <clientviews:ShowtimeSelectionView />
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type viewmodels:LoginViewModel}">
+                <local:LoginView />
+            </DataTemplate>
+        </Grid.Resources>
+        <ContentControl Content="{Binding CurrentViewModel}"/>
+    </Grid>
+</Window>
