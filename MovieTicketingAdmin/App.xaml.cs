@@ -17,7 +17,7 @@ namespace MovieTicketingAdmin
         protected override void OnStartup(StartupEventArgs e)
         {
             _navigationService = new();
-            MainWindow = new();
+            MainWindow = new MainWindow();
 
             _mainViewModel = new(_navigationService);
             MainWindow.DataContext = _mainViewModel;

@@ -11,6 +11,7 @@ namespace MovieTicketingAdmin.ViewModels
     public class AdminHomeViewModel : ViewModelBase
     {
         public User CurrentUser { get; }
+        public string Name => CurrentUser.Name;
 
         public ICommand NavigateStatsCommand { get; }
         public ICommand NavigateModifyTablesCommand { get; }

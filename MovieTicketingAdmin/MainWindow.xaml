@@ -12,7 +12,10 @@
     <Grid>
         <Grid.Resources>
             <DataTemplate DataType="{x:Type viewmodels:AdminHomeViewModel}">
-                <views:AdminHomeView DataContext="{Binding}"/>
+                <views:AdminHomeView />
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type viewmodels:AdminStatsViewModel}">
+                <views:AdminStatsView />
             </DataTemplate>
         </Grid.Resources>
         <ContentControl Content="{Binding CurrentViewModel}"/>
