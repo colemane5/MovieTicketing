@@ -9,7 +9,7 @@ using System.Windows.Input;
 
 namespace MovieTicketingAdmin.ViewModels
 {
-    public class TopMoviesPanelViewModel : ViewModelBase
+    public class TopMoviesPanelViewModel : DateRangeViewModel
     {
         private ObservableCollection<TopMoviesResult> _topMovies = [];
         public ObservableCollection<TopMoviesResult> TopMovies
@@ -19,6 +19,7 @@ namespace MovieTicketingAdmin.ViewModels
             {
                 _topMovies = value;
                 OnPropertyChanged(nameof(TopMovies));
+                Page = 1;
             }
         }
 
@@ -59,17 +60,9 @@ namespace MovieTicketingAdmin.ViewModels
 
         public ICommand GoCommand { get; }
 
-        public TopMoviesPanelViewModel()
+        public TopMoviesPanelViewModel() : base()
         {
-            TopMovies = 
-            [
-                new TopMoviesResult("Dune: Part Two", 163764, 2236, 73.24f),
-                new TopMoviesResult("Dune: Part Two", 163764, 2236, 73.24f),
-                new TopMoviesResult("Dune: Part Two", 163764, 2236, 73.24f),
-                new TopMoviesResult("Dune: Part Two", 163764, 2236, 73.24f),
-                new TopMoviesResult("Dune: Part Two", 163764, 2236, 73.24f),
-                new TopMoviesResult("Dune: Part Two", 163764, 2236, 73.24f),
-            ];
+            RefreshData();
             Page = 1;
             PageValue = "1";
 
@@ -79,6 +72,19 @@ namespace MovieTicketingAdmin.ViewModels
                     Page = pageValue;
                 }
             });
+        }
+
+        public override void RefreshData()
+        {
+            TopMovies =
+            [
+                new TopMoviesResult("Dune: Part Two", 163764, 2236, 73.24f),
+                new TopMoviesResult("Dune: Part Two", 163764, 2236, 73.24f),
+                new TopMoviesResult("Dune: Part Two", 163764, 2236, 73.24f),
+                new TopMoviesResult("Dune: Part Two", 163764, 2236, 73.24f),
+                new TopMoviesResult("Dune: Part Two", 163764, 2236, 73.24f),
+                new TopMoviesResult("Dune: Part Two", 163764, 2236, 73.24f),
+            ];
         }
     }
 }

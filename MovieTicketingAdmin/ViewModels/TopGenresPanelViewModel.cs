@@ -5,14 +5,29 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 
 namespace MovieTicketingAdmin.ViewModels
 {
-    public class TopGenresPanelViewModel : ViewModelBase
+    public class TopGenresPanelViewModel : DateRangeViewModel
     {
-        public ObservableCollection<GenreRanksResult> TopGenres { get; private set; } = new();
+        private ObservableCollection<GenreRanksResult> _topGenres = [];
+        public ObservableCollection<GenreRanksResult> TopGenres
+        {
+            get => _topGenres;
+            private set
+            {
+                _topGenres = value;
+                OnPropertyChanged(nameof(TopGenres));
+            }
+        }
 
-        public TopGenresPanelViewModel()
+        public TopGenresPanelViewModel() : base()
+        {
+            RefreshData();
+        }
+
+        public override void RefreshData()
         {
             TopGenres =
             [

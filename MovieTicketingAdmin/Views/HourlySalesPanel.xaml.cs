@@ -73,6 +73,5 @@ namespace MovieTicketingAdmin.Views
         }
 
         private string ToAM_PM(int hour) => hour < 12 ? $"{hour}AM" : $"{hour - 12}PM";
-
     }
 }

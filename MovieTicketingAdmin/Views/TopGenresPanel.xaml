@@ -21,6 +21,7 @@
                 <DataGridTextColumn Header="Tickets Sold" Binding="{Binding TicketsSold}" Width="2*" />
             </DataGrid.Columns>
         </DataGrid>
-        <components:FromToPicker Grid.Row="2"/>
+        <components:FromToPicker Grid.Row="2" DateChangedCommand="{Binding RefreshCommand}" 
+                                 From="{Binding From, Mode=OneWayToSource}" To="{Binding To, Mode=OneWayToSource}"/>
     </Grid>
 </UserControl>

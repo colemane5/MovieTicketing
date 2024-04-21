@@ -9,7 +9,7 @@ using System.Windows.Input;
 
 namespace MovieTicketingAdmin.ViewModels
 {
-    public class HourlySalesPanelViewModel : ViewModelBase
+    public class HourlySalesPanelViewModel : DateRangeViewModel
     {
 		private HourlySalesResult _selectedHour;
 		public HourlySalesResult SelectedHour
@@ -44,11 +44,18 @@ namespace MovieTicketingAdmin.ViewModels
 
 		public ICommand SelectHourCommand { get; }
 
-        public HourlySalesPanelViewModel()
+        public HourlySalesPanelViewModel() : base()
         {
-			HourlySales =
-			[
-				new HourlySalesResult(10, 134, 667, 11943854.12M),
+			RefreshData();
+			SelectHourCommand = new RelayCommand<HourlySalesResult>((s) => { SelectedHour = s; });
+        }
+
+		public override void RefreshData()
+		{
+            // Refresh data
+            HourlySales =
+            [
+                new HourlySalesResult(10, 134, 667, 11943854.12M),
                 new HourlySalesResult(11, 345, 708, 18549235.12M),
                 new HourlySalesResult(12, 212, 234, 73453422.12M),
                 new HourlySalesResult(13, 856, 113, 54323342.23M),
@@ -61,8 +68,6 @@ namespace MovieTicketingAdmin.ViewModels
                 new HourlySalesResult(20, 737, 113, 56345234.25M),
                 new HourlySalesResult(21, 134, 667, 11943854.12M),
             ];
-
-			SelectHourCommand = new RelayCommand<HourlySalesResult>((s) => { SelectedHour = s; });
         }
     }
 }

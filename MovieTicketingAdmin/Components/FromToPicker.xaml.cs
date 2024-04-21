@@ -30,12 +30,22 @@ namespace MovieTicketingAdmin.Components
             get => (DateTime)GetValue(ToProperty);
             set => SetValue(ToProperty, value);
         }
+        public ICommand DateChangedCommand
+        {
+            get => (ICommand)GetValue(DateChangedCommandProperty);
+            set => SetValue(DateChangedCommandProperty, value);
+        }
+
+        private bool _active = false;
 
         public static readonly DependencyProperty FromProperty = DependencyProperty.Register(
             nameof(From), typeof(DateTime), typeof(FromToPicker), new PropertyMetadata(DateTime.Now)
         );
         public static readonly DependencyProperty ToProperty = DependencyProperty.Register(
             nameof(To), typeof(DateTime), typeof(FromToPicker), new PropertyMetadata(DateTime.Now)
+        );
+        public static readonly DependencyProperty DateChangedCommandProperty = DependencyProperty.Register(
+            nameof(DateChangedCommand), typeof(ICommand), typeof(FromToPicker), new PropertyMetadata(null)
         );
 
         public FromToPicker()
@@ -45,12 +55,24 @@ namespace MovieTicketingAdmin.Components
 
         private void HandleFromChanged(object sender, SelectionChangedEventArgs e)
         {
-            Console.WriteLine(e.AddedItems);
+            if (_active)
+            {
+                DateChangedCommand?.Execute(null); 
+            }
         }
 
         private void HandleToChanged(object sender, SelectionChangedEventArgs e)
         {
-            Console.WriteLine(e.AddedItems);
+            if (_active)
+            {
+                DateChangedCommand?.Execute(null); 
+            }
+        }
+
+        protected override void OnMouseEnter(MouseEventArgs e)
+        {
+            base.OnMouseEnter(e);
+            _active = true;
         }
     }
 }

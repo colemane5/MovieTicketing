@@ -65,7 +65,9 @@
             </ListView.ItemContainerStyle>
         </ListView>
 
-        <components:FromToPicker Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="4" Margin="20 0"/>
+        <components:FromToPicker Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="4" Margin="20 0"
+                                 DateChangedCommand="{Binding RefreshCommand}" 
+                                 From="{Binding From, Mode=OneWayToSource}" To="{Binding To, Mode=OneWayToSource}"/>
         <StackPanel Orientation="Horizontal" Grid.Row="2" Grid.Column="4" VerticalAlignment="Center">
             <TextBlock Text="Page" VerticalAlignment="Center"/>
             <TextBox Text="{Binding PageValue, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" 

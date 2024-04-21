@@ -16,7 +16,9 @@
             <DockPanel>
                 <DockPanel DockPanel.Dock="Top">
                     <TextBlock Text="Hourly Sales" DockPanel.Dock="Left" FontSize="30" />
-                    <components:FromToPicker DockPanel.Dock="Right" HorizontalContentAlignment="Right"/>
+                    <components:FromToPicker DockPanel.Dock="Right" HorizontalContentAlignment="Right" 
+                                             DateChangedCommand="{Binding RefreshCommand}" 
+                                             From="{Binding From, Mode=OneWayToSource}" To="{Binding To, Mode=OneWayToSource}"/>
                 </DockPanel>
                 <Grid x:Name="HourGraph" DockPanel.Dock="Bottom" />
             </DockPanel>
