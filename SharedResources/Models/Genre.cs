@@ -6,10 +6,9 @@ using System.Threading.Tasks;
 
 namespace SharedResources.Models
 {
-    public struct Actor(int id, string name, DateTime date) : IPerson
+    public struct Genre(int id, string name)
     {
         public int Id { get; set; } = id;
         public string Name { get; set; } = name;
-        public DateTime DoB { get; set; } = date;
     }
 }

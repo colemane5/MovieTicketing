@@ -47,6 +47,7 @@ namespace MovieTicketingAdmin.SqlInterfaces
                         while (reader.Read())
                         {
                             actors.Add(new Actor(
+                               0, // REPLACE WITH actorID
                                reader.GetString(actorNameOrdinal),
                                reader.GetDateTime(actorDoBOrdinal)));
                         }

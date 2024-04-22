@@ -3,28 +3,70 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:local="clr-namespace:MovieTicketingClient.Views"
+             xmlns:local="clr-namespace:MovieTicketingClient.Views" xmlns:viewmodels="clr-namespace:MovieTicketingClient.ViewModels" d:DataContext="{d:DesignInstance Type=viewmodels:MovieSelectionViewModel}"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="2*" />
         </Grid.ColumnDefinitions>
-        <Grid x:Name="uxMovieGridDisplay" Margin="298,40,10,0"/>
-        <Label x:Name="uxFindMovieLabel" Content="Find a Movie" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="186" Height="34" FontSize="24" FontFamily="Arial" FontWeight="Bold"/>
-        <ComboBox x:Name="uxGenreComboBox" HorizontalAlignment="Left" Margin="10,89,0,0" VerticalAlignment="Top" Width="186" Height="30" FontSize="14"/>
-        <Label x:Name="uxGenreLabel" Content="Genre" HorizontalAlignment="Left" Margin="10,60,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold" Height="29" Width="49"/>
-        <Label x:Name="uxActorLabel" Content="Actors" HorizontalAlignment="Left" Margin="10,134,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold" Height="29" Width="52"/>
-        <ComboBox x:Name="uxActorComboBox" HorizontalAlignment="Left" Margin="10,168,0,0" VerticalAlignment="Top" Width="186" Height="30" FontSize="14" IsEditable="True" Cursor="IBeam"/>
-        <Label x:Name="uxDirectorLabel" Content="Director" HorizontalAlignment="Left" Margin="10,0,0,89" FontSize="14" FontWeight="Bold" RenderTransformOrigin="0.575,1.039" Height="29" VerticalAlignment="Bottom" Width="64"/>
-        <ComboBox x:Name="uxDirectorComboBox" HorizontalAlignment="Left" Margin="10,0,0,54" Width="186" FontSize="14" IsEditable="True" RenderTransformOrigin="0.459,0.416" Height="30" VerticalAlignment="Bottom" Cursor="IBeam"/>
-        <Grid x:Name="uxActorTilesGrid" Margin="10,203,520,123"/>
-        <Button x:Name="uxActorAddButton" Content="+" HorizontalAlignment="Left" Margin="199,168,0,0" VerticalAlignment="Top" Height="30" Width="30" FontFamily="Arial Narrow" FontSize="20" Background="White" RenderTransformOrigin="0.473,0.123"/>
-        <Label x:Name="uxSearchResultsLabel" Content="Select a Movie or Enter Search Parameters" HorizontalAlignment="Left" Margin="298,14,0,0" VerticalAlignment="Top" Width="244" Height="26"/>
-        <Button x:Name="uxSearchButton" Content="Search" HorizontalAlignment="Left" Margin="8,0,0,10" Width="86" FontSize="14" FontWeight="Bold" RenderTransformOrigin="0.544,0.868" Height="27" VerticalAlignment="Bottom"/>
-        <GridSplitter x:Name="gridSplitter" HorizontalAlignment="Left" Margin="288,0,0,0" Width="3" Background="#FFBBBBBB"/>
-        <Button x:Name="uxLogoutButton" Content="Logout" Command="{Binding LogoutCommand}"
-                HorizontalAlignment="Left" Margin="700,10,0,0" VerticalAlignment="Top" 
-                RenderTransformOrigin="0.292,1.132" Height="30" Width="90" FontSize="14" FontFamily="Arial"/>
+        <StackPanel Grid.Column="0">
+            <TextBlock Text="Find a Movie" FontSize="30" />
+            <TextBlock Text="Genre" />
+            <ComboBox ItemsSource="{Binding Genres}" DisplayMemberPath="Name" SelectedItem="{Binding SelectedGenre}"/>
+            <TextBlock Text="Actors" />
+            <DockPanel>
+                <DockPanel DockPanel.Dock="Top">
+                    <Button Content="+" Command="{Binding AddActorCommand}" DockPanel.Dock="Right" HorizontalAlignment="Right" MinWidth="30" />
+                    <ComboBox ItemsSource="{Binding Actors}" DisplayMemberPath="Name" DockPanel.Dock="Left" SelectedItem="{Binding SelectedActor}" />
+                </DockPanel>
+                <ListView DockPanel.Dock="Bottom" ItemsSource="{Binding SelectedActors}" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+                    <ListView.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <WrapPanel Orientation="Horizontal" MinHeight="30"/>
+                        </ItemsPanelTemplate>
+                    </ListView.ItemsPanel>
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <Button Content="{Binding Name, StringFormat={}{0} -}" Command="{Binding RemoveCommand}" />
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </DockPanel>
+            <TextBlock Text="Directors" />
+            <DockPanel>
+                <DockPanel DockPanel.Dock="Top">
+                    <Button Content="+" Command="{Binding AddDirectorCommand}" DockPanel.Dock="Right" HorizontalAlignment="Right" MinWidth="30" />
+                    <ComboBox ItemsSource="{Binding Directors}" DisplayMemberPath="Name" DockPanel.Dock="Left" SelectedItem="{Binding SelectedDirector}" />
+                </DockPanel>
+                <ListView DockPanel.Dock="Bottom" ItemsSource="{Binding SelectedDirectors}" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+                    <ListView.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <WrapPanel Orientation="Horizontal" MinHeight="30"/>
+                        </ItemsPanelTemplate>
+                    </ListView.ItemsPanel>
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <Button Content="{Binding Name, StringFormat={}{0} -}" Command="{Binding RemoveCommand}" />
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </DockPanel>
+            <Button Content="Search" Command="{Binding SearchCommand}" Width="80" HorizontalAlignment="Right" />
+        </StackPanel>
+        <DockPanel Grid.Column="1">
+            <DockPanel DockPanel.Dock="Top">
+                <TextBlock Text="Select a movie" DockPanel.Dock="Left"/>
+                <Button Content="Logout" Command="{Binding LogoutCommand}" DockPanel.Dock="Right" MaxWidth="80" HorizontalAlignment="Right" MinWidth="60"/>
+            </DockPanel>
+            <ListView DockPanel.Dock="Bottom" ItemsSource="{Binding FoundMovies}" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+                <ListView.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel Orientation="Horizontal" />
+                    </ItemsPanelTemplate>
+                </ListView.ItemsPanel>
+            </ListView>
+        </DockPanel>
     </Grid>
 </UserControl>

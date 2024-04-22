@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SharedResources.Models
 {
-    public class User(int id, string name, string email, bool isAdmin)
+    public struct User(int id, string name, string email, bool isAdmin)
     {
         public int Id { get; set; } = id;
         public string Name { get; set; } = name;

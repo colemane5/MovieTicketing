@@ -6,15 +6,10 @@ using System.Threading.Tasks;
 
 namespace SharedResources.Models
 {
-    public class Director
+    public struct Director(int id, string name, DateTime date) : IPerson
     {
-        public string Name { get; set; }
-        public DateTime DoB { get; set; }
-
-        public Director(string name, DateTime date)
-        {
-            Name = name;
-            DoB = date;
-        }
+        public int Id { get; set; } = id;
+        public string Name { get; set; } = name;
+        public DateTime DoB { get; set; } = date;
     }
 }
