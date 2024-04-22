@@ -47,6 +47,7 @@ namespace MovieTicketingAdmin.SqlInterfaces
                         while (reader.Read())
                         {
                             directors.Add(new Director(
+                               0, // REPLACE WITH directorID
                                reader.GetString(directorNameOrdinal),
                                reader.GetDateTime(directorDoBOrdinal)));
                         }
