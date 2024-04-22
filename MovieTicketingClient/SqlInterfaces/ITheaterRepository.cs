@@ -14,7 +14,7 @@ namespace MovieTicketingClient.SqlInterfaces
         /// </summary>
         /// <param name="movieID">the ID for the given movie</param>
         /// <param name="theaterID">the ID for the given theater</param>
-        /// <returns>A read-only list of DateTimes of movie showings</returns>
+        /// <returns>A read-only list of Showtimes</returns>
         IReadOnlyList<Showtime> FindShowtimes(int movieID, int theaterID);
 
         /// <summary>

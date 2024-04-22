@@ -111,7 +111,7 @@ namespace MovieTicketingClient.SqlInterfaces
             }
         }
 
-        public List<Actor> RetrieveActors()
+        public IReadOnlyList<Actor> RetrieveActors()
         {
             var actors = new List<Actor>();
 
@@ -143,7 +143,7 @@ namespace MovieTicketingClient.SqlInterfaces
             }
         }
 
-        public List<Director> RetrieveDirectors()
+        public IReadOnlyList<Director> RetrieveDirectors()
         {
             var directors = new List<Director>();
 
@@ -175,7 +175,7 @@ namespace MovieTicketingClient.SqlInterfaces
             }
         }
 
-        public List<string> RetrieveGenres()
+        public IReadOnlyList<string> RetrieveGenres()
         {
             var genres = new List<string>();
 

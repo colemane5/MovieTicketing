@@ -30,18 +30,18 @@ namespace MovieTicketingClient.SqlInterfaces
         /// A function to return all actors on the db to use in the filter function
         /// </summary>
         /// <returns>A list of actors in the db</returns>
-        List<Actor> RetrieveActors();
+        IReadOnlyList<Actor> RetrieveActors();
 
         /// <summary>
         /// A function to return all directors on the db to use in the filter function
         /// </summary>
         /// <returns>A list of directors in the db</returns>
-        List<Director> RetrieveDirectors();
+        IReadOnlyList<Director> RetrieveDirectors();
 
         /// <summary>
         /// A function to return all genres on the db to use in the filter function
         /// </summary>
         /// <returns>A list of genres in the db</returns>
-        List<string> RetrieveGenres();
+        IReadOnlyList<string> RetrieveGenres();
     }
 }

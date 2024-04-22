@@ -2,13 +2,14 @@ CREATE PROCEDURE ManageActor
 	@Task NVARCHAR(16),
 	@DirectorID INT = NULL, --only used for update/remove
 	@DirectorName NVARCHAR(64),
+	@DirectorDoB DateTimeOffset,
 	@Result INT OUT
 AS
 BEGIN
 	IF @Task = N'ADD'
 	BEGIN
-		INSERT INTO MovieDatabase.MovieDB.Director(DirectorName)
-		VALUES(@DirectorName)
+		INSERT INTO MovieDatabase.MovieDB.Director(DirectorName, DirectorDateOfBirth)
+		VALUES(@DirectorName, @DirectorDoB)
 		SET @Result = SCOPE_IDENTITY() --sets result to the id of the newly created actor
 	END
 	ELSE IF @Task = N'UPDATE'
@@ -20,7 +21,8 @@ BEGIN
 		END
 
 		UPDATE MovieDatabase.MovieDB.Director
-		SET DirectorName = @DirectorName
+		SET DirectorName = @DirectorName,
+			DirectorDateOfBirth = @DirectorDoB
 		WHERE DirectorID = @DirectorID
 		SET @Result = 0 --sets to 0 indicating it successfuly completed the task
 	END
