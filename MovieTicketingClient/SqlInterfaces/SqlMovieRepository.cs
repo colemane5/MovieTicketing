@@ -131,6 +131,7 @@ namespace MovieTicketingClient.SqlInterfaces
                         while (reader.Read())
                         {
                             actors.Add(new Actor(
+                               0, // REPLACE WITH actorID
                                reader.GetString(actorNameOrdinal),
                                reader.GetDateTime(actorDoBOrdinal)));
                         }
@@ -163,6 +164,7 @@ namespace MovieTicketingClient.SqlInterfaces
                         while (reader.Read())
                         {
                             directors.Add(new Director(
+                               0, // REPLACE WITH directorID
                                reader.GetString(directorNameOrdinal),
                                reader.GetDateTime(directorDoBOrdinal)));
                         }

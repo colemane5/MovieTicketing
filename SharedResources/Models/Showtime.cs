@@ -6,21 +6,13 @@ using System.Threading.Tasks;
 
 namespace SharedResources.Models
 {
-    public class Showtime
+    public struct Showtime(int id, int movieId, int theaterId, DateTime showingDateTime, decimal price, int seatsAvailable)
     {
-        public int MovieId { get; set; }
-        public int TheaterId { get; set; }
-        public DateTime ShowingDateTime { get; set; }
-        public decimal Price { get; set; }
-        public int SeatsAvailable { get; set; }
-
-        public Showtime(int movieId, int theaterId, DateTime showingDateTime, decimal price, int seatsAvailable)
-        {
-            MovieId = movieId;
-            TheaterId = theaterId;
-            ShowingDateTime = showingDateTime;
-            Price = price;
-            SeatsAvailable = seatsAvailable;
-        }
+        public int Id { get; set; } = id;
+        public int MovieId { get; set; } = movieId;
+        public int TheaterId { get; set; } = theaterId;
+        public DateTime ShowingDateTime { get; set; } = showingDateTime;
+        public decimal Price { get; set; } = price;
+        public int SeatsAvailable { get; set; } = seatsAvailable;
     }
 }

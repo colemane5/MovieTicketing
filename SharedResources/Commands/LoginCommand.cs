@@ -16,7 +16,9 @@ namespace SharedResources.Commands
         private readonly Func<ViewModelBase> _getAdminViewModelStart = getAdminViewModelStart;
         private readonly NavigationService _navigationService = navigationService;
 
+#pragma warning disable CS0067 // The event 'LoginCommand.CanExecuteChanged' is never used
         public event EventHandler? CanExecuteChanged;
+#pragma warning restore CS0067 // The event 'LoginCommand.CanExecuteChanged' is never used
 
         public bool CanExecute(object? parameter) => true;
 

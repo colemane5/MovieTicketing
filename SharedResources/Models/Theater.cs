@@ -6,17 +6,10 @@ using System.Threading.Tasks;
 
 namespace SharedResources.Models
 {
-    public class Theater
+    public struct Theater(int id, string name, string address)
     {
-        public int Id { get; set; }
-        public string Name { get; set; }
-        public string Address { get; set; }
-
-        public Theater(int id, string name, string address)
-        {
-            Id = id;
-            Name = name;
-            Address = address;
-        }
+        public int Id { get; set; } = id;
+        public string Name { get; set; } = name;
+        public string Address { get; set; } = address;
     }
 }
