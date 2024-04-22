@@ -15,16 +15,16 @@ DROP TABLE IF EXISTS MovieDB.Genre
 
 CREATE TABLE MovieDB.Actor(
 	ActorID INT NOT NULL IDENTITY(1, 1) PRIMARY KEY,
-	ActorName NVARCHAR(32) NOT NULL,
-	ActorDateOfBirth DATETIMEOFFSET,
+	ActorName NVARCHAR(64) NOT NULL,
+	ActorDateOfBirth DATE,
 
 	UNIQUE(ActorName, ActorDateOfBirth)
 );
 
 CREATE TABLE MovieDB.Director(
 	DirectorID INT NOT NULL IDENTITY(1, 1) PRIMARY KEY,
-	DirectorName NVARCHAR(32) NOT NULL,
-	DirectorDateOfBirth DATETIMEOFFSET,
+	DirectorName NVARCHAR(64) NOT NULL,
+	DirectorDateOfBirth DATE
 
 	UNIQUE(DirectorName, DirectorDateOfBirth)
 );
@@ -40,6 +40,7 @@ CREATE TABLE MovieDB.Movie(
 		REFERENCES MovieDB.Genre(GenreID),
 	MovieTitle NVARCHAR(128) NOT NULL,
 	ReleaseDate DATETIMEOFFSET,
+	[Description] NVARCHAR(MAX),
 
 	UNIQUE(MovieTitle, ReleaseDate)
 );
@@ -53,20 +54,23 @@ CREATE TABLE MovieDB.Theater(
 );
 
 CREATE TABLE MovieDB.ActorMovie(
-	MovieID INT NOT NULL UNIQUE FOREIGN KEY
+	MovieID INT NOT NULL FOREIGN KEY
 		REFERENCES MovieDB.Movie(MovieID),
-	ActorID INT NOT NULL UNIQUE FOREIGN KEY
+	ActorID INT NOT NULL FOREIGN KEY
 		REFERENCES MovieDB.Actor(ActorID),
+
+	UNIQUE(MovieID, ActorID),
 
 	CONSTRAINT PKActorMovie PRIMARY KEY(MovieID, ActorID)
 );
 
 CREATE TABLE MovieDB.DirectorMovie(
-	MovieID INT NOT NULL UNIQUE FOREIGN KEY
+	MovieID INT NOT NULL FOREIGN KEY
 		REFERENCES MovieDB.Movie(MovieID),
-	DirectorID INT NOT NULL UNIQUE FOREIGN KEY
+	DirectorID INT NOT NULL FOREIGN KEY
 		REFERENCES MovieDB.Director(DirectorID),
 
+	UNIQUE(MovieID, DirectorID),
 	CONSTRAINT PKDirectorMovie PRIMARY KEY(MovieID, DirectorID)
 );
 
