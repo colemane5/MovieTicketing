@@ -45,6 +45,7 @@ namespace MovieTicketingClient.SqlInterfaces
                         while (reader.Read())
                         {
                             showTimes.Add(new Showtime(
+                                   0, // REPLACE WITH showtimeID
                                    movieID,
                                    theaterID,
                                    reader.GetDateTimeOffset(startOnOrdinal).DateTime,

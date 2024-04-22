@@ -12,7 +12,9 @@ namespace SharedResources.Commands
     {
         private readonly Func<NavigationService?> _getNavigationService = getNavigationService;
 
+#pragma warning disable CS0067 // The event 'LogoutCommand.CanExecuteChanged' is never used
         public event EventHandler? CanExecuteChanged;
+#pragma warning restore CS0067 // The event 'LogoutCommand.CanExecuteChanged' is never used
 
         public bool CanExecute(object? parameter) => true;
 

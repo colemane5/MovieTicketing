@@ -7,19 +7,11 @@ using System.Xml.Linq;
 
 namespace SharedResources.Models
 {
-    public class Movie
+    public struct Movie(int id, string title, string releaseDate, string description)
     {
-        public int Id;
-        public string Title { get; set; }
-        public string ReleaseDate { get; set; }
-        public string Description { get; set; }
-
-        public Movie(int id, string title, string releaseDate, string description)
-        {
-            Id = id;
-            Title = title;
-            ReleaseDate = releaseDate;
-            Description = description;
-        }
+        public int Id = id;
+        public string Title { get; set; } = title;
+        public string ReleaseDate { get; set; } = releaseDate;
+        public string Description { get; set; } = description;
     }
 }

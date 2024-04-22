@@ -10,8 +10,7 @@ namespace MovieTicketingApp.ViewModels
 {
     public class MainViewModel : ViewModelBase
     {
-        private readonly NavigationService _navigationService;
-        public ViewModelBase CurrentViewModel => _navigationService.CurrentViewModel;
+        public ViewModelBase? CurrentViewModel => _navigationService?.CurrentViewModel;
 
         public MainViewModel(NavigationService navigationService)
         {
