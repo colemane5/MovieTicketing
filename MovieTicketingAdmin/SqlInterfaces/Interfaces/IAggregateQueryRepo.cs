@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using SharedResources.Results;
 
-namespace MovieTicketingAdmin.SqlInterface
+namespace MovieTicketingAdmin.SqlInterfaces.Interfaces
 {
     public interface IAggregateQueryRepo
     {

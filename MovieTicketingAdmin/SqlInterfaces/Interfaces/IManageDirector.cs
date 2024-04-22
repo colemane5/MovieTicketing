@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using SharedResources.Models;
 
-namespace MovieTicketingAdmin.SqlInterface
+namespace MovieTicketingAdmin.SqlInterfaces.Interfaces
 {
     public interface IManageDirector
     {
@@ -25,6 +25,6 @@ namespace MovieTicketingAdmin.SqlInterface
         /// A function to return all directors on the db to use in the filter function
         /// </summary>
         /// <returns>A list of directors in the db</returns>
-        public IReadOnlyList<Actor> RetrieveDirectors();
+        public IReadOnlyList<Director> RetrieveDirectors();
     }
 }
