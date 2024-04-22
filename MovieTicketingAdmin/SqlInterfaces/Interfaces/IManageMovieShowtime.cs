@@ -29,5 +29,17 @@ namespace MovieTicketingAdmin.SqlInterfaces.Interfaces
         /// <param name="theaterID">the ID for the given theater</param>
         /// <returns>A read-only list of Showtimes</returns>
         public IReadOnlyList<Showtime> FindShowtimes(int movieId, int theaterId);
+
+        /// <summary>
+        /// A function that returns all movies contained in the db for boot up and if no parameters are provided
+        /// </summary>
+        /// <returns>A read-only list containing all the movies in the db</returns>
+        IReadOnlyList<Movie> RetrieveMovies();
+
+        /// <summary>
+        /// A function to return all theaters on the db to use in the filter function
+        /// </summary>
+        /// <returns>A read-only list of theaters in the db</returns>
+        public IReadOnlyList<Theater> RetrieveTheaters();
     }
 }

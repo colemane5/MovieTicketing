@@ -33,14 +33,11 @@ namespace MovieTicketingAdmin.SqlInterfaces.Interfaces
 
         /// <summary>
         /// A function that calls an aggregate query that returns a list of rankings for top theaters
-        /// in terms of sales for each month within a specified time frame
+        /// in terms of sales for each month, year to date
         /// </summary>
-        /// <param name="StartTime">the beginning date for the rank assesment</param>
-        /// <param name="EndTime">the end date for the rank assesment</param>
         /// <returns>A list of structs containing the resulting monthly ranks for each theater and
         /// the sales attributed to each theater</returns>
-        IReadOnlyList<TopTheatersResult> GetTopTheaters(DateTimeOffset startTime,
-            DateTimeOffset endTime);
+        IReadOnlyList<TopTheatersResult> GetTopTheaters();
 
         /// <summary>
         /// A function that calls an aggregate query that returns a list of movie ranks based on
