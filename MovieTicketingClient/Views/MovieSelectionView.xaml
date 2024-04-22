@@ -14,12 +14,12 @@
         <StackPanel Grid.Column="0">
             <TextBlock Text="Find a Movie" FontSize="30" />
             <TextBlock Text="Genre" />
-            <ComboBox ItemsSource="{Binding Genres}" SelectedItem="{Binding SelectedGenre}"/>
+            <ComboBox ItemsSource="{Binding Genres}" DisplayMemberPath="Name" SelectedItem="{Binding SelectedGenre}"/>
             <TextBlock Text="Actors" />
             <DockPanel>
                 <DockPanel DockPanel.Dock="Top">
                     <Button Content="+" Command="{Binding AddActorCommand}" DockPanel.Dock="Right" HorizontalAlignment="Right" MinWidth="30" />
-                    <ComboBox ItemsSource="{Binding Actors}" DockPanel.Dock="Left" SelectedItem="{Binding SelectedActor}" />
+                    <ComboBox ItemsSource="{Binding Actors}" DisplayMemberPath="Name" DockPanel.Dock="Left" SelectedItem="{Binding SelectedActor}" />
                 </DockPanel>
                 <ListView DockPanel.Dock="Bottom" ItemsSource="{Binding SelectedActors}" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
                     <ListView.ItemsPanel>
@@ -27,13 +27,18 @@
                             <WrapPanel Orientation="Horizontal" MinHeight="30"/>
                         </ItemsPanelTemplate>
                     </ListView.ItemsPanel>
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <Button Content="{Binding Name, StringFormat={}{0} -}" Command="{Binding RemoveCommand}" />
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
                 </ListView>
             </DockPanel>
             <TextBlock Text="Directors" />
             <DockPanel>
                 <DockPanel DockPanel.Dock="Top">
                     <Button Content="+" Command="{Binding AddDirectorCommand}" DockPanel.Dock="Right" HorizontalAlignment="Right" MinWidth="30" />
-                    <ComboBox ItemsSource="{Binding Directors}" DockPanel.Dock="Left" SelectedItem="{Binding SelectedDirector}" />
+                    <ComboBox ItemsSource="{Binding Directors}" DisplayMemberPath="Name" DockPanel.Dock="Left" SelectedItem="{Binding SelectedDirector}" />
                 </DockPanel>
                 <ListView DockPanel.Dock="Bottom" ItemsSource="{Binding SelectedDirectors}" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
                     <ListView.ItemsPanel>
@@ -41,8 +46,14 @@
                             <WrapPanel Orientation="Horizontal" MinHeight="30"/>
                         </ItemsPanelTemplate>
                     </ListView.ItemsPanel>
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <Button Content="{Binding Name, StringFormat={}{0} -}" Command="{Binding RemoveCommand}" />
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
                 </ListView>
             </DockPanel>
+            <Button Content="Search" Command="{Binding SearchCommand}" Width="80" HorizontalAlignment="Right" />
         </StackPanel>
         <DockPanel Grid.Column="1">
             <DockPanel DockPanel.Dock="Top">

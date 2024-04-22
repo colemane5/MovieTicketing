@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SharedResources.Models
 {
-    public struct Actor(int id, string name, DateTime date)
+    public struct Actor(int id, string name, DateTime date) : IPerson
     {
         public int Id { get; set; } = id;
         public string Name { get; set; } = name;
