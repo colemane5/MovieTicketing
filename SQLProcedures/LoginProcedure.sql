@@ -6,13 +6,13 @@ BEGIN
 
 	IF EXISTS(
 		SELECT 1 
-		FROM MovieDatabase.MovieDB.[User] U
+		FROM MovieDB.[User] U
 			WHERE U.UserEmail = @UserEmail
 			AND U.IsLoggedIn = 0
 	)
 	BEGIN
 		
-		UPDATE MovieDatabase.MovieDB.[User]
+		UPDATE MovieDB.[User]
 		SET IsLoggedIn = 1
 		WHERE UserEmail = @UserEmail	
 	END

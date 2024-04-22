@@ -1,23 +1,15 @@
 ﻿using Microsoft.Data.SqlClient;
-using MovieTicketingAdmin.SqlInterfaces.Interfaces;
+using SharedResources.SqlInterfaces.Interfaces;
 using SharedResources.Models;
-using System;
-using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace MovieTicketingAdmin.SqlInterfaces
+namespace SharedResources.SqlInterfaces
 {
     public class SqlManageDirector : IManageDirector
     {
-        private readonly string connectionString;
-
-        public SqlManageDirector(string connectionString)
-        {
-            this.connectionString = connectionString;
-        }
+        // CHANGE THIS STRING TO MATCH THE LOCATION OF THE DB FOR YOUR MACHINE
+        // THIS INSTANCE IS USED TO RUN THE DB FROM A LOCAL INSTANCE AT MovieDB
+        private readonly string connectionString = @"Server=(localdb)\MSSQLLocalDB;Database=MovieDB;Integrated Security=true;";
 
         // MAKE SURE TO ONLY USE "ADD", "UPDATE", OR "DELETE" for task string
         // returns 0 for completion and -1 for failure for UPDATE and DELETE
@@ -33,7 +25,7 @@ namespace MovieTicketingAdmin.SqlInterfaces
 
             using (var connection = new SqlConnection(connectionString))
             {
-                using (var command = new SqlCommand("RetrieveActors", connection))
+                using (var command = new SqlCommand("RetrieveDirectors", connection))
                 {
                     command.CommandType = CommandType.StoredProcedure;
 
@@ -41,13 +33,14 @@ namespace MovieTicketingAdmin.SqlInterfaces
 
                     using (var reader = command.ExecuteReader())
                     {
+                        var directorIdOrdinal = reader.GetOrdinal("DirectorID");
                         var directorNameOrdinal = reader.GetOrdinal("DirectorName");
                         var directorDoBOrdinal = reader.GetOrdinal("DirectorDateOfBirth");
 
                         while (reader.Read())
                         {
                             directors.Add(new Director(
-                               0, // REPLACE WITH directorID
+                               reader.GetInt32(directorIdOrdinal),
                                reader.GetString(directorNameOrdinal),
                                reader.GetDateTime(directorDoBOrdinal)));
                         }

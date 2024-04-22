@@ -8,9 +8,9 @@ BEGIN
 			COUNT(DISTINCT M.MovieID) AS UniqueMovies,
 			COUNT(DISTINCT MS.TheaterID) AS UniqueTheaters,
 			SUM(T.UserID) AS TicketSales
-		FROM MovieDatabase.MovieDB.MovieShowtime MS
-		INNER JOIN MovieDatabase.MovieDB.TicketPurchase T ON MS.MovieID = T.MovieShowtimeID
-		INNER JOIN MovieDatabase.MovieDB.Movie M ON MS.MovieID = M.MovieID
+		FROM MovieDB.MovieShowtime MS
+		INNER JOIN MovieDB.TicketPurchase T ON MS.MovieID = T.MovieShowtimeID
+		INNER JOIN MovieDB.Movie M ON MS.MovieID = M.MovieID
 		WHERE MS.StartOn BETWEEN @StarTime AND @EndTime
 		GROUP BY DATEPART(HOUR, MS.StartOn)
 	)

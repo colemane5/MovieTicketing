@@ -1,24 +1,16 @@
 ﻿using SharedResources.Models;
-using System;
-using System.Collections.Generic;
 using Microsoft.Data.SqlClient;
 using System.Data;
 using System.Transactions;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Reflection.Emit;
+using SharedResources.SqlInterfaces.Interfaces;
 
-namespace MovieTicketingClient.SqlInterfaces
+namespace SharedResources.SqlInterfaces
 {
     public class SqlTheaterRepository : ITheaterRepository
     {
-        private readonly string connectionString;
-
-        public SqlTheaterRepository(string connectionString)
-        {
-            this.connectionString = connectionString;
-        }
+        // CHANGE THIS STRING TO MATCH THE LOCATION OF THE DB FOR YOUR MACHINE
+        // THIS INSTANCE IS USED TO RUN THE DB FROM A LOCAL INSTANCE AT MovieDB
+        private readonly string connectionString = @"Server=(localdb)\MSSQLLocalDB;Database=MovieDB;Integrated Security=true;";
 
         public IReadOnlyList<Showtime> FindShowtimes(int movieID, int theaterID)
         {
@@ -38,6 +30,7 @@ namespace MovieTicketingClient.SqlInterfaces
 
                     using (var reader = command.ExecuteReader())
                     {
+                        var showTimeIdOrdinal = reader.GetOrdinal("MovieShowtimeID");
                         var startOnOrdinal = reader.GetOrdinal("StartOn");
                         var seatsAvailableOrdinal = reader.GetOrdinal("SeatsAvailable");
                         var salePriceOrdinal = reader.GetOrdinal("SalePrice");
@@ -45,7 +38,7 @@ namespace MovieTicketingClient.SqlInterfaces
                         while (reader.Read())
                         {
                             showTimes.Add(new Showtime(
-                                   0, // REPLACE WITH showtimeID
+                                   reader.GetInt32(showTimeIdOrdinal),
                                    movieID,
                                    theaterID,
                                    reader.GetDateTimeOffset(startOnOrdinal).DateTime,
@@ -69,7 +62,7 @@ namespace MovieTicketingClient.SqlInterfaces
             {
                 using (var connection = new SqlConnection(connectionString))
                 {
-                    using (var command = new SqlCommand("Person.SavePersonAddress", connection))
+                    using (var command = new SqlCommand("GetTicket", connection))
                     {
                         command.CommandType = CommandType.StoredProcedure;
 
@@ -98,7 +91,7 @@ namespace MovieTicketingClient.SqlInterfaces
 
             using (var connection = new SqlConnection(connectionString))
             {
-                using (var command = new SqlCommand("RetrieveActors", connection))
+                using (var command = new SqlCommand("RetrieveTheaters", connection))
                 {
                     command.CommandType = CommandType.StoredProcedure;
 

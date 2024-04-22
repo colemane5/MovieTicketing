@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using System.Windows.Media.Imaging;
+using SharedResources.SqlInterfaces;
 
 namespace MovieTicketingClient.ViewModels
 {
@@ -27,6 +28,8 @@ namespace MovieTicketingClient.ViewModels
     }
     public class MovieSelectionViewModel : RefreshableViewModel
     {
+        private readonly SqlMovieRepository sqlMovieRepository = new();
+
         public List<Genre> Genres { get; } = null!;
 
         private Genre _selectedGenre;
@@ -93,25 +96,11 @@ namespace MovieTicketingClient.ViewModels
             AddDirectorCommand = new RelayCommand(() => { if (SelectedDirector is Director director) AddRemoveableDirector(director); });
             SearchCommand = new RelayCommand(RefreshData);
 
-            Actors =
-            [
-                new Actor(0, "Timothee Chalamet", DateTime.Now),
-                new Actor(1, "Tim Chalam", DateTime.Now),
-                new Actor(2, "Tom Chan", DateTime.Now)
-            ];
+            Actors = sqlMovieRepository.RetrieveActors();
 
-            Directors =
-            [
-                new Director(0, "Timothee Chalamet", DateTime.Now),
-                new Director(1, "Tim Chalam", DateTime.Now),
-                new Director(2, "Tom Chan", DateTime.Now)
-            ];
-            Genres =
-            [
-                new Genre(0, "Action"),
-                new Genre(1, "Comedy"),
-                new Genre(2, "Drama")
-            ];
+            Directors = sqlMovieRepository.RetrieveDirectors();
+
+            Genres = sqlMovieRepository.RetrieveGenres();
         }
 
         private void AddRemoveableActor(Actor actor)

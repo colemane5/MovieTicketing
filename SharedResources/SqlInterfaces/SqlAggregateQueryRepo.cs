@@ -1,28 +1,19 @@
 ﻿using Microsoft.Data.SqlClient;
-using MovieTicketingAdmin.SqlInterfaces.Interfaces;
-using SharedResources.Models;
+using SharedResources.SqlInterfaces.Interfaces;
 using SharedResources.Results;
-using System;
-using System.Collections.Generic;
 using System.Data;
-using System.DirectoryServices.ActiveDirectory;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Transactions;
+using System.Collections.ObjectModel;
 
-namespace MovieTicketingAdmin.SqlInterfaces
+namespace SharedResources.SqlInterfaces
 {
     public class SqlAggregateQueryRepo : IAggregateQueryRepo
     {
-        private readonly string connectionString;
+        // CHANGE THIS STRING TO MATCH THE LOCATION OF THE DB FOR YOUR MACHINE
+        // THIS INSTANCE IS USED TO RUN THE DB FROM A LOCAL INSTANCE AT MovieDB
+        private readonly string connectionString = @"Server=(localdb)\MSSQLLocalDB;Database=MovieDB;Integrated Security=true;";
 
-        public SqlAggregateQueryRepo(string connectionString)
-        {
-            this.connectionString = connectionString;
-        }
-
-        public IReadOnlyList<GenreRanksResult> GetGenreRanks(DateTimeOffset startTime, DateTimeOffset endTime)
+        public List<GenreRanksResult> GetGenreRanks()
         {
             var genreRanksList = new List<GenreRanksResult>();
 
@@ -30,12 +21,9 @@ namespace MovieTicketingAdmin.SqlInterfaces
             {
                 using (var connection = new SqlConnection(connectionString))
                 {
-                    using (var command = new SqlCommand("Person.SavePersonAddress", connection))
+                    using (var command = new SqlCommand("GetGenreRanks", connection))
                     {
                         command.CommandType = CommandType.StoredProcedure;
-
-                        command.Parameters.AddWithValue("StartTime", startTime);
-                        command.Parameters.AddWithValue("EndTime", endTime);
 
                         connection.Open();
 
@@ -61,7 +49,7 @@ namespace MovieTicketingAdmin.SqlInterfaces
             }
         }
 
-        public IReadOnlyList<HourlySalesResult> GetSalesPerHourOfTheDay(DateTimeOffset startTime, DateTimeOffset endTime)
+        public List<HourlySalesResult> GetSalesPerHourOfTheDay(DateTimeOffset startTime, DateTimeOffset endTime)
         {
             var hourlySalesList = new List<HourlySalesResult>();
 
@@ -69,7 +57,7 @@ namespace MovieTicketingAdmin.SqlInterfaces
             {
                 using (var connection = new SqlConnection(connectionString))
                 {
-                    using (var command = new SqlCommand("Person.SavePersonAddress", connection))
+                    using (var command = new SqlCommand("GetSalesPerHourOfTheDay", connection))
                     {
                         command.CommandType = CommandType.StoredProcedure;
 
@@ -102,7 +90,7 @@ namespace MovieTicketingAdmin.SqlInterfaces
             }
         }
 
-        public IReadOnlyList<TopTheatersResult> GetTopTheaters()
+        public List<TopTheatersResult> GetTopTheaters()
         {
             var topTheaterList = new List<TopTheatersResult>();
 
@@ -110,7 +98,7 @@ namespace MovieTicketingAdmin.SqlInterfaces
             {
                 using (var connection = new SqlConnection(connectionString))
                 {
-                    using (var command = new SqlCommand("Person.SavePersonAddress", connection))
+                    using (var command = new SqlCommand("GetTopTheaters", connection))
                     {
                         command.CommandType = CommandType.StoredProcedure;
 
@@ -142,7 +130,7 @@ namespace MovieTicketingAdmin.SqlInterfaces
             }
         }
 
-        public IReadOnlyList<TopMoviesResult> MovieStatisticsOverGivenPeriod(DateTimeOffset startTime, DateTimeOffset endTime)
+        public List<TopMoviesResult> MovieStatistics()
         {
             var topMovieList = new List<TopMoviesResult>();
 
@@ -150,12 +138,9 @@ namespace MovieTicketingAdmin.SqlInterfaces
             {
                 using (var connection = new SqlConnection(connectionString))
                 {
-                    using (var command = new SqlCommand("Person.SavePersonAddress", connection))
+                    using (var command = new SqlCommand("MovieStatistics", connection))
                     {
                         command.CommandType = CommandType.StoredProcedure;
-
-                        command.Parameters.AddWithValue("StartTime", startTime);
-                        command.Parameters.AddWithValue("EndTime", endTime);
 
                         connection.Open();
 

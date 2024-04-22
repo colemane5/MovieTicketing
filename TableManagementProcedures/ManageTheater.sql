@@ -8,7 +8,7 @@ AS
 BEGIN
 	IF @Task = N'ADD'
 	BEGIN
-		INSERT INTO MovieDatabase.MovieDB.Theater(TheaterName, TheaterAddress)
+		INSERT INTO MovieDB.Theater(TheaterName, TheaterAddress)
 		VALUES(@TheaterName, @TheaterAddress)
 		SET @Result = SCOPE_IDENTITY()
 	END
@@ -19,7 +19,7 @@ BEGIN
 			RETURN
 		END
 
-		UPDATE MovieDatabase.MovieDB.Theater
+		UPDATE MovieDB.Theater
 		SET TheaterName = @TheaterName,
 			TheaterAddress = @TheaterAddress
 		WHERE TheaterID = @TheaterID
@@ -33,7 +33,7 @@ BEGIN
 			RETURN
 		END
 
-		DELETE FROM MovieDatabase.MovieDB.Theater
+		DELETE FROM MovieDB.Theater
 		WHERE TheaterID = @TheaterID
 		SET @Result = 0
 	END

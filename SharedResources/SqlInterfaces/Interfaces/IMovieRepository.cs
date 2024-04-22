@@ -1,11 +1,12 @@
 ﻿using SharedResources.Models;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MovieTicketingClient.SqlInterfaces
+namespace SharedResources.SqlInterfaces.Interfaces
 {
     public interface IMovieRepository
     {
@@ -31,18 +32,18 @@ namespace MovieTicketingClient.SqlInterfaces
         /// A function to return all actors on the db to use in the filter function
         /// </summary>
         /// <returns>A list of actors in the db</returns>
-        IReadOnlyList<Actor> RetrieveActors();
+        List<Actor> RetrieveActors();
 
         /// <summary>
         /// A function to return all directors on the db to use in the filter function
         /// </summary>
         /// <returns>A list of directors in the db</returns>
-        IReadOnlyList<Director> RetrieveDirectors();
+        List<Director> RetrieveDirectors();
 
         /// <summary>
         /// A function to return all genres on the db to use in the filter function
         /// </summary>
         /// <returns>A list of genres in the db</returns>
-        IReadOnlyList<string> RetrieveGenres();
+        List<Genre> RetrieveGenres();
     }
 }

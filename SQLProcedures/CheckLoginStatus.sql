@@ -1,8 +1,5 @@
 CREATE PROCEDURE CheckLoginStatus
-	@UserEmail NVARCHAR(128),
-	@UserName NVARCHAR(32) OUT,
-	@UserID INT OUT,
-	@IsAdmin BIT OUT
+	@UserEmail NVARCHAR(128)
 AS
 BEGIN
 	IF EXISTS(
@@ -12,7 +9,7 @@ BEGIN
 			AND U.IsLoggedIn = 0
 	)
 	BEGIN
-		SELECT @UserName = U.UserName, @UserID = U.UserID, @IsAdmin = U.IsAdmin
+		SELECT U.UserName, U.UserID, U.IsAdmin
 		FROM MovieDB.[User] U
 		WHERE U.UserEmail = @UserEmail
 	END

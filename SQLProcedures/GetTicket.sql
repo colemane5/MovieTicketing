@@ -10,15 +10,16 @@ BEGIN
 
 	IF NOT EXISTS (
 		SELECT TP.UserID
-		FROM MovieDatabase.MovieDB.TicketPurchase TP
+		FROM MovieDB.TicketPurchase TP
 		WHERE TP.UserID = @UserID 
 			AND TP.MovieShowtimeID = @MovieShowtimeID
 	)
 	BEGIN
-		INSERT INTO MovieDatabase.MovieDB.TicketPurchase(UserID, MovieShowtimeID, SalePrice)
+		INSERT INTO MovieDB.TicketPurchase(UserID, MovieShowtimeID, SalePrice)
 		VALUES(@UserID, @MovieShowtimeID, @SalePrice)
-		INSERT INTO MovieDatabase.MovieDB.Showtime(SeatsAvailable)
-		VALUES(@SeatsLeft)
+		UPDATE MovieDB.MovieShowtime
+		SET SeatsAvailable = @SeatsLeft
+		WHERE MovieShowtimeID = @MovieShowtimeID
 		SET @Result = N'Success'
 	END
 	ELSE

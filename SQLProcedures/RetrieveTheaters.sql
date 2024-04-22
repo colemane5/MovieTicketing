@@ -3,10 +3,10 @@ CREATE PROCEDURE RetrieveTheaters
 AS
 
 SELECT T.TheaterID, T.TheaterName, T.TheaterAddress
-FROM MovieDatabase.MovieDB.Theater T
+FROM MovieDB.Theater T
 WHERE @MovieID IS NULL OR EXISTS (
 	SELECT *
-	FROM MovieDatabase.MovieDB.MovieShowtime S
+	FROM MovieDB.MovieShowtime S
 	WHERE T.TheaterID = S.TheaterID
 		AND S.MovieID = @MovieID
 	)

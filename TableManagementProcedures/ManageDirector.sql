@@ -8,7 +8,7 @@ AS
 BEGIN
 	IF @Task = N'ADD'
 	BEGIN
-		INSERT INTO MovieDatabase.MovieDB.Director(DirectorName, DirectorDateOfBirth)
+		INSERT INTO MovieDB.Director(DirectorName, DirectorDateOfBirth)
 		VALUES(@DirectorName, @DirectorDoB)
 		SET @Result = SCOPE_IDENTITY() --sets result to the id of the newly created actor
 	END
@@ -20,7 +20,7 @@ BEGIN
 			RETURN
 		END
 
-		UPDATE MovieDatabase.MovieDB.Director
+		UPDATE MovieDB.Director
 		SET DirectorName = @DirectorName,
 			DirectorDateOfBirth = @DirectorDoB
 		WHERE DirectorID = @DirectorID
@@ -34,7 +34,7 @@ BEGIN
 			RETURN
 		END
 		
-		DELETE FROM MovieDatabase.MovieDB.Director
+		DELETE FROM MovieDB.Director
 		WHERE DirectorID = @DirectorID
 		SET @Result = 0
 	END

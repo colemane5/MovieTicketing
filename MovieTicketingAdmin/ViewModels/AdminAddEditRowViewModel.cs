@@ -1,4 +1,5 @@
 ﻿using SharedResources.ViewModels;
+using SharedResources.SqlInterfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,5 +10,8 @@ namespace MovieTicketingAdmin.ViewModels
 {
     public class AdminAddEditRowViewModel : ViewModelBase
     {
+
+        //not sure which viewmodel this will be needed in so I put it in both.
+        //private readonly SqlManageMovieShowtime = new ();
     }
 }

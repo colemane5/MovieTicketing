@@ -1,6 +1,7 @@
 ﻿using SharedResources.Commands;
 using SharedResources.Results;
 using SharedResources.ViewModels;
+using SharedResources.SqlInterfaces;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -14,6 +15,7 @@ namespace MovieTicketingAdmin.ViewModels
 {
     public class TopTheatersPanelViewModel : ViewModelBase
     {
+        private readonly SqlAggregateQueryRepo _aggregateQueryRepo = new();
         public int _month;
         public int Month
         {
@@ -69,17 +71,7 @@ namespace MovieTicketingAdmin.ViewModels
         public TopTheatersPanelViewModel()
         {
             // Replace with call to database.
-            FullTheaterSales =
-            [
-                new TopTheatersResult(1, 1, "AMC10", "Some Address", 12493582.72M),
-                new TopTheatersResult(1, 2, "AMC15", "Some Address", 10672855.92M),
-                new TopTheatersResult(1, 3, "AMC20", "Some Address", 35960287.68M),
-                new TopTheatersResult(1, 4, "AMC30", "Some Address", 13495832.58M),
-                new TopTheatersResult(2, 3, "AMC20", "Some Address", 359602.68M),
-                new TopTheatersResult(2, 4, "AMC30", "Some Address", 134958.58M),
-                new TopTheatersResult(2, 1, "AMC10", "Some Address", 124935.72M),
-                new TopTheatersResult(2, 2, "AMC15", "Some Address", 106728.92M),
-            ];
+            FullTheaterSales = _aggregateQueryRepo.GetTopTheaters();
 
             NextCommand = new RelayCommand(() => { if (Month < 12) Month++; });
             PreviousCommand = new RelayCommand(() => { if (Month > 1) Month--; });

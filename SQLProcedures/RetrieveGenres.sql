@@ -1,6 +1,6 @@
 CREATE PROCEDURE RetrieveGenres
 AS
 
-SELECT G.GenreName
-FROM MovieDatabase.MovieDB.Genre G
+SELECT G.GenreID, G.GenreName
+FROM MovieDB.Genre G
 GO

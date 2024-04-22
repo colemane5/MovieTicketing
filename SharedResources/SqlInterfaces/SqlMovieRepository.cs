@@ -1,28 +1,16 @@
 ﻿using SharedResources.Models;
-using System;
-using System.Collections.Generic;
 using Microsoft.Data.SqlClient;
 using System.Data;
-using System.Transactions;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Net;
-using System.Reflection.Emit;
-using System.Windows.Shapes;
-using System.IO;
+using SharedResources.SqlInterfaces.Interfaces;
+using System.Collections.ObjectModel;
 
-namespace MovieTicketingClient.SqlInterfaces
+namespace SharedResources.SqlInterfaces
 {
     public class SqlMovieRepository : IMovieRepository
     {
-        private readonly string connectionString;
-
-        public SqlMovieRepository(string connectionString)
-        {
-            this.connectionString = connectionString;
-        }
+        // CHANGE THIS STRING TO MATCH THE LOCATION OF THE DB FOR YOUR MACHINE
+        // THIS INSTANCE IS USED TO RUN THE DB FROM A LOCAL INSTANCE AT MovieDB
+        private readonly string connectionString = @"Server=(localdb)\MSSQLLocalDB;Database=MovieDB;Integrated Security=true;";
 
         public IReadOnlyList<Movie> FilterMovies(string movieTitle, string actorNames, string director, string genre)
         {
@@ -111,7 +99,7 @@ namespace MovieTicketingClient.SqlInterfaces
             }
         }
 
-        public IReadOnlyList<Actor> RetrieveActors()
+        public List<Actor> RetrieveActors()
         {
             var actors = new List<Actor>();
 
@@ -125,13 +113,14 @@ namespace MovieTicketingClient.SqlInterfaces
 
                     using (var reader = command.ExecuteReader())
                     {
+                        var actorIdOrdinal = reader.GetOrdinal("ActorID");
                         var actorNameOrdinal = reader.GetOrdinal("ActorName");
                         var actorDoBOrdinal = reader.GetOrdinal("ActorDateOfBirth");
 
                         while (reader.Read())
                         {
                             actors.Add(new Actor(
-                               0, // REPLACE WITH actorID
+                               reader.GetInt32(actorIdOrdinal),
                                reader.GetString(actorNameOrdinal),
                                reader.GetDateTime(actorDoBOrdinal)));
                         }
@@ -144,13 +133,13 @@ namespace MovieTicketingClient.SqlInterfaces
             }
         }
 
-        public IReadOnlyList<Director> RetrieveDirectors()
+        public List<Director> RetrieveDirectors()
         {
             var directors = new List<Director>();
 
             using (var connection = new SqlConnection(connectionString))
             {
-                using (var command = new SqlCommand("RetrieveActors", connection))
+                using (var command = new SqlCommand("RetrieveDirectors", connection))
                 {
                     command.CommandType = CommandType.StoredProcedure;
 
@@ -158,13 +147,14 @@ namespace MovieTicketingClient.SqlInterfaces
 
                     using (var reader = command.ExecuteReader())
                     {
+                        var directorIdOrdinal = reader.GetOrdinal("DirectorID");
                         var directorNameOrdinal = reader.GetOrdinal("DirectorName");
                         var directorDoBOrdinal = reader.GetOrdinal("DirectorDateOfBirth");
 
                         while (reader.Read())
                         {
                             directors.Add(new Director(
-                               0, // REPLACE WITH directorID
+                               reader.GetInt32(directorIdOrdinal),
                                reader.GetString(directorNameOrdinal),
                                reader.GetDateTime(directorDoBOrdinal)));
                         }
@@ -177,13 +167,13 @@ namespace MovieTicketingClient.SqlInterfaces
             }
         }
 
-        public IReadOnlyList<string> RetrieveGenres()
+        public List<Genre> RetrieveGenres()
         {
-            var genres = new List<string>();
+            var genres = new List<Genre>();
 
             using (var connection = new SqlConnection(connectionString))
             {
-                using (var command = new SqlCommand("RetrieveActors", connection))
+                using (var command = new SqlCommand("RetrieveGenres", connection))
                 {
                     command.CommandType = CommandType.StoredProcedure;
 
@@ -191,11 +181,14 @@ namespace MovieTicketingClient.SqlInterfaces
 
                     using (var reader = command.ExecuteReader())
                     {
+                        var genreIdOrdinal = reader.GetOrdinal("GenreID");
                         var genreNameOrdinal = reader.GetOrdinal("GenreName");
 
                         while (reader.Read())
                         {
-                            genres.Add(reader.GetString(genreNameOrdinal));
+                            genres.Add(new Genre(
+                                reader.GetInt32(genreIdOrdinal),
+                                reader.GetString(genreNameOrdinal)));
                         }
                     }
 

@@ -7,22 +7,22 @@ AS
 BEGIN
 	SET NOCOUNT ON;
 
-	SELECT M.MovieID, M.MovieTitle, M.ReleaseDate, M.MovieDescription
-	FROM MovieDatabase.MovieDB.Movie M
-	INNER JOIN MovieDatabase.MovieDB.Genre G ON M.GenreID = G.GenreID
-	LEFT JOIN MovieDatabase.MovieDB.DirectorMovie DM ON M.MovieID = DM.MovieID
-	LEFT JOIN MovieDatabase.MovieDB.Director D ON DM.DirectorID = D.DirectorID
+	SELECT M.MovieID, M.MovieTitle, M.ReleaseDate, M.[Description]
+	FROM MovieDB.Movie M
+	INNER JOIN MovieDB.Genre G ON M.GenreID = G.GenreID
+	LEFT JOIN MovieDB.DirectorMovie DM ON M.MovieID = DM.MovieID
+	LEFT JOIN MovieDB.Director D ON DM.DirectorID = D.DirectorID
 	WHERE
 		(@MovieTitle IS NULL OR M.MovieTitle LIKE '%' + @MovieTitle + '%') AND
 		(@Director IS NULL OR D.DirectorName = @Director) AND
 		(@GenreName IS NULL OR G.GenreName = @GenreName)AND
 		(@ActorNames IS NULL OR EXISTS (
 			SELECT MA.MovieID
-			FROM MovieDatabase.MovieDB.ActorMovie MA
+			FROM MovieDB.ActorMovie MA
 			WHERE MA.MovieID = M.MovieID
 				AND MA.ActorID IN (
 					SELECT ActorID
-					FROM MovieDatabase.MovieDB.Actor A
+					FROM MovieDB.Actor A
 					WHERE ActorName IN (SELECT value FROM STRING_SPLIT(@ActorNames, ','))
 				)
 			));

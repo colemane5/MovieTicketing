@@ -1,6 +1,6 @@
 CREATE PROCEDURE RetrieveDirectors
 AS
 
-SELECT D.DirectorName, D.DirectorDateOfBirth
-FROM MovieDatabase.MovieDB.Director D
+SELECT D.DirectorID, D.DirectorName, D.DirectorDateOfBirth
+FROM MovieDB.Director D
 GO

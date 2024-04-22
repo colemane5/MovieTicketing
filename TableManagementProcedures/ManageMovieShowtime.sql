@@ -9,13 +9,13 @@ AS
 BEGIN
 	IF @Task = N'ADD'
 	BEGIN
-		INSERT INTO MovieDatabase.MovieDB.MovieShowtime(MovieID, TheaterID, StartOn)
+		INSERT INTO MovieDB.MovieShowtime(MovieID, TheaterID, StartOn)
 		VALUES(@MovieID, @TheaterID, @StartOn)
 		SET @Result = SCOPE_IDENTITY() --sets result equal to the id of the newly created MovieShowtime
 	END
 	ELSE IF @Task = N'UPDATE'
 	BEGIN
-		UPDATE MovieDatabase.MovieDB.MovieShowtime
+		UPDATE MovieDB.MovieShowtime
 		SET StartOn = @NewStartOn
 		WHERE MovieID = @MovieID
 			AND TheaterID = @TheaterID
@@ -23,7 +23,7 @@ BEGIN
 	END
 	ELSE IF @Task = N'REMOVE'
 	BEGIN
-		DELETE FROM MovieDatabase.MovieDB.MovieShowtime
+		DELETE FROM MovieDB.MovieShowtime
 		WHERE MovieID = @MovieID
 			AND TheaterID = @TheaterID
 			AND StartOn = @StartOn

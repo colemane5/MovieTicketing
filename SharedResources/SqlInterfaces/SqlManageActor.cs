@@ -1,23 +1,15 @@
 ﻿using Microsoft.Data.SqlClient;
-using MovieTicketingAdmin.SqlInterfaces.Interfaces;
+using SharedResources.SqlInterfaces.Interfaces;
 using SharedResources.Models;
-using System;
-using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace MovieTicketingAdmin.SqlInterfaces
+namespace SharedResources.SqlInterfaces
 {    
     public class SqlManageActor : IManageActor
     {
-        private readonly string connectionString;
-
-        public SqlManageActor(string connectionString)
-        {
-            this.connectionString = connectionString;
-        }
+        // CHANGE THIS STRING TO MATCH THE LOCATION OF THE DB FOR YOUR MACHINE
+        // THIS INSTANCE IS USED TO RUN THE DB FROM A LOCAL INSTANCE AT MovieDB
+        private readonly string connectionString = @"Server=(localdb)\MSSQLLocalDB;Database=MovieDB;Integrated Security=true;";
 
         // MAKE SURE TO ONLY USE "ADD", "UPDATE", OR "DELETE" for task string
         // returns 0 for completion and -1 for failure for UPDATE and DELETE
@@ -41,13 +33,14 @@ namespace MovieTicketingAdmin.SqlInterfaces
 
                     using (var reader = command.ExecuteReader())
                     {
+                        var actorIdOrdinal = reader.GetOrdinal("ActorID");
                         var actorNameOrdinal = reader.GetOrdinal("ActorName");
                         var actorDoBOrdinal = reader.GetOrdinal("ActorDateOfBirth");
 
                         while (reader.Read())
                         {
                             actors.Add(new Actor(
-                               0, // REPLACE WITH actorID
+                               reader.GetInt32(actorIdOrdinal),
                                reader.GetString(actorNameOrdinal),
                                reader.GetDateTime(actorDoBOrdinal)));
                         }

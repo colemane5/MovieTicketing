@@ -1,5 +1,6 @@
 ﻿using SharedResources.Results;
 using SharedResources.ViewModels;
+using SharedResources.SqlInterfaces;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -12,6 +13,7 @@ namespace MovieTicketingAdmin.ViewModels
 {
     public class TopGenresPanelViewModel : DateRangeViewModel
     {
+        private readonly SqlAggregateQueryRepo _aggregateQueryRepo = new();
         private ObservableCollection<GenreRanksResult> _topGenres = [];
         public ObservableCollection<GenreRanksResult> TopGenres
         {
@@ -30,13 +32,8 @@ namespace MovieTicketingAdmin.ViewModels
 
         public override void RefreshData()
         {
-            TopGenres =
-            [
-                new GenreRanksResult(1, "Action", 826771),
-                new GenreRanksResult(2, "Drama", 733480),
-                new GenreRanksResult(3, "Romance", 600132),
-                new GenreRanksResult(4, "Science Fiction", 598293)
-            ];
+            TopGenres = new ObservableCollection<GenreRanksResult>(
+                _aggregateQueryRepo.GetGenreRanks());
         }
     }
 }

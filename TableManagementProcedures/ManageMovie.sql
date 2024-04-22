@@ -10,7 +10,7 @@ AS
 BEGIN
 	IF @Task = N'ADD'
 	BEGIN
-		INSERT INTO MovieDatabase.MovieDB.Movie(MovieTitle, ReleaseDate, MovieDescription, GenreID)
+		INSERT INTO MovieDB.Movie(MovieTitle, ReleaseDate, [Description], GenreID)
 		VALUES(@MovieTitle, @ReleaseDate, @MovieDescription, @GenreID)
 		SET @Result = SCOPE_IDENTITY()
 	END
@@ -22,10 +22,10 @@ BEGIN
 			RETURN
 		END
 
-		UPDATE MovieDatabase.MovieDB.Movie
+		UPDATE MovieDB.Movie
 		SET MovieTitle = @MovieTitle,
 			ReleaseDate = @ReleaseDate,
-			MovieDescription = @MovieDescription,
+			[Description] = @MovieDescription,
 			GenreID = @GenreID
 		WHERE MovieID = @MovieID
 		SET @Result = 0
@@ -38,7 +38,7 @@ BEGIN
 			RETURN
 		END
 
-		DELETE FROM MovieDatabase.MovieDB.Movie
+		DELETE FROM MovieDB.Movie
 		WHERE MovieID = @MovieID
 		SET @Result = 0
 	END

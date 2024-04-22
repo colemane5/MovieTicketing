@@ -1,23 +1,15 @@
 ﻿using Microsoft.Data.SqlClient;
-using MovieTicketingAdmin.SqlInterfaces.Interfaces;
+using SharedResources.SqlInterfaces.Interfaces;
 using SharedResources.Models;
-using System;
-using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace MovieTicketingAdmin.SqlInterfaces
+namespace SharedResources.SqlInterfaces
 {
     public class SqlManageTheater : IManageTheater
     {
-        private readonly string connectionString;
-
-        public SqlManageTheater(string connectionString)
-        {
-            this.connectionString = connectionString;
-        }
+        // CHANGE THIS STRING TO MATCH THE LOCATION OF THE DB FOR YOUR MACHINE
+        // THIS INSTANCE IS USED TO RUN THE DB FROM A LOCAL INSTANCE AT MovieDB
+        private readonly string connectionString = @"Server=(localdb)\MSSQLLocalDB;Database=MovieDB;Integrated Security=true;";
 
         // MAKE SURE TO ONLY USE "ADD", "UPDATE", OR "DELETE" for task string
         // returns 0 for completion and -1 for failure for UPDATE and DELETE
