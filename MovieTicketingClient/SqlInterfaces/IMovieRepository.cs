@@ -14,7 +14,8 @@ namespace MovieTicketingClient.SqlInterfaces
         /// ** NOTE ** The values can be set to NULL to leave the filter empty ** NOTE **
         /// </summary>
         /// <param name="movieTitle">the title of the desired movie</param>
-        /// <param name="actorNames">the actor names with only commas "," in between</param>
+        /// <param name="actorNames">a string containing the actor names
+        /// with ONLY commas "," in between</param>
         /// <param name="director">the desired director filter</param>
         /// <param name="genre">the desired genre for the search</param>
         /// <returns>A read-only list with the desired movies from the database</returns>

@@ -40,13 +40,13 @@ namespace MovieTicketingClient.SqlInterfaces
                     {
                         command.CommandType = CommandType.StoredProcedure;
 
-                        command.Parameters.AddWithValue("MovieTitle", movieTitle);
+                        if (movieTitle != null) command.Parameters.AddWithValue("MovieTitle", movieTitle);
 
-                        command.Parameters.AddWithValue("ActorNames", actorNames);
+                        if (actorNames != null) command.Parameters.AddWithValue("ActorNames", actorNames);
 
-                        command.Parameters.AddWithValue("Director", director);
+                        if (director != null) command.Parameters.AddWithValue("Director", director);
 
-                        command.Parameters.AddWithValue("GenreName", genre);
+                        if (genre != null) command.Parameters.AddWithValue("GenreName", genre);
 
                         connection.Open();
 
