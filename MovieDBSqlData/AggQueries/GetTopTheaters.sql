@@ -18,7 +18,6 @@ BEGIN
 	)
 
 	SELECT MT.SaleMonth AS [Month],
-		MT.[Rank],
 		MT.TheaterName,
 		MT.TheaterAddress,
 		MT.TicketSales
