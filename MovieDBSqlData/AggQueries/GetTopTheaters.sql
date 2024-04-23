@@ -23,5 +23,5 @@ BEGIN
 		MT.TheaterAddress,
 		MT.TicketSales
 	FROM MonthlyTheaterSales MT
-	WHERE MT.TicketSales IS NOT NULL
+	WHERE MT.TicketSales IS NOT NULL AND MT.[Rank] = 1
 END
