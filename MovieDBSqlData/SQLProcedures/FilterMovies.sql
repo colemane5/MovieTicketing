@@ -1,16 +1,11 @@
--- CREATE OR ALTER PROCEDURE FilterMovies
--- 	@MovieTitle NVARCHAR(128) = NULL,
--- 	@ActorNames NVARCHAR(MAX) = NULL, --this needs to be a comma separated list of actors to filter by
--- 	@Director NVARCHAR(64) = NULL, --i belive our data only has one director per movie so only allowing for queries with one director
--- 	@GenreName NVARCHAR(128) = NULL
--- AS
--- BEGIN
+CREATE OR ALTER PROCEDURE FilterMovies
+	@MovieTitle NVARCHAR(128) = NULL,
+	@ActorNames NVARCHAR(MAX) = NULL, --this needs to be a comma separated list of actors to filter by
+	@Director NVARCHAR(64) = NULL, --i belive our data only has one director per movie so only allowing for queries with one director
+	@GenreName NVARCHAR(128) = NULL
+AS
+BEGIN
 	SET NOCOUNT ON;
-
-	DECLARE @MovieTitle NVARCHAR(128) = NULL;
-	DECLARE @ActorNames NVARCHAR(MAX) = NULL; --this needs to be a comma separated list of actors to filter by
-	DECLARE @Director NVARCHAR(64) = NULL; --i belive our data only has one director per movie so only allowing for queries with one director
-	DECLARE @GenreName NVARCHAR(128) = NULL;
 
 	SELECT M.MovieID, M.MovieTitle, M.ReleaseDate, M.[Description]
 	FROM MovieDB.Movie M
@@ -31,4 +26,4 @@
 					WHERE ActorName IN (SELECT value FROM STRING_SPLIT(@ActorNames, ','))
 				)
 			));
--- END
+END
