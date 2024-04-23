@@ -43,7 +43,7 @@ namespace SharedResources.SqlInterfaces
                             movies.Add(new Movie(
                                reader.GetInt32(movieIdOrdinal),
                                reader.GetString(movieTitleOrdinal),
-                               reader.GetDateTime(releaseDateOrdinal).ToString(),
+                               reader.GetDateTime(releaseDateOrdinal),
                                reader.GetString(descriptionOrdinal)));
                         }
                     }

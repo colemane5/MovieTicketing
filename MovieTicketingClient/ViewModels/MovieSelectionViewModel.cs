@@ -34,8 +34,8 @@ namespace MovieTicketingClient.ViewModels
 
         public List<Genre> Genres { get; } = null!;
 
-        private Genre _selectedGenre;
-        public Genre SelectedGenre
+        private Genre? _selectedGenre;
+        public Genre? SelectedGenre
         {
             get => _selectedGenre;
             set
@@ -73,8 +73,6 @@ namespace MovieTicketingClient.ViewModels
             }
         }
 
-        public ObservableCollection<Removeable<Director>> SelectedDirectors { get; } = [];
-
         private ObservableCollection<Movie> _foundMovies = [];
         public ObservableCollection<Movie> FoundMovies
         {
@@ -87,7 +85,6 @@ namespace MovieTicketingClient.ViewModels
         }
 
         public ICommand AddActorCommand { get; }
-        public ICommand AddDirectorCommand { get; }
         public ICommand LogoutCommand { get; }
         public ICommand SearchCommand { get; }
 
@@ -95,7 +92,6 @@ namespace MovieTicketingClient.ViewModels
         {
             LogoutCommand = Logout();
             AddActorCommand = new RelayCommand(() => { if (SelectedActor is Actor actor) AddRemoveableActor(actor); });
-            AddDirectorCommand = new RelayCommand(() => { if (SelectedDirector is Director director) AddRemoveableDirector(director); });
             SearchCommand = new RelayCommand(RefreshData);
 
             Actors = sqlMovieRepository.RetrieveActors();
@@ -114,19 +110,16 @@ namespace MovieTicketingClient.ViewModels
                 SelectedActors.Add(removeable); 
             }
         }
-        private void AddRemoveableDirector(Director director)
-        {
-            if (!SelectedDirectors.Any(d => d.Id == director.Id))
-            {
-                Removeable<Director> removeable = new(director);
-                removeable.RegisterRemoveCommand(new RelayCommand(() => SelectedDirectors.Remove(removeable)));
-                SelectedDirectors.Add(removeable); 
-            }
-        }
 
         public override void RefreshData()
         {
-            throw new NotImplementedException();
+            string actorsList = string.Join(',', SelectedActors.Select(a => a.Name));
+            FoundMovies = new(sqlMovieRepository.FilterMovies(
+                null, 
+                actorsList != string.Empty ? actorsList : null, 
+                SelectedDirector?.Name,
+                SelectedGenre?.Name
+            ));
         }
     }
 }

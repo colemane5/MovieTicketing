@@ -12,7 +12,7 @@ namespace SharedResources.SqlInterfaces
         // THIS INSTANCE IS USED TO RUN THE DB FROM A LOCAL INSTANCE AT MovieDB
         private readonly string connectionString = @"Server=(localdb)\MSSQLLocalDB;Database=MovieDB;Integrated Security=true;";
 
-        public IReadOnlyList<Movie> FilterMovies(string movieTitle, string actorNames, string director, string genre)
+        public IReadOnlyList<Movie> FilterMovies(string? movieTitle, string? actorNames, string? director, string? genre)
         {
             var movies = new List<Movie>();
 
@@ -29,11 +29,8 @@ namespace SharedResources.SqlInterfaces
                         command.CommandType = CommandType.StoredProcedure;
 
                         if (movieTitle != null) command.Parameters.AddWithValue("MovieTitle", movieTitle);
-
                         if (actorNames != null) command.Parameters.AddWithValue("ActorNames", actorNames);
-
                         if (director != null) command.Parameters.AddWithValue("Director", director);
-
                         if (genre != null) command.Parameters.AddWithValue("GenreName", genre);
 
                         connection.Open();
@@ -43,14 +40,14 @@ namespace SharedResources.SqlInterfaces
                             var movieIdOrdinal = reader.GetOrdinal("MovieID");
                             var movieTitleOrdinal = reader.GetOrdinal("MovieTitle");
                             var releaseDateOrdinal = reader.GetOrdinal("ReleaseDate");
-                            var descriptionOrdinal = reader.GetOrdinal("MovieDescription");
+                            var descriptionOrdinal = reader.GetOrdinal("Description");
 
                             while (reader.Read())
                             {
                                 movies.Add(new Movie(
                                    reader.GetInt32(movieIdOrdinal),
                                    reader.GetString(movieTitleOrdinal),
-                                   reader.GetString(releaseDateOrdinal),
+                                   reader.GetDateTimeOffset(releaseDateOrdinal).DateTime,
                                    reader.GetString(descriptionOrdinal)));
                             }
                         }
@@ -87,7 +84,7 @@ namespace SharedResources.SqlInterfaces
                             movies.Add(new Movie(
                                reader.GetInt32(movieIdOrdinal),
                                reader.GetString(movieTitleOrdinal),
-                               reader.GetDateTime(releaseDateOrdinal).ToString(),
+                               reader.GetDateTime(releaseDateOrdinal),
                                reader.GetString(descriptionOrdinal)));
                         }
                     }
