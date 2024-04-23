@@ -73,5 +73,7 @@ namespace MovieTicketingAdmin.Views
         }
 
         private string ToAM_PM(int hour) => hour < 12 ? $"{hour}AM" : $"{hour - 12}PM";
+
+        private void HourGraph_SourceUpdated(object sender, DataTransferEventArgs e) => BuildGraph();
     }
 }

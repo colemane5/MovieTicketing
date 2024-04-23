@@ -55,7 +55,7 @@ namespace SharedResources.SqlInterfaces
             return genreRanksList;
         }
 
-        public List<HourlySalesResult> GetSalesPerHourOfTheDay(DateTimeOffset startTime, DateTimeOffset endTime)
+        public List<HourlySalesResult> GetSalesPerHourOfTheDay(DateTime startTime, DateTime endTime)
         {
             var hourlySalesList = new List<HourlySalesResult>();
 
@@ -89,7 +89,7 @@ namespace SharedResources.SqlInterfaces
                                             reader.GetInt32(hourOrdinal),
                                             reader.GetInt32(moviesCountOrdinal),
                                             reader.GetInt32(theatersCountOrdinal),
-                                            reader.GetDecimal(ticketSalesOrdinal)));
+                                            reader.GetInt32(ticketSalesOrdinal)));
                                     }
                                 }
                             }
@@ -122,7 +122,7 @@ namespace SharedResources.SqlInterfaces
                             {
                                 if (reader.HasRows)
                                 {
-                                    var saleMonthOrdinal = reader.GetOrdinal("SaleMonth");
+                                    var saleMonthOrdinal = reader.GetOrdinal("Month");
                                     var theaterNameOrdinal = reader.GetOrdinal("TheaterName");
                                     var theaterAddressOrdinal = reader.GetOrdinal("TheaterAddress");
                                     var ticketSalesOrdinal = reader.GetOrdinal("TicketSales");
@@ -132,10 +132,10 @@ namespace SharedResources.SqlInterfaces
                                     {
                                         topTheaterList.Add(new TopTheatersResult(
                                             reader.GetInt32(saleMonthOrdinal),
-                                            reader.GetInt32(rankOrdinal),
+                                            (int)reader.GetInt64(rankOrdinal),
                                             reader.GetString(theaterNameOrdinal),
                                             reader.GetString(theaterAddressOrdinal),
-                                            reader.GetDecimal(ticketSalesOrdinal)));
+                                            reader.GetInt32(ticketSalesOrdinal)));
                                     }
                                 }
                             }
@@ -179,7 +179,7 @@ namespace SharedResources.SqlInterfaces
                                             reader.GetString(movieTitleOrdinal),
                                             reader.GetInt32(ticketSalesOrdinal),
                                             reader.GetInt32(showingsOrdinal),
-                                            reader.GetFloat(avgTicketSalesOrdinal)));
+                                            (float)reader.GetDouble(avgTicketSalesOrdinal)));
                                     }
                                 }
                             }

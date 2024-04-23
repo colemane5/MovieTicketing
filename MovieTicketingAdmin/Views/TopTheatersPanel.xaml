@@ -27,7 +27,7 @@
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Rank" Binding="{Binding Rank}" Width="*" />
                     <DataGridTextColumn Header="Name" Binding="{Binding Name}" Width="5*" />
-                    <DataGridTextColumn Header="Sales" Binding="{Binding ShortSales}" Width="2*" />
+                    <DataGridTextColumn Header="Sales" Binding="{Binding Sales, StringFormat=C2}" Width="2*" />
                 </DataGrid.Columns>
             </DataGrid>
             <StackPanel Orientation="Horizontal" Grid.Row="2" Grid.Column="1">

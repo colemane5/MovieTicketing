@@ -1,4 +1,5 @@
-﻿using SharedResources.ViewModels;
+﻿using SharedResources.Commands;
+using SharedResources.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,6 +12,8 @@ namespace MovieTicketingApp.ViewModels
     public class LoginViewModel(ICommand loginCommand) : ViewModelBase
     {
         public ICommand LoginCommand { get; } = loginCommand;
+		public ICommand LogoutAllCommand { get; } = new LogoutAllCommand();
+
 		private string _email = "";
 		public string Email
 		{

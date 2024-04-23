@@ -5,15 +5,20 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:MovieTicketingApp.Views" xmlns:viewmodels="clr-namespace:MovieTicketingApp.ViewModels" d:DataContext="{d:DesignInstance Type=viewmodels:LoginViewModel}"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
-    <Grid>
-        <Label x:Name="uxSignInLabel" Content="Sign In" HorizontalAlignment="Center" Margin="0,75,0,0" VerticalAlignment="Top" FontSize="24" FontFamily="Arial"/>
-        <TextBox x:Name="uxEmailTextBox" Text="{Binding Email, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
-                 HorizontalAlignment="Left" TextWrapping="Wrap" 
-                 VerticalAlignment="Top" Width="224" Height="26" FontSize="16" Margin="264,192,0,0"/>
-        <Label x:Name="uxEmailLabel" Content="Email" HorizontalAlignment="Left" Margin="214,192,0,0" VerticalAlignment="Top" Width="45" FontSize="14" FontFamily="Arial"/>
-        <Button x:Name="uxLoginButton" Content="Login" Command="{Binding LoginCommand}" CommandParameter="{Binding Email}"
-                HorizontalAlignment="Center" Margin="0,253,0,0" VerticalAlignment="Top" 
-                RenderTransformOrigin="0.984,0.604" Height="26" Width="92" FontSize="14"/>
-    </Grid>
+             d:DesignHeight="450" d:DesignWidth="800" x:Name="LoginViewElement">
+    <DockPanel Margin="250">
+        <TextBlock Text="Sign In" HorizontalAlignment="Center" FontSize="48" DockPanel.Dock="Top"/>
+        <Grid DockPanel.Dock="Bottom">
+            <Button Content="Login" Command="{Binding LoginCommand}" CommandParameter="{Binding Email}"
+                    Width="150" Height="50" FontSize="20" HorizontalAlignment="Right" Margin="200 0"/>
+            <Button Content="Logout All" Command="{Binding LogoutAllCommand}" 
+                    Width="150" Height="50" FontSize="20" HorizontalAlignment="Left" Margin="200 0"/>
+        </Grid>
+        <StackPanel Orientation="Horizontal" MaxHeight="70" DockPanel.Dock="Top" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Label Target="{Binding ElementName=LoginTextBox}" Content="Email" 
+                   HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="24"/>
+            <TextBox Name="LoginTextBox" Text="{Binding Email, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                 HorizontalAlignment="Center" FontSize="20" DockPanel.Dock="Top" Width="300" VerticalAlignment="Center" Height="40" Padding="7 5"/>
+        </StackPanel>
+    </DockPanel>
 </UserControl>

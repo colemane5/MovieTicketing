@@ -20,6 +20,7 @@
                                              DateChangedCommand="{Binding RefreshCommand}" 
                                              From="{Binding From, Mode=OneWayToSource}" To="{Binding To, Mode=OneWayToSource}"/>
                 </DockPanel>
+                <ItemsControl ItemsSource="{Binding HourlySales, NotifyOnTargetUpdated=True}" Visibility="Hidden" Binding.TargetUpdated="HourGraph_SourceUpdated" />
                 <Grid x:Name="HourGraph" DockPanel.Dock="Bottom" />
             </DockPanel>
         </Grid>

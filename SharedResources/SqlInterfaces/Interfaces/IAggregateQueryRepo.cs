@@ -26,8 +26,8 @@ namespace SharedResources.SqlInterfaces.Interfaces
         /// <param name="EndTime">the end date for the rank assesment</param>
         /// <returns>A list of structs containing the resulting ranks for each hour that
         /// showtimes were shown in the given time frame</returns>
-        List<HourlySalesResult> GetSalesPerHourOfTheDay(DateTimeOffset startTime,
-            DateTimeOffset endTime);
+        List<HourlySalesResult> GetSalesPerHourOfTheDay(DateTime startTime,
+            DateTime endTime);
 
         /// <summary>
         /// A function that calls an aggregate query that returns a list of rankings for top theaters

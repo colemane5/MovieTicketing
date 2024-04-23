@@ -9,10 +9,10 @@
              d:DesignHeight="50" d:DesignWidth="300">
     <StackPanel Orientation="Horizontal" MaxHeight="25">
         <TextBlock Text="From"/>
-        <DatePicker SelectedDate="{Binding Path=From, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=local:FromToPicker}}" 
+        <DatePicker SelectedDate="{Binding Path=From, Mode=TwoWay, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=local:FromToPicker}}" 
                     SelectedDateChanged="HandleFromChanged" Margin="10 0"/>
         <TextBlock Text="To" Margin="10 0"/>
-        <DatePicker SelectedDate="{Binding Path=To, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=local:FromToPicker}}" 
+        <DatePicker SelectedDate="{Binding Path=To, Mode=TwoWay, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=local:FromToPicker}}" 
                     SelectedDateChanged="HandleToChanged"/>
     </StackPanel>
 </UserControl>

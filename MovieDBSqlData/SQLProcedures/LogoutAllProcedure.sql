@@ -1,0 +1,6 @@
+CREATE OR ALTER PROCEDURE LogoutAllProcedure
+AS
+BEGIN
+	UPDATE MovieDB.[User]
+	SET IsLoggedIn = 0
+END

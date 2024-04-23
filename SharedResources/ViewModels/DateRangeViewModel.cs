@@ -11,5 +11,11 @@ namespace SharedResources.ViewModels
     {
         public DateTime From { get; set; }
         public DateTime To { get; set; }
+
+        public DateRangeViewModel()
+        {
+            From = DateTime.Now;
+            To = DateTime.Now;
+        }
     }
 }

@@ -94,5 +94,22 @@ namespace SharedResources.SqlInterfaces
                 }
             }
         }
+
+        public void LogoutAll()
+        {
+            using (var transaction = new TransactionScope())
+            {
+                using (var connection = new SqlConnection(connectionString))
+                {
+                    using (var command = new SqlCommand("LogoutAllProcedure", connection))
+                    {
+                        command.CommandType = CommandType.StoredProcedure;
+                        connection.Open();
+                        command.ExecuteNonQuery();
+                        transaction.Complete();
+                    }
+                }
+            }
+        }
     }
 }

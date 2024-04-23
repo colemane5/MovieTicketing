@@ -50,16 +50,14 @@ namespace MovieTicketingAdmin.ViewModels
 
         public HourlySalesPanelViewModel() : base()
         {
-			RefreshData();
+            RefreshData();
 			SelectHourCommand = new RelayCommand<HourlySalesResult>((s) => { SelectedHour = s; });
         }
 
 		public override void RefreshData()
 		{
             // Refresh data
-            HourlySales = new ObservableCollection<HourlySalesResult>(_aggregateQueryRepo.GetSalesPerHourOfTheDay(
-				new DateTimeOffset(2024, 4, 1, 12, 00, 00, DateTimeOffset.Now.Offset),
-                new DateTimeOffset(2024, 4, 1, 23, 00, 00, DateTimeOffset.Now.Offset)));
+            HourlySales = new ObservableCollection<HourlySalesResult>(_aggregateQueryRepo.GetSalesPerHourOfTheDay(From, To));
         }
     }
 }
