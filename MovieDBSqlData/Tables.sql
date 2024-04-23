@@ -49,6 +49,7 @@ CREATE TABLE MovieDB.Theater(
 	TheaterID INT NOT NULL IDENTITY(1, 1) PRIMARY KEY,
 	TheaterName NVARCHAR(128) NOT NULL,
 	TheaterAddress NVARCHAR(128),
+	SeatsAvailable INT NOT NULL DEFAULT(120),
 
 	UNIQUE(TheaterName, TheaterAddress)
 );
@@ -81,7 +82,6 @@ CREATE TABLE MovieDB.MovieShowtime(
 	TheaterID INT NOT NULL FOREIGN KEY
 		REFERENCES MovieDB.Theater(TheaterID),
 	StartOn DATETIME NOT NULL,
-	SeatsAvailable INT NOT NULL DEFAULT(38),
 
 	UNIQUE(MovieID, TheaterID, StartOn)
 );
