@@ -6,5 +6,5 @@ ticket sales and theater performance amongst other aspects.
 
 # Building the DB
 After pulling the repo, to Build the DB used for this project you will need to run Windows Powershell
-as an administrator and run the command "Install-Module sqlserver. Once that is installed run the
-RebuildDatabase.ps1 shell script file and the DB should be running on your machine.
+as an administrator and run the command "Install-Module sqlserver" if you do not already have it installed.
+Once that is installed run the RebuildDatabase.ps1 shell script file and the DB should be running on your machine.
