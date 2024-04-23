@@ -17,15 +17,19 @@ BEGIN
 		INSERT INTO MovieDB.TicketPurchase(UserID, MovieShowtimeID, SalePrice)
 		VALUES(@UserID, @MovieShowtimeID, @SalePrice)
 
-		UPDATE MovieDB.MovieShowtime
-		SET SeatsLeft = (
-			SELECT (T.SeatsAvailable - COUNT(DISTINCT TP.MovieShowtimeID)) AS NewSeatsLeft
+		DECLARE @Test INT
+
+		WITH CalcSeatsLeft AS (
+			SELECT T.SeatsAvailable - COUNT(DISTINCT TP.MovieShowtimeID) AS NewSeatsLeft
 			FROM MovieDB.Theater T
-			LEFT JOIN MovieDB.MovieShowtime M ON T.TheaterID = M.TheaterID
-			LEFT JOIN MovieDB.TicketPurchase TP ON M.MovieShowtimeID = TP.MovieShowtimeID
-			WHERE M.MovieShowtimeID = @MovieShowtimeID
-			GROUP BY NewSeatsLeft
-		);
+			LEFT JOIN MovieDB.MovieShowtime MS ON T.TheaterID = MS.TheaterID
+			LEFT JOIN MovieDB.TicketPurchase TP ON MS.MovieShowtimeID = TP.MovieShowtimeID
+			WHERE MS.MovieShowtimeID = @MovieShowtimeID
+			GROUP BY T.SeatsAvailable
+		)
+
+		UPDATE MovieDB.MovieShowtime
+		SET SeatsLeft = (SELECT NewSeatsLeft FROM CalcSeatsLeft)
 
 		SET @Result = 1;
 	END
