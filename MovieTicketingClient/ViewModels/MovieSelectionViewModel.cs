@@ -32,7 +32,7 @@ namespace MovieTicketingClient.ViewModels
 
         public string? UserEmail => _user?.Email;
 
-        public List<Genre> Genres { get; } = null!;
+        public List<Genre> Genres { get; }
 
         private Genre? _selectedGenre;
         public Genre? SelectedGenre
@@ -60,7 +60,7 @@ namespace MovieTicketingClient.ViewModels
 
         public ObservableCollection<Removeable<Actor>> SelectedActors { get; } = [];
 
-        public List<Director> Directors { get; } = null!;
+        public List<Director> Directors { get; }
 
         private Director? _selectedDirector;
         public Director? SelectedDirector
@@ -97,8 +97,14 @@ namespace MovieTicketingClient.ViewModels
             Actors = sqlMovieRepository.RetrieveActors();
 
             Directors = sqlMovieRepository.RetrieveDirectors();
+            Director anyPlaceholderDirector = new Director(-1, "ANY", new DateTime());
+            Directors = Directors.Prepend(anyPlaceholderDirector).ToList();
+            SelectedDirector = anyPlaceholderDirector;
 
             Genres = sqlMovieRepository.RetrieveGenres();
+            Genre anyPlaceholderGenre = new Genre(-1, "ANY");
+            Genres = Genres.Prepend(anyPlaceholderGenre).ToList();
+            SelectedGenre = anyPlaceholderGenre;
         }
 
         private void AddRemoveableActor(Actor actor)
@@ -114,6 +120,8 @@ namespace MovieTicketingClient.ViewModels
         public override void RefreshData()
         {
             string actorsList = string.Join(',', SelectedActors.Select(a => a.Name));
+            if (SelectedGenre?.Name == "ANY") SelectedGenre = null;
+            if (SelectedDirector?.Name == "ANY") SelectedDirector = null;
             FoundMovies = new(sqlMovieRepository.FilterMovies(
                 null, 
                 actorsList != string.Empty ? actorsList : null, 

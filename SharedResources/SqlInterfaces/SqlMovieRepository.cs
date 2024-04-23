@@ -45,10 +45,10 @@ namespace SharedResources.SqlInterfaces
                             while (reader.Read())
                             {
                                 movies.Add(new Movie(
-                                   reader.GetInt32(movieIdOrdinal),
-                                   reader.GetString(movieTitleOrdinal),
-                                   reader.GetDateTimeOffset(releaseDateOrdinal).DateTime,
-                                   reader.GetString(descriptionOrdinal)));
+                                    reader.GetInt32(movieIdOrdinal),
+                                    reader.GetString(movieTitleOrdinal),
+                                    reader.GetDateTimeOffset(releaseDateOrdinal).DateTime,
+                                    reader.GetString(descriptionOrdinal)));
                             }
                         }
 
@@ -77,14 +77,14 @@ namespace SharedResources.SqlInterfaces
                         var movieIdOrdinal = reader.GetOrdinal("MovieID");
                         var movieTitleOrdinal = reader.GetOrdinal("MovieTitle");
                         var releaseDateOrdinal = reader.GetOrdinal("ReleaseDate");
-                        var descriptionOrdinal = reader.GetOrdinal("MovieDescription");
+                        var descriptionOrdinal = reader.GetOrdinal("Description");
 
                         while (reader.Read())
                         {
                             movies.Add(new Movie(
                                reader.GetInt32(movieIdOrdinal),
                                reader.GetString(movieTitleOrdinal),
-                               reader.GetDateTime(releaseDateOrdinal),
+                               reader.GetDateTimeOffset(releaseDateOrdinal).DateTime,
                                reader.GetString(descriptionOrdinal)));
                         }
                     }

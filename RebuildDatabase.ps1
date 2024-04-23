@@ -67,3 +67,4 @@ Write-Host "Rebuild completed."
 Write-Host ""
 
 Set-Location $CurrentDrive
+Read-Host -Prompt "Press Enter to exit"
