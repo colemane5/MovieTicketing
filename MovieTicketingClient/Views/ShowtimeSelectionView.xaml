@@ -3,44 +3,68 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:local="clr-namespace:MovieTicketingClient.Views"
+             xmlns:local="clr-namespace:MovieTicketingClient.Views" xmlns:viewmodels="clr-namespace:MovieTicketingClient.ViewModels" d:DataContext="{d:DesignInstance Type=viewmodels:ShowtimeSelectionViewModel}"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <DockPanel>
-        <DockPanel DockPanel.Dock="Top">
-            <Button Content="Back" Command="{Binding BackCommand}" DockPanel.Dock="Right", Width="100"/>
-            <TextBlock Content="{Binding MovieTitle}" DockPanel.Dock="Left"/>
+    <UserControl.Resources>
+        <Style TargetType="TextBlock">
+            <Setter Property="FontSize" Value="20" />
+        </Style>
+    </UserControl.Resources>
+    <DockPanel Margin="30">
+        <DockPanel DockPanel.Dock="Top" Margin="0 0 0 15">
+            <Button Content="Back" Command="{Binding BackCommand}" DockPanel.Dock="Right" Width="100" Height="30" VerticalAlignment="Top"/>
+            <TextBlock Text="{Binding MovieTitle}" FontSize="40" DockPanel.Dock="Left"/>
         </DockPanel>
-        <StackPanel Orientation="Vertical">
-            <StackPanel Orientation="Horizontal">
-                <Label Content="View showtimes at:" Target="{Binding ElementName=TheaterSelector}" />
-                <ComboBox x:Name="TheaterSelector" ItemsSource="{Binding AvailableTheaters}" SelectedItem="{Binding SelectedTheater}" />
+        <DockPanel>
+            <StackPanel Orientation="Horizontal" Margin="0 0 0 20" DockPanel.Dock="Top">
+                <Label Content="View showtimes at:" FontSize="20" Target="{Binding ElementName=TheaterSelector}" />
+                <ComboBox x:Name="TheaterSelector" ItemsSource="{Binding AvailableTheaters, UpdateSourceTrigger=PropertyChanged}" 
+                          SelectedItem="{Binding SelectedTheater}" DisplayMemberPath="Name" FontSize="20"/>
             </StackPanel>
-            <ListView ItemsSource="{Binding AvailableShowtimes}" SelectedItem="{Binding SelectedShowtime}" x:Name="ShowtimesListView">
+            <Button Content="Reserve" Command="{Binding ReserveShowtimeCommand}" HorizontalAlignment="Right" Width="150" DockPanel.Dock="Bottom" Height="30"/>
+            <ListView ItemsSource="{Binding AvailableShowtimes}" SelectedItem="{Binding SelectedShowtime}" x:Name="ShowtimesListView" 
+          Margin="0 0 0 20" DockPanel.Dock="Top" >
                 <ListView.ItemTemplate>
                     <DataTemplate>
-                        <Grid>
+                        <Grid Margin="5 10">
+                            <Grid.Resources>
+                                <Style TargetType="TextBlock">
+                                    <Setter Property="FontSize" Value="18" />
+                                    <Setter Property="TextAlignment" Value="Center" />
+                                </Style>
+                            </Grid.Resources>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*" />
                                 <ColumnDefinition Width="*" />
                                 <ColumnDefinition Width="3*" />
                             </Grid.ColumnDefinitions>
                             <TextBlock Text="{Binding StartTime, StringFormat=g}" Grid.Column="0" />
-                            <TextBlock Text="{Binding Price, StringFormat=C2}", Grid.Column="1" />
-                            <TextBlock Text="{Binding SeatsAvailable, StringFormat={}{0} Seats}", Grid.Column="2" />
+                            <TextBlock Text="{Binding Price, StringFormat=C2}" Grid.Column="1" />
+                            <TextBlock Text="{Binding SeatsAvailable, StringFormat={}{0} Seats}" Grid.Column="2" />
                         </Grid>
                     </DataTemplate>
                 </ListView.ItemTemplate>
+                <ListView.ItemContainerStyle>
+                    <Style TargetType="ListViewItem">
+                        <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                        <Setter Property="Margin" Value="0" />
+                        <Setter Property="Padding" Value="0" />
+                    </Style>
+                </ListView.ItemContainerStyle>
                 <ListView.GroupStyle>
-                    <HeaderStyle>
-                        <DockPanel>
-                            <TextBlock Text="{Binding Name}" />
-                            <Border BorderBrush="Black" BorderThickness="0.5" HorizontalAlignment="Stretch" />
-                        </DockPanel>
-                    </HeaderStyle>
+                    <GroupStyle>
+                        <GroupStyle.HeaderTemplate>
+                            <DataTemplate>
+                                <DockPanel>
+                                    <TextBlock Text="{Binding Name}" />
+                                    <Border BorderBrush="Black" BorderThickness="0.5" HorizontalAlignment="Stretch" />
+                                </DockPanel>
+                            </DataTemplate>
+                        </GroupStyle.HeaderTemplate>
+                    </GroupStyle>
                 </ListView.GroupStyle>
             </ListView>
-            <Button Content="Reserve" Command="{Binding ReserveShowtimeCommand}" HorizontalAlignment="Right" Width="150" />
-        </StackPanel>
+        </DockPanel>
     </DockPanel>
 </UserControl>

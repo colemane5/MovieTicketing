@@ -1,4 +1,6 @@
-﻿using System;
+﻿using MovieTicketingClient.ViewModels;
+using SharedResources.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +25,15 @@ namespace MovieTicketingClient.Views
         public MovieSelectionView()
         {
             InitializeComponent();
+        }
+
+        private void MovieSelected(object sender, MouseButtonEventArgs e)
+        {
+            if (DataContext is not MovieSelectionViewModel vm) return;
+            if (sender is not ListViewItem listViewItem) return;
+            if (listViewItem.DataContext is not Movie movie) return;
+
+            vm.SelectMovieCommand.Execute(movie); 
         }
     }
 }

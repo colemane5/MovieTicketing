@@ -7,19 +7,20 @@ using System.Text;
 using System.Threading.Tasks;
 using SharedResources.Models;
 using System.Windows.Input;
+using SharedResources.Commands;
 
 namespace MovieTicketingClient.ViewModels
 {
-    public class ShowtimeSelectionViewModel : ViewModelBase
+    public class ShowtimeSelectionViewModel : RefreshableViewModel, IMovieSelectable
     {
         //to use for data binding once viewmodel is developed
         private readonly SqlTheaterRepository theaterRepository = new();
 
-        public Movie SelectedMovie { get; }
+        public Movie SelectedMovie { get; private set; }
 
         public string MovieTitle => SelectedMovie.Title;
 
-        public List<Theater> AvailableTheaters { get; }
+        public List<Theater> AvailableTheaters { get; private set; }
 
         private Theater _selectedTheater;
         public Theater SelectedTheater
@@ -29,11 +30,12 @@ namespace MovieTicketingClient.ViewModels
             {
                 _selectedTheater = value;
                 OnPropertyChanged(nameof(SelectedTheater));
+                RefreshData();
             }
         }
 
-        private List<MovieShowtime> _availableShowtimes;
-        public List<MovieShowtime> AvailableShowtimes
+        private List<Showtime> _availableShowtimes = [];
+        public List<Showtime> AvailableShowtimes
         {
             get => _availableShowtimes;
             set
@@ -43,8 +45,8 @@ namespace MovieTicketingClient.ViewModels
             }
         }
 
-        private MovieShowtime _selectedShowtime;
-        public MovieShowtime SelectedShowtime
+        private Showtime _selectedShowtime;
+        public Showtime SelectedShowtime
         {
             get => _selectedShowtime;
             set
@@ -61,11 +63,28 @@ namespace MovieTicketingClient.ViewModels
         {
             ReserveShowtimeCommand = new RelayCommand(ReserveSelectedShowtime);
             BackCommand = Navigation<MovieSelectionViewModel>();
+
+            AvailableTheaters = theaterRepository.RetrieveTheaters(SelectedMovie.Id).ToList();
         }
 
         private void ReserveSelectedShowtime()
         {
-            theaterRepository.GetTicket(_user.Id, SelectedMovie.Id, SelectedShowtime.Price, SelectedShowtime.SeatsAvailable);
+            if (_user is User user)
+            {
+                theaterRepository.GetTicket(user.Id, SelectedMovie.Id, SelectedShowtime.Price, SelectedShowtime.SeatsAvailable); 
+            }
+        }
+
+        public void SelectMovie(Movie movie)
+        {
+            SelectedMovie = movie;
+            AvailableTheaters = theaterRepository.RetrieveTheaters(SelectedMovie.Id).ToList();
+            OnPropertyChanged(nameof(AvailableTheaters));
+        }
+
+        public override void RefreshData()
+        {
+            AvailableShowtimes = theaterRepository.FindShowtimes(SelectedMovie.Id, SelectedTheater.Id).ToList();
         }
     }
 }

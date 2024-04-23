@@ -87,12 +87,14 @@ namespace MovieTicketingClient.ViewModels
         public ICommand AddActorCommand { get; }
         public ICommand LogoutCommand { get; }
         public ICommand SearchCommand { get; }
+        public ICommand SelectMovieCommand { get; }
 
         public MovieSelectionViewModel() : base() 
         {
             LogoutCommand = Logout();
             AddActorCommand = new RelayCommand(() => { if (SelectedActor is Actor actor) AddRemoveableActor(actor); });
             SearchCommand = new RelayCommand(RefreshData);
+            SelectMovieCommand = new SelectMovieCommand<ShowtimeSelectionViewModel>(() => _navigationService);
 
             Actors = sqlMovieRepository.RetrieveActors();
 
