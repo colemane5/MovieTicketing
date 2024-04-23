@@ -19,11 +19,12 @@ BEGIN
 
 		UPDATE MovieDB.MovieShowtime
 		SET SeatsLeft = (
-			SELECT T.SeatsAvailable - COUNT(DISTINCT TP.MovieShowtimeID)
+			SELECT T.SeatsAvailable - COUNT(DISTINCT TP.MovieShowtimeID) AS SeatsLeft
 			FROM MovieDB.Theater T
 			LEFT JOIN MovieDB.MovieShowtime M ON T.TheaterID = M.TheaterID
 			LEFT JOIN MovieDB.TicketPurchase TP ON M.MovieShowtimeID = TP.MovieShowtimeID
 			WHERE M.MovieShowtimeID = @MovieShowtimeID
+			GROUP BY SeatsLeft
 		);
 
 		SET @Result = 1;
