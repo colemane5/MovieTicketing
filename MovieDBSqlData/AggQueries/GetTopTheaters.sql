@@ -23,4 +23,5 @@ BEGIN
 		MT.TheaterAddress,
 		MT.TicketSales
 	FROM MonthlyTheaterSales MT
+	WHERE MT.TicketSales IS NOT NULL
 END
