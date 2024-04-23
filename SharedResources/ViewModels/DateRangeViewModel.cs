@@ -14,7 +14,7 @@ namespace SharedResources.ViewModels
 
         public DateRangeViewModel()
         {
-            From = DateTime.Now;
+            From = new DateTime(2024, 1, 1);
             To = DateTime.Now;
         }
     }

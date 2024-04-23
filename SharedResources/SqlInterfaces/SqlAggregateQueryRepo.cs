@@ -13,7 +13,7 @@ namespace SharedResources.SqlInterfaces
         // THIS INSTANCE IS USED TO RUN THE DB FROM A LOCAL INSTANCE AT MovieDB
         private readonly string connectionString = @"Server=(localdb)\MSSQLLocalDB;Database=MovieDB;Integrated Security=true;";
 
-        public List<GenreRanksResult> GetGenreRanks()
+        public List<GenreRanksResult> GetGenreRanks(DateTime startTime, DateTime endTime)
         {
             var genreRanksList = new List<GenreRanksResult>();
 
@@ -26,6 +26,9 @@ namespace SharedResources.SqlInterfaces
                         using (var command = new SqlCommand("GetGenreRanks", connection))
                         {
                             command.CommandType = CommandType.StoredProcedure;
+
+                            command.Parameters.AddWithValue("StartTime", startTime);
+                            command.Parameters.AddWithValue("EndTime", endTime);
 
                             connection.Open();
 
@@ -148,7 +151,7 @@ namespace SharedResources.SqlInterfaces
             return topTheaterList;
         }
 
-        public List<TopMoviesResult> MovieStatistics()
+        public List<TopMoviesResult> MovieStatistics(DateTime startTime, DateTime endTime)
         {
             var topMovieList = new List<TopMoviesResult>();
 
@@ -161,6 +164,9 @@ namespace SharedResources.SqlInterfaces
                         using (var command = new SqlCommand("MovieStatistics", connection))
                         {
                             command.CommandType = CommandType.StoredProcedure;
+
+                            command.Parameters.AddWithValue("StartTime", startTime);
+                            command.Parameters.AddWithValue("EndTime", endTime);
 
                             connection.Open();
 

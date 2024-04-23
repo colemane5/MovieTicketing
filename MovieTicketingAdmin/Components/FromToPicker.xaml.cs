@@ -39,7 +39,7 @@ namespace MovieTicketingAdmin.Components
         private bool _active = false;
 
         public static readonly DependencyProperty FromProperty = DependencyProperty.Register(
-            nameof(From), typeof(DateTime), typeof(FromToPicker), new PropertyMetadata(DateTime.Now)
+            nameof(From), typeof(DateTime), typeof(FromToPicker), new PropertyMetadata(new DateTime(2024, 1, 1))
         );
         public static readonly DependencyProperty ToProperty = DependencyProperty.Register(
             nameof(To), typeof(DateTime), typeof(FromToPicker), new PropertyMetadata(DateTime.Now)

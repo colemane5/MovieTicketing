@@ -33,7 +33,7 @@ namespace MovieTicketingAdmin.ViewModels
         public override void RefreshData()
         {
             TopGenres = new ObservableCollection<GenreRanksResult>(
-                _aggregateQueryRepo.GetGenreRanks());
+                _aggregateQueryRepo.GetGenreRanks(From, To));
         }
     }
 }

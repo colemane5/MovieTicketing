@@ -16,7 +16,7 @@ namespace SharedResources.SqlInterfaces.Interfaces
         /// </summary>
         /// <returns>A list of structs containing the resulting ranks for each genre
         /// in the given time frame</returns>
-        List<GenreRanksResult> GetGenreRanks();
+        List<GenreRanksResult> GetGenreRanks(DateTime startTime, DateTime endTime);
 
         /// <summary>
         /// A function that calls an aggregate query that returns a list of rankings for all hours
@@ -44,6 +44,6 @@ namespace SharedResources.SqlInterfaces.Interfaces
         /// </summary>
         /// <returns>A list of structs containing the resulting ranks for each movie in the
         /// given time frame and the associated total showings and average ticket sales</returns>
-        List<TopMoviesResult> MovieStatistics();
+        List<TopMoviesResult> MovieStatistics(DateTime startTime, DateTime endTime);
     }
 }

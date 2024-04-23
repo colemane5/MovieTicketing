@@ -81,7 +81,7 @@ namespace MovieTicketingAdmin.ViewModels
         public override void RefreshData()
         {
             TopMovies = new ObservableCollection<TopMoviesResult>(
-                _aggregateQueryRepo.MovieStatistics());
+                _aggregateQueryRepo.MovieStatistics(From, To));
         }
     }
 }
