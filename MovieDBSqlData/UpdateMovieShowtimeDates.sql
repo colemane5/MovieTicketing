@@ -3,10 +3,10 @@
 UPDATE MovieDB.MovieShowtime
 SET StartOn = 
 	CASE
-		WHEN DATEPART(MONTH, StartOn) = 4 THEN DATEADD(MONTH, 1, StartOn)
-		WHEN DATEPART(MONTH, StartOn) = 5 THEN DATEADD(MONTH, 2, StartOn)
-		WHEN DATEPART(MONTH, StartOn) = 6 THEN DATEADD(MONTH, 3, StartOn)
-		WHEN DATEPART(MONTH, StartOn) = 7 THEN DATEADD(MONTH, 4, StartOn)
+		WHEN DATEPART(MONTH, StartOn) = 4 THEN DATEADD(MONTH, -3, StartOn)
+		WHEN DATEPART(MONTH, StartOn) = 5 THEN DATEADD(MONTH, -4, StartOn)
+		WHEN DATEPART(MONTH, StartOn) = 6 THEN DATEADD(MONTH, -5, StartOn)
+		WHEN DATEPART(MONTH, StartOn) = 7 THEN DATEADD(MONTH, -6, StartOn)
 		ELSE StartOn
 	END
 WHERE DATEPART(MONTH, StartOn) IN (4, 5, 6, 7);
@@ -28,4 +28,4 @@ WHERE MovieShowtimeID = 1
 
 --checking to see if the random values were random enough (didnt create duplicate keys)
 SELECT * FROM MovieDB.MovieShowtime
-WHERE DATEPART(HOUR, StartOn) NOT BETWEEN 17 AND 21
+ORDER BY StartOn
