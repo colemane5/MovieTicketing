@@ -2,7 +2,6 @@ CREATE OR ALTER PROCEDURE GetTicket
 	@UserID INT,
 	@MovieShowtimeID INT,
 	@SalePrice DECIMAL(10, 2),
-	@SeatsLeft INT,
 	@Result BIT OUT
 AS
 BEGIN
