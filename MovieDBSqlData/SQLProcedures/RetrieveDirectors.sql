@@ -1,4 +1,4 @@
-CREATE PROCEDURE RetrieveDirectors
+CREATE OR ALTER PROCEDURE RetrieveDirectors
 AS
 
 SELECT D.DirectorID, D.DirectorName, D.DirectorDateOfBirth

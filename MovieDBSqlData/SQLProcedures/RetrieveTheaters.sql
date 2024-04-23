@@ -1,4 +1,4 @@
-CREATE PROCEDURE RetrieveTheaters
+CREATE OR ALTER PROCEDURE RetrieveTheaters
 	@MovieID INT = NULL --left null for cases where user needs all theaters
 AS
 

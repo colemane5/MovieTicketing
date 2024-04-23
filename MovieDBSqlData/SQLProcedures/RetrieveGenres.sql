@@ -1,4 +1,4 @@
-CREATE PROCEDURE RetrieveGenres
+CREATE OR ALTER PROCEDURE RetrieveGenres
 AS
 
 SELECT G.GenreID, G.GenreName

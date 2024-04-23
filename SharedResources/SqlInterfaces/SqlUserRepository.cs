@@ -46,7 +46,7 @@ namespace SharedResources.SqlInterfaces
                 }
             }
 
-            if (user.Id == default) return new User();
+            if (user.Id == null) return new User();
 
             using (var transaction = new TransactionScope())
             {

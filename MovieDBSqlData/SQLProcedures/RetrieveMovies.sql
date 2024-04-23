@@ -1,4 +1,4 @@
-CREATE PROCEDURE RetrieveMovies
+CREATE OR ALTER PROCEDURE RetrieveMovies
 AS
 
 SELECT M.MovieID, M.MovieTitle, M.ReleaseDate, M.[Description]

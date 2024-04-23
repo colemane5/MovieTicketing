@@ -1,4 +1,4 @@
-CREATE PROCEDURE RetrieveActors
+CREATE OR ALTER PROCEDURE RetrieveActors
 AS
 
 SELECT A.ActorID, A.ActorName, A.ActorDateOfBirth

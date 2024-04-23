@@ -13,7 +13,7 @@ namespace SharedResources.Commands
     public class LoginCommand(Func<ViewModelBase> getAdminViewModelStart, Func<ViewModelBase> getClientViewModelStart,
                               NavigationService navigationService) : ICommand
     {
-        private SqlUserRepository _userRepository;
+        private SqlUserRepository _userRepository = new();
         private readonly Func<ViewModelBase> _getClientViewModelStart = getClientViewModelStart;
         private readonly Func<ViewModelBase> _getAdminViewModelStart = getAdminViewModelStart;
         private readonly NavigationService _navigationService = navigationService;
