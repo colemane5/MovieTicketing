@@ -23,8 +23,8 @@ namespace SharedResources.SqlInterfaces.Interfaces
         /// <param name="userID">the ID of the purchaser</param>
         /// <param name="MovieShowtimeID">the showtime ID for the ticket sale</param>
         /// <param name="salePrice">the price of the ticket</param>
-        /// <returns>returns a string stating whether the operation succeeded</returns>
-        string GetTicket(int userID, int MovieShowtimeID, decimal salePrice, int seatsLeft);
+        /// <returns>returns a bool indicating whether the operation succeeded</returns>
+        bool GetTicket(int userID, int MovieShowtimeID, decimal salePrice, int seatsLeft);
 
         /// <summary>
         /// A function to return all theaters on the db to use in the filter function

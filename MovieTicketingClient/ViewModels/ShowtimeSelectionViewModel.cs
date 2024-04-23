@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using SharedResources.Models;
 using System.Windows.Input;
 using SharedResources.Commands;
+using System.Collections.ObjectModel;
 
 namespace MovieTicketingClient.ViewModels
 {
@@ -34,8 +35,8 @@ namespace MovieTicketingClient.ViewModels
             }
         }
 
-        private List<Showtime> _availableShowtimes = [];
-        public List<Showtime> AvailableShowtimes
+        private ObservableCollection<Showtime> _availableShowtimes = [];
+        public ObservableCollection<Showtime> AvailableShowtimes
         {
             get => _availableShowtimes;
             set
@@ -65,13 +66,15 @@ namespace MovieTicketingClient.ViewModels
             BackCommand = Navigation<MovieSelectionViewModel>();
 
             AvailableTheaters = theaterRepository.RetrieveTheaters(SelectedMovie.Id).ToList();
+            AvailableShowtimes.CollectionChanged += (s, e) => OnPropertyChanged(nameof(AvailableShowtimes));
         }
 
         private void ReserveSelectedShowtime()
         {
             if (_user is User user)
             {
-                theaterRepository.GetTicket(user.Id, SelectedMovie.Id, SelectedShowtime.Price, SelectedShowtime.SeatsAvailable); 
+                //bool success = theaterRepository.GetTicket(user.Id, SelectedMovie.Id, SelectedShowtime.Price, SelectedShowtime.SeatsAvailable);
+                /*if (success)*/ AvailableShowtimes.Remove(SelectedShowtime);
             }
         }
 
@@ -84,7 +87,7 @@ namespace MovieTicketingClient.ViewModels
 
         public override void RefreshData()
         {
-            AvailableShowtimes = theaterRepository.FindShowtimes(SelectedMovie.Id, SelectedTheater.Id).ToList();
+            AvailableShowtimes = new(theaterRepository.FindShowtimes(SelectedMovie.Id, SelectedTheater.Id));
         }
     }
 }

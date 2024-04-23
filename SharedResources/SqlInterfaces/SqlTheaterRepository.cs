@@ -54,7 +54,7 @@ namespace SharedResources.SqlInterfaces
             }
         }
 
-        public string GetTicket(int userID, int MovieShowtimeID, decimal salePrice, int seatsLeft)
+        public bool GetTicket(int userID, int MovieShowtimeID, decimal salePrice, int seatsLeft)
         {
             string result = string.Empty;
 
@@ -79,7 +79,7 @@ namespace SharedResources.SqlInterfaces
 
                         transaction.Complete();
 
-                        return result;
+                        return result == "Success";
                     }
                 }
             }
