@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using SharedResources.Models;
+using System.Windows.Input;
 
 namespace MovieTicketingClient.ViewModels
 {
@@ -54,5 +55,17 @@ namespace MovieTicketingClient.ViewModels
         }
 
         public ICommand ReserveShowtimeCommand { get; }
+        public ICommand BackCommand { get; }
+
+        public ShowtimeSelectionViewModel()
+        {
+            ReserveShowtimeCommand = new RelayCommand(ReserveSelectedShowtime);
+            BackCommand = Navigation<MovieSelectionViewModel>();
+        }
+
+        private void ReserveSelectedShowtime()
+        {
+            theaterRepository.GetTicket(_user.Id, SelectedMovie.Id, SelectedShowtime.Price, SelectedShowtime.SeatsAvailable);
+        }
     }
 }

@@ -16,7 +16,7 @@
                 <Label Content="View showtimes at:" Target="{Binding ElementName=TheaterSelector}" />
                 <ComboBox x:Name="TheaterSelector" ItemsSource="{Binding AvailableTheaters}" SelectedItem="{Binding SelectedTheater}" />
             </StackPanel>
-            <ListView ItemsSource="{Binding AvailableShowtimes}" SelectedItem="{Binding SelectedShowtime}">
+            <ListView ItemsSource="{Binding AvailableShowtimes}" SelectedItem="{Binding SelectedShowtime}" x:Name="ShowtimesListView">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <Grid>
@@ -34,7 +34,7 @@
                 <ListView.GroupStyle>
                     <HeaderStyle>
                         <DockPanel>
-                            <TextBlock Text="{Binding StartTime, StringFormat=m}" />
+                            <TextBlock Text="{Binding Name}" />
                             <Border BorderBrush="Black" BorderThickness="0.5" HorizontalAlignment="Stretch" />
                         </DockPanel>
                     </HeaderStyle>

@@ -23,6 +23,11 @@ namespace MovieTicketingClient.Views
         public ShowtimeSelectionView()
         {
             InitializeComponent();
+
+            CollectionView showtimeCollectionView = (CollectionView)CollectionViewSource.GetDefaultView(MenuItemsListView.ItemsSource);
+            PropertyGroupDescription propertyGroup = new("MenuGroup");
+            showtimeCollectionView.GroupDescriptions.Add(propertyGroup);
+            CollectionView showtimeCollectionView = (CollectionView)CollectionViewSourc.
         }
     }
 }
