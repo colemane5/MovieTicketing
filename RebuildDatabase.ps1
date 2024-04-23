@@ -62,6 +62,7 @@ Invoke-SqlCmd -ServerInstance $Server -Database $Database -InputFile "MovieDBSql
 Write-Host "Inserting data..."
 Invoke-SqlCmd -ServerInstance $Server -Database $Database -InputFile "MovieDBSqlData\allInsertStatements.sql"
 Invoke-SqlCmd -ServerInstance $Server -Database $Database -InputFile "MovieDBSqlData\UserAndTicketPurchaseInserts.sql"
+Invoke-SqlCmd -ServerInstance $Server -Database $Database -InputFile "MovieDBSqlData\UpdateMovieShowtimeDates.sql"
 
 Write-Host "Rebuild completed."
 Write-Host ""

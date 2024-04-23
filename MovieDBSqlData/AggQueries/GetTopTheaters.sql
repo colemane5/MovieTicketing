@@ -1,8 +1,8 @@
 CREATE OR ALTER PROCEDURE GetTopTheaters
-	@StartDate DATETIMEOFFSET,
-	@EndDate DATETIMEOFFSET
 AS
 BEGIN
+	DECLARE @StartDate DATETIME = DATEADD(YEAR, -1, GETDATE())
+	DECLARE @EndDate DATETIME = GETDATE();
 
 	WITH MonthlyTheaterSales AS(
 		SELECT MONTH(MS.StartOn) AS SaleMonth,
@@ -18,9 +18,9 @@ BEGIN
 	)
 
 	SELECT MT.SaleMonth AS [Month],
+		MT.[Rank],
 		MT.TheaterName,
 		MT.TheaterAddress,
 		MT.TicketSales
 	FROM MonthlyTheaterSales MT
-	WHERE MT.TicketSales IS NOT NULL AND MT.[Rank] = 1
 END
