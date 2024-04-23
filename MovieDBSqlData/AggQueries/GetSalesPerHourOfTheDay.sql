@@ -17,5 +17,5 @@ BEGIN
 
 	SELECT H.HourOfDay, H.UniqueMovies, H.UniqueTheaters, H.TicketSales
 	FROM HourlyStatistics H
-	ORDER BY TicketSales DESC
+	ORDER BY H.HourOfDay ASC
 END

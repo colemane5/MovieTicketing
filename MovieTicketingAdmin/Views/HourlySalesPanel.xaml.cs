@@ -72,7 +72,14 @@ namespace MovieTicketingAdmin.Views
             }
         }
 
-        private string ToAM_PM(int hour) => hour < 12 ? $"{hour}AM" : $"{hour - 12}PM";
+        private string ToAM_PM(int hour) => hour switch
+        {
+            (< 12) => $"{hour}AM",
+            (12) => $"12PM",
+            (< 24) => $"{hour - 12}PM",
+            (24) => $"12AM",
+            _ => "N/A"
+        };
 
         private void HourGraph_SourceUpdated(object sender, DataTransferEventArgs e) => BuildGraph();
     }
