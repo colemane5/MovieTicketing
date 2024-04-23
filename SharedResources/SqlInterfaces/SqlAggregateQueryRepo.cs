@@ -17,155 +17,179 @@ namespace SharedResources.SqlInterfaces
         {
             var genreRanksList = new List<GenreRanksResult>();
 
-            using (var transaction = new TransactionScope())
+            try
             {
-                using (var connection = new SqlConnection(connectionString))
+                using (var transaction = new TransactionScope())
                 {
-                    using (var command = new SqlCommand("GetGenreRanks", connection))
+                    using (var connection = new SqlConnection(connectionString))
                     {
-                        command.CommandType = CommandType.StoredProcedure;
-
-                        connection.Open();
-
-                        using (var reader = command.ExecuteReader())
+                        using (var command = new SqlCommand("GetGenreRanks", connection))
                         {
-                            var rankOrdinal = reader.GetOrdinal("Rank");
-                            var genreNameOrdinal = reader.GetOrdinal("GenreName");
-                            var ticketsSoldOrdinal = reader.GetOrdinal("TicketsSold");
+                            command.CommandType = CommandType.StoredProcedure;
 
-                            while (reader.Read())
+                            connection.Open();
+
+                            using (var reader = command.ExecuteReader())
                             {
-                                genreRanksList.Add(new GenreRanksResult(
-                                    (int)reader.GetInt64(rankOrdinal),
-                                    reader.GetString(genreNameOrdinal),
-                                    (int)reader.GetInt64(ticketsSoldOrdinal)));
-                            }
-                        }
-                        connection.Close();
+                                if (reader.HasRows)
+                                {
+                                    var rankOrdinal = reader.GetOrdinal("Rank");
+                                    var genreNameOrdinal = reader.GetOrdinal("GenreName");
+                                    var ticketsSoldOrdinal = reader.GetOrdinal("TicketsSold");
 
-                        return genreRanksList;
+                                    while (reader.Read())
+                                    {
+                                        genreRanksList.Add(new GenreRanksResult(
+                                            (int)reader.GetInt64(rankOrdinal),
+                                            reader.GetString(genreNameOrdinal),
+                                            reader.GetInt32(ticketsSoldOrdinal)));
+                                    }
+                                }
+                            }
+                            connection.Close();
+                        }
                     }
                 }
             }
+            catch (Exception) { }
+            return genreRanksList;
         }
 
         public List<HourlySalesResult> GetSalesPerHourOfTheDay(DateTimeOffset startTime, DateTimeOffset endTime)
         {
             var hourlySalesList = new List<HourlySalesResult>();
 
-            using (var transaction = new TransactionScope())
+            try
             {
-                using (var connection = new SqlConnection(connectionString))
+                using (var transaction = new TransactionScope())
                 {
-                    using (var command = new SqlCommand("GetSalesPerHourOfTheDay", connection))
+                    using (var connection = new SqlConnection(connectionString))
                     {
-                        command.CommandType = CommandType.StoredProcedure;
-
-                        command.Parameters.AddWithValue("StartTime", startTime);
-                        command.Parameters.AddWithValue("EndTime", endTime);
-
-                        connection.Open();
-
-                        using (var reader = command.ExecuteReader())
+                        using (var command = new SqlCommand("GetSalesPerHourOfTheDay", connection))
                         {
-                            var hourOrdinal = reader.GetOrdinal("HourOfDay");
-                            var moviesCountOrdinal = reader.GetOrdinal("UniqueMovies");
-                            var theatersCountOrdinal = reader.GetOrdinal("UniqueTheaters");
-                            var ticketSalesOrdinal = reader.GetOrdinal("TicketSales");
+                            command.CommandType = CommandType.StoredProcedure;
 
-                            while (reader.Read())
+                            command.Parameters.AddWithValue("StartTime", startTime);
+                            command.Parameters.AddWithValue("EndTime", endTime);
+
+                            connection.Open();
+
+                            using (var reader = command.ExecuteReader())
                             {
-                                hourlySalesList.Add(new HourlySalesResult(
-                                    reader.GetInt32(hourOrdinal),
-                                    reader.GetInt32(moviesCountOrdinal),
-                                    reader.GetInt32(theatersCountOrdinal),
-                                    reader.GetDecimal(ticketSalesOrdinal)));
-                            }
-                        }
-                        connection.Close();
+                                if (reader.HasRows)
+                                {
+                                    var hourOrdinal = reader.GetOrdinal("HourOfDay");
+                                    var moviesCountOrdinal = reader.GetOrdinal("UniqueMovies");
+                                    var theatersCountOrdinal = reader.GetOrdinal("UniqueTheaters");
+                                    var ticketSalesOrdinal = reader.GetOrdinal("TicketSales");
 
-                        return hourlySalesList;
+                                    while (reader.Read())
+                                    {
+                                        hourlySalesList.Add(new HourlySalesResult(
+                                            reader.GetInt32(hourOrdinal),
+                                            reader.GetInt32(moviesCountOrdinal),
+                                            reader.GetInt32(theatersCountOrdinal),
+                                            reader.GetDecimal(ticketSalesOrdinal)));
+                                    }
+                                }
+                            }
+                            connection.Close();
+                        }
                     }
                 }
             }
+            catch (Exception) { }
+            return hourlySalesList;
         }
 
         public List<TopTheatersResult> GetTopTheaters()
         {
             var topTheaterList = new List<TopTheatersResult>();
 
-            using (var transaction = new TransactionScope())
+            try
             {
-                using (var connection = new SqlConnection(connectionString))
+                using (var transaction = new TransactionScope())
                 {
-                    using (var command = new SqlCommand("GetTopTheaters", connection))
+                    using (var connection = new SqlConnection(connectionString))
                     {
-                        command.CommandType = CommandType.StoredProcedure;
-
-                        connection.Open();
-
-                        using (var reader = command.ExecuteReader())
+                        using (var command = new SqlCommand("GetTopTheaters", connection))
                         {
-                            var saleMonthOrdinal = reader.GetOrdinal("SaleMonth");
-                            var theaterNameOrdinal = reader.GetOrdinal("TheaterName");
-                            var theaterAddressOrdinal = reader.GetOrdinal("TheaterAddress");
-                            var ticketSalesOrdinal = reader.GetOrdinal("TicketSales");
-                            var rankOrdinal = reader.GetOrdinal("Rank");
+                            command.CommandType = CommandType.StoredProcedure;
 
-                            while (reader.Read())
+                            connection.Open();
+
+                            using (var reader = command.ExecuteReader())
                             {
-                                topTheaterList.Add(new TopTheatersResult(
-                                    reader.GetInt32(saleMonthOrdinal),
-                                    reader.GetInt32(rankOrdinal),
-                                    reader.GetString(theaterNameOrdinal),
-                                    reader.GetString(theaterAddressOrdinal),
-                                    reader.GetDecimal(ticketSalesOrdinal)));
-                            }
-                        }
-                        connection.Close();
+                                if (reader.HasRows)
+                                {
+                                    var saleMonthOrdinal = reader.GetOrdinal("SaleMonth");
+                                    var theaterNameOrdinal = reader.GetOrdinal("TheaterName");
+                                    var theaterAddressOrdinal = reader.GetOrdinal("TheaterAddress");
+                                    var ticketSalesOrdinal = reader.GetOrdinal("TicketSales");
+                                    var rankOrdinal = reader.GetOrdinal("Rank");
 
-                        return topTheaterList;
+                                    while (reader.Read())
+                                    {
+                                        topTheaterList.Add(new TopTheatersResult(
+                                            reader.GetInt32(saleMonthOrdinal),
+                                            reader.GetInt32(rankOrdinal),
+                                            reader.GetString(theaterNameOrdinal),
+                                            reader.GetString(theaterAddressOrdinal),
+                                            reader.GetDecimal(ticketSalesOrdinal)));
+                                    }
+                                }
+                            }
+                            connection.Close();
+                        }
                     }
                 }
             }
+            catch (Exception) { }
+            return topTheaterList;
         }
 
         public List<TopMoviesResult> MovieStatistics()
         {
             var topMovieList = new List<TopMoviesResult>();
 
-            using (var transaction = new TransactionScope())
+            try
             {
-                using (var connection = new SqlConnection(connectionString))
+                using (var transaction = new TransactionScope())
                 {
-                    using (var command = new SqlCommand("MovieStatistics", connection))
+                    using (var connection = new SqlConnection(connectionString))
                     {
-                        command.CommandType = CommandType.StoredProcedure;
-
-                        connection.Open();
-
-                        using (var reader = command.ExecuteReader())
+                        using (var command = new SqlCommand("MovieStatistics", connection))
                         {
-                            var movieTitleOrdinal = reader.GetOrdinal("MovieTitle");
-                            var ticketSalesOrdinal = reader.GetOrdinal("TicketSales");
-                            var showingsOrdinal = reader.GetOrdinal("TotalShowings");
-                            var avgTicketSalesOrdinal = reader.GetOrdinal("AvgTicketsPerShowing");
+                            command.CommandType = CommandType.StoredProcedure;
 
-                            while (reader.Read())
+                            connection.Open();
+
+                            using (var reader = command.ExecuteReader())
                             {
-                                topMovieList.Add(new TopMoviesResult(
-                                    reader.GetString(movieTitleOrdinal),
-                                    reader.GetInt32(ticketSalesOrdinal),
-                                    reader.GetInt32(showingsOrdinal),
-                                    reader.GetFloat(avgTicketSalesOrdinal)));
-                            }
-                        }
-                        connection.Close();
+                                if (reader.HasRows)
+                                {
+                                    var movieTitleOrdinal = reader.GetOrdinal("MovieTitle");
+                                    var ticketSalesOrdinal = reader.GetOrdinal("TicketSales");
+                                    var showingsOrdinal = reader.GetOrdinal("TotalShowings");
+                                    var avgTicketSalesOrdinal = reader.GetOrdinal("AvgTicketsPerShowing");
 
-                        return topMovieList;
+                                    while (reader.Read())
+                                    {
+                                        topMovieList.Add(new TopMoviesResult(
+                                            reader.GetString(movieTitleOrdinal),
+                                            reader.GetInt32(ticketSalesOrdinal),
+                                            reader.GetInt32(showingsOrdinal),
+                                            reader.GetFloat(avgTicketSalesOrdinal)));
+                                    }
+                                }
+                            }
+                            connection.Close();
+                        }
                     }
                 }
             }
+            catch (Exception) { }
+            return topMovieList;
         }
     }
 }
