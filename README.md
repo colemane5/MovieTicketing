@@ -1,7 +1,7 @@
 # MovieTicketing
 
-An application that handles movie and showtimes searches as well as tikcet transactions for users.
-The application also offers and administrator login to edit showtimes and view statistics about
+An application that handles movie and showtime searches as well as tikcet transactions for users.
+The application also offers an administrator login to edit showtimes and view statistics about
 ticket sales and theater performance amongst other aspects.
 
 # Building the DB
