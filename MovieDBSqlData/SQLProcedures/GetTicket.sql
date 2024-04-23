@@ -26,7 +26,7 @@ BEGIN
 			LEFT JOIN MovieDB.TicketPurchase TP ON MS.MovieShowtimeID = TP.MovieShowtimeID
 			WHERE MS.MovieShowtimeID = @MovieShowtimeID
 			GROUP BY T.SeatsAvailable
-		)
+		);
 
 		UPDATE MovieDB.MovieShowtime
 		SET SeatsLeft = (SELECT NewSeatsLeft FROM CalcSeatsLeft)
