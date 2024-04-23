@@ -14,8 +14,8 @@ namespace SharedResources.SqlInterfaces.Interfaces
         /// with that email and changes their loggedin value on the db
         /// </summary>
         /// <param name="email">the email of the desired user</param>
-        /// <returns>returns the user with the given email</returns>
-        User LoginUser(string email);
+        /// <returns>returns the user with the given email, or null if the user cannot be logged in.</returns>
+        User? LoginUser(string email);
 
         /// <summary>
         /// A function that flips the loggined value of the user with the given email to not logged in

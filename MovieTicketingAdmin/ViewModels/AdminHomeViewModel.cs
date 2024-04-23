@@ -13,6 +13,7 @@ namespace MovieTicketingAdmin.ViewModels
     public class AdminHomeViewModel : ViewModelBase
     {
         public string? Name => _user?.Name;
+        public string? UserEmail => _user?.Email;
 
         public ICommand NavigateStatsCommand { get; }
         public ICommand NavigateModifyTablesCommand { get; }

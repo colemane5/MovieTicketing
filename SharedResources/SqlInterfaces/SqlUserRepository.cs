@@ -12,9 +12,9 @@ namespace SharedResources.SqlInterfaces
         // THIS INSTANCE IS USED TO RUN THE DB FROM A LOCAL INSTANCE AT MovieDB
         private readonly string connectionString = @"Server=(localdb)\MSSQLLocalDB;Database=MovieDB;Integrated Security=true;";
 
-        public User LoginUser(string email)
+        public User? LoginUser(string email)
         {
-            User user = new User();
+            User? user = null;
 
             using(var connection = new SqlConnection(connectionString))
             {
@@ -28,17 +28,20 @@ namespace SharedResources.SqlInterfaces
 
                     using (var reader = command.ExecuteReader())
                     {
-                        var userIDOrdinal = reader.GetOrdinal("UserID");
-                        var userNameOrdinal = reader.GetOrdinal("UserName");
-                        var isAdminOrdinal = reader.GetOrdinal("IsAdmin");
-
-                        while (reader.Read())
+                        if (reader.HasRows)
                         {
-                            user = new User(
-                               reader.GetInt32(userIDOrdinal),
-                               reader.GetString(userNameOrdinal),
-                               email,
-                               reader.GetBoolean(isAdminOrdinal));
+                            var userIDOrdinal = reader.GetOrdinal("UserID");
+                            var userNameOrdinal = reader.GetOrdinal("UserName");
+                            var isAdminOrdinal = reader.GetOrdinal("IsAdmin");
+
+                            while (reader.Read())
+                            {
+                                user = new User(
+                                   reader.GetInt32(userIDOrdinal),
+                                   reader.GetString(userNameOrdinal),
+                                   email,
+                                   reader.GetBoolean(isAdminOrdinal));
+                            } 
                         }
                     }
 
@@ -46,7 +49,7 @@ namespace SharedResources.SqlInterfaces
                 }
             }
 
-            if (user.Id == null) return new User();
+            if (user is null) return null;
 
             using (var transaction = new TransactionScope())
             {
@@ -67,7 +70,7 @@ namespace SharedResources.SqlInterfaces
                 }
             }
 
-            return user;
+            return (User)user;
         }
 
         public void LogoutUser(string email)

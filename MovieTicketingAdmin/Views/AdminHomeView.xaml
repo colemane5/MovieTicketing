@@ -22,7 +22,7 @@
                 DockPanel.Dock="Top" HorizontalAlignment="Left" />
         <Button Content="Modify Tables" Command="{Binding NavigateModifyTablesCommand}"
                 DockPanel.Dock="Top" HorizontalAlignment="Left" />
-        <Button Content="Logout" Command="{Binding LogoutCommand}"
+        <Button Content="Logout" Command="{Binding LogoutCommand}" CommandParameter="{Binding UserEmail}"
                 DockPanel.Dock="Bottom" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0"/>
     </DockPanel>
     

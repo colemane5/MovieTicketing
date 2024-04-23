@@ -29,7 +29,12 @@ namespace MovieTicketingApp
             _mainViewModel = new(_navigationService);
             MainWindow.DataContext = _mainViewModel;
 
-            ICommand loginCommand = new LoginCommand(() => new AdminHomeViewModel(), () => new MovieSelectionViewModel(), _navigationService);
+            Action<string> loginFail = (email) =>
+            {
+                MessageBox.Show($"Could not login with email {email}. The account may be logged in already or it does not exist.",
+                    "Login Failed", MessageBoxButton.OK, MessageBoxImage.Error);
+            };
+            ICommand loginCommand = new LoginCommand(() => new AdminHomeViewModel(), () => new MovieSelectionViewModel(), loginFail, _navigationService);
             Func<LoginViewModel> loginViewModel = () => new(loginCommand);
             _navigationService.ChangeViewModel(loginViewModel());
             _navigationService.StartViewModel = loginViewModel;

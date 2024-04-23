@@ -58,7 +58,8 @@
         <DockPanel Grid.Column="1">
             <DockPanel DockPanel.Dock="Top">
                 <TextBlock Text="Select a movie" DockPanel.Dock="Left"/>
-                <Button Content="Logout" Command="{Binding LogoutCommand}" DockPanel.Dock="Right" MaxWidth="80" HorizontalAlignment="Right" MinWidth="60"/>
+                <Button Content="Logout" Command="{Binding LogoutCommand}" CommandParameter="{Binding UserEmail}"
+                        DockPanel.Dock="Right" MaxWidth="80" HorizontalAlignment="Right" MinWidth="60"/>
             </DockPanel>
             <ListView DockPanel.Dock="Bottom" ItemsSource="{Binding FoundMovies}" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
                 <ListView.ItemsPanel>

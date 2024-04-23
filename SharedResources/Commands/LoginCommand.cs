@@ -11,12 +11,13 @@ using SharedResources.SqlInterfaces;
 namespace SharedResources.Commands
 {
     public class LoginCommand(Func<ViewModelBase> getAdminViewModelStart, Func<ViewModelBase> getClientViewModelStart,
-                              NavigationService navigationService) : ICommand
+                              Action<string> loginFailShowMessage, NavigationService navigationService) : ICommand
     {
         private SqlUserRepository _userRepository = new();
         private readonly Func<ViewModelBase> _getClientViewModelStart = getClientViewModelStart;
         private readonly Func<ViewModelBase> _getAdminViewModelStart = getAdminViewModelStart;
         private readonly NavigationService _navigationService = navigationService;
+        private readonly Action<string> _loginFailShowMessage = loginFailShowMessage;
 
 #pragma warning disable CS0067 // The event 'LoginCommand.CanExecuteChanged' is never used
         public event EventHandler? CanExecuteChanged;
@@ -28,14 +29,14 @@ namespace SharedResources.Commands
         {
             if (parameter is string email)
             {                
-                User user = _userRepository.LoginUser(email);
-                if (user.Id != default)
+                User? userN = _userRepository.LoginUser(email);
+                if (userN is User user)
                 {
                     Func<ViewModelBase> getViewModelStart = user.IsAdmin ? _getAdminViewModelStart : _getClientViewModelStart;
                     _navigationService.CurrentUser = user;
                     _navigationService.ChangeViewModel(getViewModelStart());
                 }
-                // can implement an else statement here to show dialog that user was not found
+                else _loginFailShowMessage(email);
             }
         }
     }

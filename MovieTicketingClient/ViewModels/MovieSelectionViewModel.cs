@@ -30,6 +30,8 @@ namespace MovieTicketingClient.ViewModels
     {
         private readonly SqlMovieRepository sqlMovieRepository = new();
 
+        public string? UserEmail => _user?.Email;
+
         public List<Genre> Genres { get; } = null!;
 
         private Genre _selectedGenre;

@@ -36,9 +36,9 @@ namespace SharedResources.SqlInterfaces
                             while (reader.Read())
                             {
                                 genreRanksList.Add(new GenreRanksResult(
-                                    reader.GetInt32(rankOrdinal),
+                                    (int)reader.GetInt64(rankOrdinal),
                                     reader.GetString(genreNameOrdinal),
-                                    reader.GetInt32(ticketsSoldOrdinal)));
+                                    (int)reader.GetInt64(ticketsSoldOrdinal)));
                             }
                         }
                         connection.Close();
