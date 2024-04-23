@@ -3,14 +3,68 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:local="clr-namespace:MovieTicketingClient.Views"
+             xmlns:local="clr-namespace:MovieTicketingClient.Views" xmlns:viewmodels="clr-namespace:MovieTicketingClient.ViewModels" d:DataContext="{d:DesignInstance Type=viewmodels:ShowtimeSelectionViewModel}"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid>
-        <Label x:Name="uxTitleCard" Content="*Title Goes Here*" HorizontalAlignment="Left" Margin="10,19,0,0" VerticalAlignment="Top" Height="30" Width="559" FontSize="20" FontFamily="Arial" FontWeight="Bold"/>
-        <Label x:Name="uxTheaterLabel" Content="Showtimes at:" HorizontalAlignment="Left" Margin="10,54,0,0" VerticalAlignment="Top" FontFamily="Arial"/>
-        <ComboBox x:Name="uxTheaterComboBox" HorizontalAlignment="Left" Margin="100,54,0,0" VerticalAlignment="Top" Width="190" Height="24" FontFamily="Arial"/>
-        <Button x:Name="uxBackButton" Content="Back" HorizontalAlignment="Left" Margin="690,22,0,0" VerticalAlignment="Top" Height="24" Width="100" FontFamily="Arial" FontSize="14"/>
-        <Grid x:Name="uxShowtimeDisplayGrid" Margin="10,100,10,10"/>
-    </Grid>
+    <UserControl.Resources>
+        <Style TargetType="TextBlock">
+            <Setter Property="FontSize" Value="20" />
+        </Style>
+    </UserControl.Resources>
+    <DockPanel Margin="30">
+        <DockPanel DockPanel.Dock="Top" Margin="0 0 0 15">
+            <Button Content="Back" Command="{Binding BackCommand}" DockPanel.Dock="Right" Width="100" Height="30" VerticalAlignment="Top"/>
+            <TextBlock Text="{Binding MovieTitle}" FontSize="40" DockPanel.Dock="Left"/>
+        </DockPanel>
+        <DockPanel>
+            <StackPanel Orientation="Horizontal" Margin="0 0 0 20" DockPanel.Dock="Top">
+                <Label Content="View showtimes at:" FontSize="20" Target="{Binding ElementName=TheaterSelector}" />
+                <ComboBox x:Name="TheaterSelector" ItemsSource="{Binding AvailableTheaters, UpdateSourceTrigger=PropertyChanged}" 
+                          SelectedItem="{Binding SelectedTheater}" DisplayMemberPath="Name" FontSize="20"/>
+            </StackPanel>
+            <Button Content="Reserve" Command="{Binding ReserveShowtimeCommand}" HorizontalAlignment="Right" Width="150" DockPanel.Dock="Bottom" Height="30"/>
+            <ListView ItemsSource="{Binding AvailableShowtimes}" SelectedItem="{Binding SelectedShowtime}" x:Name="ShowtimesListView" 
+          Margin="0 0 0 20" DockPanel.Dock="Top" >
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid Margin="5 10">
+                            <Grid.Resources>
+                                <Style TargetType="TextBlock">
+                                    <Setter Property="FontSize" Value="18" />
+                                    <Setter Property="TextAlignment" Value="Center" />
+                                </Style>
+                            </Grid.Resources>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="3*" />
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Text="{Binding StartTime, StringFormat=g}" Grid.Column="0" />
+                            <TextBlock Text="{Binding Price, StringFormat=C2}" Grid.Column="1" />
+                            <TextBlock Text="{Binding SeatsAvailable, StringFormat={}{0} Seats}" Grid.Column="2" />
+                        </Grid>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+                <ListView.ItemContainerStyle>
+                    <Style TargetType="ListViewItem">
+                        <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                        <Setter Property="Margin" Value="0" />
+                        <Setter Property="Padding" Value="0" />
+                    </Style>
+                </ListView.ItemContainerStyle>
+                <ListView.GroupStyle>
+                    <GroupStyle>
+                        <GroupStyle.HeaderTemplate>
+                            <DataTemplate>
+                                <DockPanel>
+                                    <TextBlock Text="{Binding Name}" />
+                                    <Border BorderBrush="Black" BorderThickness="0.5" HorizontalAlignment="Stretch" />
+                                </DockPanel>
+                            </DataTemplate>
+                        </GroupStyle.HeaderTemplate>
+                    </GroupStyle>
+                </ListView.GroupStyle>
+            </ListView>
+        </DockPanel>
+    </DockPanel>
 </UserControl>

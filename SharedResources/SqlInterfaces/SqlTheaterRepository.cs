@@ -41,8 +41,8 @@ namespace SharedResources.SqlInterfaces
                                    reader.GetInt32(showTimeIdOrdinal),
                                    movieID,
                                    theaterID,
-                                   reader.GetDateTimeOffset(startOnOrdinal).DateTime,
-                                   reader.GetDecimal(salePriceOrdinal),
+                                   reader.GetDateTime(startOnOrdinal),
+                                   reader.GetInt32(salePriceOrdinal),
                                    reader.GetInt32(seatsAvailableOrdinal)));
                         }
                     }

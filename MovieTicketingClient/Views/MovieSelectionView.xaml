@@ -76,6 +76,11 @@
                         </DockPanel>
                     </DataTemplate>
                 </ListView.ItemTemplate>
+                <ListView.ItemContainerStyle>
+                    <Style TargetType="ListViewItem">
+                        <EventSetter Event="PreviewMouseLeftButtonDown" Handler="MovieSelected" />
+                    </Style>
+                </ListView.ItemContainerStyle>
             </ListView>
         </DockPanel>
     </Grid>
