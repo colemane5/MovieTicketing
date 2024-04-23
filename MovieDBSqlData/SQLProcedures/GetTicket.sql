@@ -24,7 +24,7 @@ BEGIN
 			LEFT JOIN MovieDB.MovieShowtime M ON T.TheaterID = M.TheaterID
 			LEFT JOIN MovieDB.TicketPurchase TP ON M.MovieShowtimeID = TP.MovieShowtimeID
 			WHERE M.MovieShowtimeID = @MovieShowtimeID
-			GROUP BY SeatsLeft
+			GROUP BY T.SeatsAvailable
 		);
 
 		SET @Result = 1;

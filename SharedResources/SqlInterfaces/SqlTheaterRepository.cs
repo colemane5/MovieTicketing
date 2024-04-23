@@ -32,7 +32,7 @@ namespace SharedResources.SqlInterfaces
                     {
                         var showTimeIdOrdinal = reader.GetOrdinal("MovieShowtimeID");
                         var startOnOrdinal = reader.GetOrdinal("StartOn");
-                        var seatsAvailableOrdinal = reader.GetOrdinal("SeatsAvailable");
+                        var seatsAvailableOrdinal = reader.GetOrdinal("SeatsLeft");
                         var salePriceOrdinal = reader.GetOrdinal("SalePrice");
 
                         while (reader.Read())
