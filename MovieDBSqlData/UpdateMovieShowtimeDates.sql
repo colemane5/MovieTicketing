@@ -1,14 +1,15 @@
 
 --Changes every rows month portion of their StartOn, 4 to 1, 5 to 2, etc.
 UPDATE MovieDB.MovieShowtime
-SET StartOn = DATEADD(MONTH, 
-					CASE WHEN DATEPART(MONTH, StartOn) = 4 THEN 1
-						 WHEN DATEPART(MONTH, StartOn) = 5 THEN 2
-						 WHEN DATEPART(MONTH, StartOn) = 6 THEN 3
-						 WHEN DATEPART(MONTH, StartOn) = 7 THEN 4
-					END,
-	RAND()*(14-1)+1
-)
+SET StartOn = 
+	CASE
+		WHEN DATEPART(MONTH, StartOn) = 4 THEN DATEADD(MONTH, 1, StartOn)
+		WHEN DATEPART(MONTH, StartOn) = 5 THEN DATEADD(MONTH, 2, StartOn)
+		WHEN DATEPART(MONTH, StartOn) = 6 THEN DATEADD(MONTH, 3, StartOn)
+		WHEN DATEPART(MONTH, StartOn) = 7 THEN DATEADD(MONTH, 4, StartOn)
+		ELSE StartOn
+	END
+WHERE DATEPART(MONTH, StartOn) IN (4, 5, 6, 7);
 
 
 --Changes every rows day portion of their StartOn to a value between 1 and 28 ( just to avoid conflicts with february :p )
