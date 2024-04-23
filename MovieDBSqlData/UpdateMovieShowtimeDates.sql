@@ -16,7 +16,8 @@ WHERE DATEPART(MONTH, StartOn) IN (4, 5, 6, 7);
 UPDATE MovieDB.MovieShowtime
 SET StartOn = DATEADD(DAY, ABS(CHECKSUM(NEWID())) % 28, StartOn)
 
---Changes every rows time portion of their StartOn to a value between 17 and 21 if its not already
+--Changes every rows time portion of their StartOn to a value between 17 and 21 if its not already | this will NEED to be ran until 0 rows affected, its using random values
+--so it takes a few runs to hit all the correct times. you can see how many showtimes are left iwth the query at the bottom
 UPDATE MovieDB.MovieShowtime
 SET StartOn = DATEADD(HOUR, CAST(RAND() * (21 - 17 + 1) + 17 AS INT), StartOn)
 WHERE DATEPART(HOUR, StartOn) NOT BETWEEN 17 AND 21
@@ -26,6 +27,6 @@ UPDATE MovieDB.MovieShowtime
 SET StartOn = DATEADD(DAY, 1 - DAY(StartOn), StartOn)
 WHERE MovieShowtimeID = 1
 
---checking to see if the random values were random enough (didnt create duplicate keys)
+--checking to see if there are any showtimes in the db with a time out of the range still
 SELECT * FROM MovieDB.MovieShowtime
-ORDER BY StartOn
+WHERE DATEPART(HOUR, StartOn) NOT BETWEEN 17 AND 21
