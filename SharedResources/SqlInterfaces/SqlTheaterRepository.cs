@@ -77,12 +77,30 @@ namespace SharedResources.SqlInterfaces
                         result = command.Parameters["Result"].Value.ToString();
 
                         transaction.Complete();
-
-                        if (result == "1") return true;
-                        return false;
                     }
                 }
             }
+
+            using (var transaction = new TransactionScope())
+            {
+                using (var connection = new SqlConnection(connectionString))
+                {
+                    using (var command = new SqlCommand("UpdateSeatsLeft", connection))
+                    {
+                        command.CommandType = CommandType.StoredProcedure;
+                        command.Parameters.AddWithValue("MovieShowtimeID", MovieShowtimeID);
+
+                        connection.Open();
+
+                        command.ExecuteNonQuery();
+
+                        transaction.Complete();
+                    }
+                }
+            }
+
+            if (result == "1") return true;
+            return false;
         }
 
         public IReadOnlyList<Theater> RetrieveTheaters(int movieID)
