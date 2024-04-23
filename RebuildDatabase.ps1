@@ -53,6 +53,7 @@ Invoke-SqlCmd -ServerInstance $Server -Database $Database -InputFile "MovieDBSql
 Invoke-SqlCmd -ServerInstance $Server -Database $Database -InputFile "MovieDBSqlData\SQLProcedures\RetrieveGenres.sql"
 Invoke-SqlCmd -ServerInstance $Server -Database $Database -InputFile "MovieDBSqlData\SQLProcedures\RetrieveMovies.sql"
 Invoke-SqlCmd -ServerInstance $Server -Database $Database -InputFile "MovieDBSqlData\SQLProcedures\RetrieveTheaters.sql"
+Invoke-SqlCmd -ServerInstance $Server -Database $Database -InputFile "MovieDBSqlData\SQLProcedures\UpdateSeatsLeft.sql"
 Invoke-SqlCmd -ServerInstance $Server -Database $Database -InputFile "MovieDBSqlData\TableManagementProcedures\ManageActor.sql"
 Invoke-SqlCmd -ServerInstance $Server -Database $Database -InputFile "MovieDBSqlData\TableManagementProcedures\ManageDirector.sql"
 Invoke-SqlCmd -ServerInstance $Server -Database $Database -InputFile "MovieDBSqlData\TableManagementProcedures\ManageMovie.sql"

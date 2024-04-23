@@ -56,7 +56,7 @@ namespace SharedResources.SqlInterfaces
 
         public bool GetTicket(int userID, int MovieShowtimeID, decimal salePrice)
         {
-            string result = string.Empty;
+            bool result = false;
 
             using (var transaction = new TransactionScope())
             {
@@ -74,32 +74,35 @@ namespace SharedResources.SqlInterfaces
                         connection.Open();
 
                         command.ExecuteNonQuery();
-                        result = command.Parameters["Result"].Value.ToString();
+                        result = (bool)command.Parameters["Result"].Value;
 
                         transaction.Complete();
                     }
                 }
             }
 
-            using (var transaction = new TransactionScope())
+            if (result)
             {
-                using (var connection = new SqlConnection(connectionString))
+                using (var transaction = new TransactionScope())
                 {
-                    using (var command = new SqlCommand("UpdateSeatsLeft", connection))
+                    using (var connection = new SqlConnection(connectionString))
                     {
-                        command.CommandType = CommandType.StoredProcedure;
-                        command.Parameters.AddWithValue("MovieShowtimeID", MovieShowtimeID);
+                        using (var command = new SqlCommand("UpdateSeatsLeft", connection))
+                        {
+                            command.CommandType = CommandType.StoredProcedure;
+                            command.Parameters.AddWithValue("MovieShowtimeID", MovieShowtimeID);
 
-                        connection.Open();
+                            connection.Open();
 
-                        command.ExecuteNonQuery();
+                            command.ExecuteNonQuery();
 
-                        transaction.Complete();
+                            transaction.Complete();
+                        }
                     }
                 }
-            }
 
-            if (result == "1") return true;
+                return true;
+            }
             return false;
         }
 
