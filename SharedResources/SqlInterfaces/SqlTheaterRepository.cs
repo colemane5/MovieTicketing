@@ -54,7 +54,7 @@ namespace SharedResources.SqlInterfaces
             }
         }
 
-        public bool GetTicket(int userID, int MovieShowtimeID, decimal salePrice, int seatsLeft)
+        public bool GetTicket(int userID, int MovieShowtimeID, decimal salePrice)
         {
             string result = string.Empty;
 
@@ -69,8 +69,7 @@ namespace SharedResources.SqlInterfaces
                         command.Parameters.AddWithValue("UserID", userID);
                         command.Parameters.AddWithValue("MovieShowtimeID", MovieShowtimeID);
                         command.Parameters.AddWithValue("SalePrice", salePrice);
-                        command.Parameters.AddWithValue("SeatsLeft", seatsLeft);
-                        command.Parameters.Add("Result", SqlDbType.NVarChar).Direction = ParameterDirection.Output;
+                        command.Parameters.Add("Result", SqlDbType.Bit).Direction = ParameterDirection.Output;
 
                         connection.Open();
 
@@ -79,7 +78,8 @@ namespace SharedResources.SqlInterfaces
 
                         transaction.Complete();
 
-                        return result == "Success";
+                        if (result == "1") return true;
+                        return false;
                     }
                 }
             }
