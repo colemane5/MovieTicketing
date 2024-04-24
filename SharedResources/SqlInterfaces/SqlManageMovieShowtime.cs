@@ -31,7 +31,7 @@ namespace SharedResources.SqlInterfaces
                         command.Parameters.AddWithValue("MovieID", movieId);
                         command.Parameters.AddWithValue("TheaterID", theaterId);
                         command.Parameters.AddWithValue("StartOn", startOn);
-                        command.Parameters.AddWithValue("NewStartOn", newStartOn);
+                        if (newStartOn != null) command.Parameters.AddWithValue("NewStartOn", newStartOn);
                         command.Parameters.Add("Result", SqlDbType.Int).Direction = ParameterDirection.Output;
 
                         connection.Open();
@@ -48,7 +48,7 @@ namespace SharedResources.SqlInterfaces
             }
         }
 
-        public IReadOnlyList<Showtime> FindShowtimes(int movieId, int theaterId)
+        public IReadOnlyList<Showtime> FindShowtimes(int movieID, int theaterID)
         {
             var showTimes = new List<Showtime>();
 
@@ -58,27 +58,28 @@ namespace SharedResources.SqlInterfaces
                 {
                     command.CommandType = CommandType.StoredProcedure;
 
-                    command.Parameters.AddWithValue("MovieID", movieId);
+                    command.Parameters.AddWithValue("MovieID", movieID);
 
-                    command.Parameters.AddWithValue("TheaterID", theaterId);
+                    command.Parameters.AddWithValue("TheaterID", theaterID);
 
                     connection.Open();
 
                     using (var reader = command.ExecuteReader())
                     {
+                        var showTimeIdOrdinal = reader.GetOrdinal("MovieShowtimeID");
                         var startOnOrdinal = reader.GetOrdinal("StartOn");
-                        var seatsAvailableOrdinal = reader.GetOrdinal("SeatsAvailable");
+                        var seatsLeftOrdinal = reader.GetOrdinal("SeatsLeft");
                         var salePriceOrdinal = reader.GetOrdinal("SalePrice");
 
                         while (reader.Read())
                         {
                             showTimes.Add(new Showtime(
-                                   0, // REPLACE WITH showtimeID
-                                   movieId,
-                                   theaterId,
+                                   reader.GetInt32(showTimeIdOrdinal),
+                                   movieID,
+                                   theaterID,
                                    reader.GetDateTime(startOnOrdinal),
                                    reader.IsDBNull(salePriceOrdinal) ? 0 : reader.GetInt32(salePriceOrdinal),
-                                   reader.GetInt32(seatsAvailableOrdinal)));
+                                   reader.GetInt32(seatsLeftOrdinal)));
                         }
                     }
 

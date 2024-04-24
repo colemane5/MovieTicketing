@@ -32,7 +32,7 @@ namespace SharedResources.SqlInterfaces
                     {
                         var showTimeIdOrdinal = reader.GetOrdinal("MovieShowtimeID");
                         var startOnOrdinal = reader.GetOrdinal("StartOn");
-                        var seatsAvailableOrdinal = reader.GetOrdinal("SeatsLeft");
+                        var seatsLeftOrdinal = reader.GetOrdinal("SeatsLeft");
                         var salePriceOrdinal = reader.GetOrdinal("SalePrice");
 
                         while (reader.Read())
@@ -43,7 +43,7 @@ namespace SharedResources.SqlInterfaces
                                    theaterID,
                                    reader.GetDateTime(startOnOrdinal),
                                    reader.IsDBNull(salePriceOrdinal) ? 0 : reader.GetInt32(salePriceOrdinal),
-                                   reader.GetInt32(seatsAvailableOrdinal)));
+                                   reader.GetInt32(seatsLeftOrdinal)));
                         }
                     }
 
