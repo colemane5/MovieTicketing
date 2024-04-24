@@ -117,7 +117,7 @@ namespace MovieTicketingAdmin.ViewModels
         {
             if (SelectedMovie is not Movie selectedMovie) return;
             if (SelectedTheater is not Theater selectedTheater) return;
-            TheatersList.Remove(selectedTheater);
+            CurrentShowtimes.Remove(SelectedShowtime);
             sqlShowtimeManager.ManageMovieShowtime("REMOVE", selectedMovie.Id, selectedTheater.Id, SelectedShowtime.StartTime, null);
         }
 

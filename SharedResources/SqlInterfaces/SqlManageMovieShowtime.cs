@@ -31,7 +31,7 @@ namespace SharedResources.SqlInterfaces
                         command.Parameters.AddWithValue("MovieID", movieId);
                         command.Parameters.AddWithValue("TheaterID", theaterId);
                         command.Parameters.AddWithValue("StartOn", startOn);
-                        if (newStartOn != null) command.Parameters.AddWithValue("NewStartOn", newStartOn);
+                        command.Parameters.AddWithValue("NewStartOn", newStartOn);
                         command.Parameters.Add("Result", SqlDbType.Int).Direction = ParameterDirection.Output;
 
                         connection.Open();

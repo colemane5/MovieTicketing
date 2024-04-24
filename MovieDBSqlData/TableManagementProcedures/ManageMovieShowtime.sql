@@ -2,8 +2,8 @@ CREATE OR ALTER PROCEDURE ManageMovieShowtimes
 	@Task NVARCHAR(16), --this will be either "ADD", "UPDATE", or "REMOVE"
 	@MovieID INT,
 	@TheaterID INT,
-	@StartOn DATETIMEOFFSET,
-	@NewStartOn DATETIMEOFFSET = NULL, --only needed if updating, otherwise it will just remain null
+	@StartOn DATETIME,
+	@NewStartOn DATETIME = NULL, --only needed if updating, otherwise it will just remain null
 	@Result INT OUT
 AS
 BEGIN
