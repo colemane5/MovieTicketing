@@ -20,7 +20,7 @@ namespace SharedResources.SqlInterfaces.Interfaces
         /// <param name="newStartOn">the new desired starting time when updating a showtime</param>
         /// <returns>an int indicating if an update or removal was successful or not</returns>
         public int ManageMovieShowtime(string task, int movieId, int theaterId,
-            DateTimeOffset startOn, DateTimeOffset newStartOn);
+            DateTimeOffset startOn, DateTimeOffset? newStartOn);
 
         /// <summary>
         /// Returns the showtimes of movies from a given theater and movie
