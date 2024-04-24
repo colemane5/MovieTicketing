@@ -5,8 +5,9 @@ AS
 BEGIN
 	SET NOCOUNT ON
 
-	SELECT DISTINCT M.MovieShowtimeID, M.StartOn, M.SeatsLeft, TP.SalePrice
+	SELECT DISTINCT M.MovieShowtimeID, M.StartOn, T.SeatsAvailable, TP.SalePrice
 	FROM MovieDB.MovieShowtime M
+		INNER JOIN MovieDB.Theater T ON T.TheaterID = M.TheaterID
 		LEFT JOIN MovieDB.TicketPurchase TP ON TP.MovieShowtimeId = M.MovieShowtimeId
 	WHERE M.MovieID = @MovieID
 		AND M.TheaterID = @TheaterID

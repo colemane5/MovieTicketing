@@ -37,6 +37,8 @@ BEGIN
 		WHERE MovieID = @MovieID
 			AND TheaterID = @TheaterID
 			AND StartOn = @StartOn
+		
+		SET @Result = 1;
 	END
 	ELSE
 	BEGIN

@@ -110,7 +110,7 @@ namespace MovieTicketingAdmin.ViewModels
             if (SelectedMovie is not Movie selectedMovie) return;
             if (SelectedTheater is not Theater selectedTheater) return;
             sqlShowtimeManager.ManageMovieShowtime("ADD", selectedMovie.Id, selectedTheater.Id, NewDate.Date + ParseTime(), null);
-            CurrentShowtimes.Add(new Showtime(-1, selectedMovie.Id, selectedTheater.Id, NewDate + ParseTime(), 10.00M, 38));
+            CurrentShowtimes.Add(new Showtime(-1, selectedMovie.Id, selectedTheater.Id, NewDate.Date + ParseTime(), 10.00M, 38));
         }
 
         private void RemoveSelectedShowtime()
