@@ -42,7 +42,7 @@ namespace SharedResources.SqlInterfaces
                                    movieID,
                                    theaterID,
                                    reader.GetDateTime(startOnOrdinal),
-                                   reader.IsDBNull(salePriceOrdinal) ? 0 : reader.GetInt32(salePriceOrdinal),
+                                   reader.IsDBNull(salePriceOrdinal) ? 10 : reader.GetInt32(salePriceOrdinal),
                                    reader.GetInt32(seatsLeftOrdinal)));
                         }
                     }

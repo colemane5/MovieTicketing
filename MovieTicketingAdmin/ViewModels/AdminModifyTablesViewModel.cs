@@ -94,23 +94,28 @@ namespace MovieTicketingAdmin.ViewModels
             TheatersList = sqlShowtimeManager.RetrieveTheaters().ToList();
         }
 
-        private TimeSpan ParseTime()
+        private TimeSpan? ParseTime()
         {
-            int[] times = NewTime.Replace("AM", "").Replace("PM", "").Split(':').Select(int.Parse).ToArray();
-            int hours = times[0];
-            int mins = times[1];
-            if (NewTime.Contains("PM") && hours < 12 || hours == 12 && NewTime.Contains("AM"))
-                hours += 12;
+            try
+            {
+                int[] times = NewTime.Replace("AM", "").Replace("PM", "").Split(':').Select(int.Parse).ToArray();
+                int hours = times[0];
+                int mins = times[1];
+                if (NewTime.Contains("PM") && hours < 12 || hours == 12 && NewTime.Contains("AM"))
+                    hours += 12;
 
-            return new TimeSpan(hours, mins, 0);
+                return new TimeSpan(hours, mins, 0);
+            }
+            catch (Exception) { return null; }
         }
 
         private void AddNewShowtime()
         {
+            if (ParseTime() is not TimeSpan time) return;
             if (SelectedMovie is not Movie selectedMovie) return;
             if (SelectedTheater is not Theater selectedTheater) return;
-            sqlShowtimeManager.ManageMovieShowtime("ADD", selectedMovie.Id, selectedTheater.Id, NewDate.Date + ParseTime(), null);
-            CurrentShowtimes.Add(new Showtime(-1, selectedMovie.Id, selectedTheater.Id, NewDate.Date + ParseTime(), 10.00M, 38));
+            sqlShowtimeManager.ManageMovieShowtime("ADD", selectedMovie.Id, selectedTheater.Id, NewDate.Date + time, null);
+            CurrentShowtimes.Add(new Showtime(-1, selectedMovie.Id, selectedTheater.Id, NewDate.Date + time, 10.00M, 100));
         }
 
         private void RemoveSelectedShowtime()

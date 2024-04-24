@@ -25,7 +25,7 @@
             </DockPanel>
         </Grid>
         
-        <StackPanel Grid.Column="1" Margin="80 40">
+        <StackPanel Grid.Column="1" Margin="80 30">
             <TextBlock Text="Sales" FontSize="22" Margin="0 0 0 6" Foreground="DimGray"/>
             <TextBlock Text="{Binding Sales, StringFormat=C2}" FontSize="26" Margin="0 0 0 30"/>
             <TextBlock Text="Unique Titles" FontSize="22" Margin="0 0 0 6" Foreground="DimGray"/>
