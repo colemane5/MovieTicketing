@@ -2,8 +2,7 @@ CREATE OR ALTER PROCEDURE GetTicket
 	@UserID INT,
 	@MovieShowtimeID INT,
 	@SalePrice DECIMAL(10, 2),
-	@SeatsLeft INT,
-	@Result NVARCHAR(10) OUT
+	@Result BIT OUT
 AS
 BEGIN
 	SET NOCOUNT ON
@@ -17,13 +16,11 @@ BEGIN
 	BEGIN
 		INSERT INTO MovieDB.TicketPurchase(UserID, MovieShowtimeID, SalePrice)
 		VALUES(@UserID, @MovieShowtimeID, @SalePrice)
-		UPDATE MovieDB.MovieShowtime
-		SET SeatsAvailable = @SeatsLeft
-		WHERE MovieShowtimeID = @MovieShowtimeID
-		SET @Result = N'Success'
+
+		SET @Result = 1;
 	END
 	ELSE
 	BEGIN
-		SET @Result = N'Failed'
+		SET @Result = 0
 	END
 END

@@ -1,4 +1,4 @@
-INSERT INTO MovieDB.[User](UserEmail, UserName)
+INSERT INTO MovieDB.[User](UserName, UserEmail)
 VALUES
 ('John Doe', 'john.doe@example.com'),
 ('Jane Smith', 'jane.smith@example.com'),

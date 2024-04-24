@@ -73,8 +73,8 @@ namespace MovieTicketingClient.ViewModels
         {
             if (_user is User user)
             {
-                //bool success = theaterRepository.GetTicket(user.Id, SelectedMovie.Id, SelectedShowtime.Price, SelectedShowtime.SeatsAvailable);
-                /*if (success)*/ AvailableShowtimes.Remove(SelectedShowtime);
+                bool success = theaterRepository.GetTicket(user.Id, SelectedShowtime.Id, SelectedShowtime.Price);
+                if (success) AvailableShowtimes.Remove(SelectedShowtime);
             }
         }
 

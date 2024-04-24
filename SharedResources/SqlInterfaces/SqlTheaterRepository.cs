@@ -32,7 +32,7 @@ namespace SharedResources.SqlInterfaces
                     {
                         var showTimeIdOrdinal = reader.GetOrdinal("MovieShowtimeID");
                         var startOnOrdinal = reader.GetOrdinal("StartOn");
-                        var seatsAvailableOrdinal = reader.GetOrdinal("SeatsAvailable");
+                        var seatsAvailableOrdinal = reader.GetOrdinal("SeatsLeft");
                         var salePriceOrdinal = reader.GetOrdinal("SalePrice");
 
                         while (reader.Read())
@@ -54,9 +54,9 @@ namespace SharedResources.SqlInterfaces
             }
         }
 
-        public bool GetTicket(int userID, int MovieShowtimeID, decimal salePrice, int seatsLeft)
+        public bool GetTicket(int userID, int MovieShowtimeID, decimal salePrice)
         {
-            string result = string.Empty;
+            bool result = false;
 
             using (var transaction = new TransactionScope())
             {
@@ -69,20 +69,41 @@ namespace SharedResources.SqlInterfaces
                         command.Parameters.AddWithValue("UserID", userID);
                         command.Parameters.AddWithValue("MovieShowtimeID", MovieShowtimeID);
                         command.Parameters.AddWithValue("SalePrice", salePrice);
-                        command.Parameters.AddWithValue("SeatsLeft", seatsLeft);
-                        command.Parameters.Add("Result", SqlDbType.NVarChar).Direction = ParameterDirection.Output;
+                        command.Parameters.Add("Result", SqlDbType.Bit).Direction = ParameterDirection.Output;
 
                         connection.Open();
 
                         command.ExecuteNonQuery();
-                        result = command.Parameters["Result"].Value.ToString();
+                        result = (bool)command.Parameters["Result"].Value;
 
                         transaction.Complete();
-
-                        return result == "Success";
                     }
                 }
             }
+
+            if (result)
+            {
+                using (var transaction = new TransactionScope())
+                {
+                    using (var connection = new SqlConnection(connectionString))
+                    {
+                        using (var command = new SqlCommand("UpdateSeatsLeft", connection))
+                        {
+                            command.CommandType = CommandType.StoredProcedure;
+                            command.Parameters.AddWithValue("MovieShowtimeID", MovieShowtimeID);
+
+                            connection.Open();
+
+                            command.ExecuteNonQuery();
+
+                            transaction.Complete();
+                        }
+                    }
+                }
+
+                return true;
+            }
+            return false;
         }
 
         public IReadOnlyList<Theater> RetrieveTheaters(int movieID)

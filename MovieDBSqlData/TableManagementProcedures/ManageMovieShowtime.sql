@@ -23,6 +23,16 @@ BEGIN
 	END
 	ELSE IF @Task = N'REMOVE'
 	BEGIN
+		DELETE FROM MovieDB.TicketPurchase 
+		WHERE MovieShowtimeID IN(
+			SELECT MS.MovieShowtimeID 
+			FROM MovieDB.MovieShowtime MS
+			WHERE MS.MovieID = @MovieID
+				AND MS.TheaterID = @TheaterID
+				AND MS.StartOn = @StartOn
+		);
+
+
 		DELETE FROM MovieDB.MovieShowtime
 		WHERE MovieID = @MovieID
 			AND TheaterID = @TheaterID
